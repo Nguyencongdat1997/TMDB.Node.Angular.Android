@@ -1,14 +1,14 @@
-var express = require('express');
-var routerRegistor = require("./routers/routerRegistor.js");
+import express from 'express';
+import { registerAPIs } from "./routers/routerRegistor.js";
 
 const startServer = async () => {  
 	//Create app
 	const app = express();
 
 	//Create router
-	const router = require('express').Router();
+	const router = express.Router();
 	//Register apis
-	routerRegistor.registerAPIs(app, router);		
+	registerAPIs(app, router);		
 
 	app.use('/api/v1', router);
 

@@ -1,8 +1,8 @@
-var getHomeData = function (req, res) {
+function getHomeDataFunc (req, res) {
     res.status(200).send('Hello world from home');
 };
 
+
+
 //Export
-module.exports = {
-    getHomeData: getHomeData,
-};
+export const getHomeData = getHomeDataFunc;

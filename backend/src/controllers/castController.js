@@ -1,8 +1,6 @@
-var getCastDetail = function (req, res) {
+function getCastDetailFunc(req, res) {
     res.status(200).send('Hello world from Cast Detail');
 };
 
 //Export
-module.exports = {
-    getCastDetail: getCastDetail,
-};
+export const getCastDetail = getCastDetailFunc;

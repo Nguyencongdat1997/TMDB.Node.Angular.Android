@@ -1,24 +1,22 @@
-var homeController = require("../controllers/homeController.js");
-const searchController = require("../controllers/searchController.js");
-const itemController = require("../controllers/itemController.js");
-const castController = require("../controllers/castController.js");
+import { getHomeData } from "../controllers/homeController.js";
+import { searchItems } from "../controllers/searchController.js";
+import { getItemDetail } from "../controllers/itemController.js";
+import { getCastDetail } from "../controllers/castController.js";
 
-var registerAPIs = (app, router) => {
+var registerAPIFuncs = (app, router) => {
 	app.get('/', function(req, res) {
 		res.status(200).send('Welcome to the service.');
 	});
 
-    router.get('/home', homeController.getHomeData);
+    router.get('/home', getHomeData);
 
-    router.get('/search', searchController.searchItems);
+    router.get('/search', searchItems);
     
-    router.get('/item', itemController.getItemDetail);
+    router.get('/item', getItemDetail);
     
-    router.get('/cast', castController.getCastDetail);
+    router.get('/cast', getCastDetail);
 
 }
 
-module.exports = {
-    registerAPIs: registerAPIs,
-};
-
+//Export
+export const registerAPIs = registerAPIFuncs;
