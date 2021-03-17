@@ -90,6 +90,7 @@ class ItemDetail{
     }
 }
 
+
 class Cast{
     constructor(id, name, character, profilePath){
         this.id = id;
@@ -108,8 +109,34 @@ class Cast{
 }
 
 
+class Review{
+    constructor(author, content, createAt, url, rating, avatarPath){
+        this.author = author;
+        this.content = content;
+        this.create_at = createAt;
+        this.url = url;
+        this.rating = rating;
+        this.avatar_path = avatarPath;
+    }
+
+    static fromRawReview(rawReview){
+        var author = rawReview['author_details']['username'];
+        var content = rawReview['content'];
+        var createAt = rawReview['created_at'];
+        var url = rawReview['url'];
+        var rating = rawReview['author_details']['rating'];
+        if (rating == null){
+            rating = 0;
+        }
+        var avatarPath = rawReview['author_details']['avatar_path'];
+        return new Review(author, content, createAt, url, rating, avatarPath);
+    }
+}
+
+
 export {
     Item,
     ItemDetail,
     Cast,
+    Review,
 };

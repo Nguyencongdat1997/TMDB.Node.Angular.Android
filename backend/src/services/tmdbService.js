@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import {Item, ItemDetail, Cast} from "../DTOs/models.js";
+import {Item, ItemDetail, Cast, Review} from "../DTOs/models.js";
 
 
 var tmdpUrl = 'https://api.themoviedb.org/3';
@@ -205,10 +205,27 @@ async function getItemDetailFunc(id, category){
         return Cast.fromRawCast(x);
     });
 
+    // Get reivews
+    var queryUrl =  tmdpUrl + '/' + category + '/' + id + '/reviews?api_key=' + tmdpKey + '&language=en-US&&page=1';
+    var rawReviewsData = {};    
+    await axios.get(queryUrl)
+    .then(response => {     
+        rawReviewsData = response.data;    
+    })
+    .catch(error => {
+        console.log(error);
+    }); 
+    var review = rawReviewsData.results.map(x=>{
+        return Review.fromRawReview(x);
+    });
+
+    
+
     // Merge data
     var result= {
         item_detail: itemDetail,
         casts: casts,
+        reviews: review,
     };
 
     return result;
