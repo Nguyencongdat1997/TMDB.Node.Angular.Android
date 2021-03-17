@@ -2,7 +2,7 @@
 Express JS
 
 # TODO
-- [ ] Construct project structure
+- [x] Construct project structure
 - [ ] APIs
     - [ ] /home: Get homepage data
       - [ ] Get Home carousel:
