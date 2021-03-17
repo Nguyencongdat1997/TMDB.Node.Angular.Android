@@ -4,15 +4,15 @@ Express JS
 # TODO
 - [x] Construct project structure
 - [ ] APIs
-    - [ ] /home: Get homepage data
-      - [ ] Get Home carousel:
-      - [ ] Get Popular movie
-      - [ ] Get Top Rated Movies Section
-      - [ ] Get Trending Movies
-      - [ ] Get Popular TV Shows
-      - [ ] Get Top Rated TV Shows
-      - [ ] Get Trending TV shows
-    - [ ] /search: Get search results by keyword 
+    - [x] /home: Get homepage data
+      - [x] Get Home carousel:
+      - [x] Get Popular movie
+      - [x] Get Top Rated Movies Section
+      - [x] Get Trending Movies
+      - [x] Get Popular TV Shows
+      - [x] Get Top Rated TV Shows
+      - [x] Get Trending TV shows
+    - [x] /search: Get search results by keyword 
     - [ ] /item: Get item detail
       - [ ] movie&tv detail data
       - [ ] cast and crew
