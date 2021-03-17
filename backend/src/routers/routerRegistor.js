@@ -3,6 +3,7 @@ import { searchItems } from "../controllers/searchController.js";
 import { getItemDetail } from "../controllers/itemController.js";
 import { getCastDetail } from "../controllers/castController.js";
 
+
 var registerAPIFuncs = (app, router) => {
 	app.get('/', function(req, res) {
 		res.status(200).send('Welcome to the service.');
@@ -17,6 +18,7 @@ var registerAPIFuncs = (app, router) => {
     router.get('/cast', getCastDetail);
 
 }
+
 
 //Export
 export const registerAPIs = registerAPIFuncs;

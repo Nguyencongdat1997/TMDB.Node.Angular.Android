@@ -1,5 +1,7 @@
 import express from 'express';
+
 import { registerAPIs } from "./routers/routerRegistor.js";
+
 
 const startServer = async () => {  
 	//Create app
