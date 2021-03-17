@@ -90,8 +90,26 @@ class ItemDetail{
     }
 }
 
+class Cast{
+    constructor(id, name, character, profilePath){
+        this.id = id;
+        this.name = name;
+        this.character = character;
+        this.profile_path = profilePath;
+    }
+
+    static fromRawCast(rawCast){
+        var id = rawCast['id'];
+        var name = rawCast['name'];
+        var character = rawCast['character'];
+        var profilePath = getTmdbImageUrl(rawCast['profile_path'], 'w500');
+        return new Cast(id, name, character, profilePath);
+    }
+}
+
 
 export {
     Item,
     ItemDetail,
+    Cast,
 };

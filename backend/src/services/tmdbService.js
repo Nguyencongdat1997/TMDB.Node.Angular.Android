@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import {Item, ItemDetail} from "../DTOs/models.js";
+import {Item, ItemDetail, Cast} from "../DTOs/models.js";
 
 
 var tmdpUrl = 'https://api.themoviedb.org/3';
@@ -129,13 +129,13 @@ async function getHomeDataFunc(){
     });
     
     var result = {
-        carouselList: carouselList,
-        popularMovies: popularMovies,
-        topRatedMovies: topRatedMovies,
-        trendingMovies: trendingMovies,
-        popularTvs: popularTvs,
-        topRatedTvs: topRatedTvs,
-        trendingTvs: trendingTvs,
+        carousel_list: carouselList,
+        popular_movies: popularMovies,
+        topRated_movies: topRatedMovies,
+        trending_movies: trendingMovies,
+        popular_tvs: popularTvs,
+        topRated_tvs: topRatedTvs,
+        trending_tvs: trendingTvs,
     };
 
     return result;
@@ -167,16 +167,7 @@ async function getItemDetailFunc(id, category){
         return null;
     }
     
-    var queryUrl =  tmdpUrl + '/' + category + '/' + id + '?api_key=' + tmdpKey + '&language=en-US&&page=1';
-    var rawData = {};    
-    await axios.get(queryUrl)
-    .then(response => {     
-        rawData = response.data;    
-    })
-    .catch(error => {
-        console.log(error);
-    }); 
-
+    // Get Genres
     var genresQueryUrl = tmdpUrl + '/genre/' + category + '/list?api_key=' + tmdpKey + '&language=en-US';
     var rawGenresData = {};    
     await axios.get(genresQueryUrl)
@@ -187,9 +178,39 @@ async function getItemDetailFunc(id, category){
         console.log(error);
     }); 
     var genresDict = rawGenresData.genres;
-    
-    var result= ItemDetail.fromItem(id, category, rawData, genresDict);
-    
+
+    // Get basic information
+    var queryUrl =  tmdpUrl + '/' + category + '/' + id + '?api_key=' + tmdpKey + '&language=en-US&&page=1';
+    var rawData = {};    
+    await axios.get(queryUrl)
+    .then(response => {     
+        rawData = response.data;    
+    })
+    .catch(error => {
+        console.log(error);
+    }); 
+    var itemDetail = ItemDetail.fromItem(id, category, rawData, genresDict);
+
+    // Get casts
+    var queryUrl =  tmdpUrl + '/' + category + '/' + id + '/credits?api_key=' + tmdpKey + '&language=en-US&&page=1';
+    var rawCastsData = {};    
+    await axios.get(queryUrl)
+    .then(response => {     
+        rawCastsData = response.data;    
+    })
+    .catch(error => {
+        console.log(error);
+    }); 
+    var casts = rawCastsData.cast.map(x=>{
+        return Cast.fromRawCast(x);
+    });
+
+    // Merge data
+    var result= {
+        item_detail: itemDetail,
+        casts: casts,
+    };
+
     return result;
 }
 
