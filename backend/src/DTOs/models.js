@@ -1,4 +1,6 @@
-import {getTmdbImageUrl} from '../utils/getTmdbImageUrl.js'
+import {getTmdbImageUrl} from '../utils/getTmdbImageUrl.js';
+import {parseTmdbGenres} from '../utils/parseTmdbGenres.js';
+import {parseTmdbLanguage} from '../utils/parseTmdbLanguage.js';
 
 
 class Item{
@@ -47,6 +49,49 @@ class Item{
 }
 
 
+class ItemDetail{
+    constructor(id, category, title, genres, spokenLanguage, date, runtime, overview, voteAverate, tagline){
+        this.id = id;
+        this.category = category;
+        this.title = title;
+        this.genres = genres
+        this.spoken_language = spokenLanguage;
+        this.date = date;
+        this.runtime = runtime;
+        this.overview = overview;
+        this.vote_average = voteAverate;
+        this.tagline = tagline;
+        
+    }
+
+    static fromItem(id, category, rawItemData, genresDict){
+        if (category != 'movie' && category != 'tv'){
+            return null;
+        }
+        var title = null;
+        var runtime = null;
+        var date = null
+        if (category == 'movie'){
+            title = rawItemData['title'];
+            runtime = rawItemData['runtime'];
+            date = rawItemData['release_date'];
+        }
+        if (category == 'tv'){
+            title = rawItemData['name'];  
+            runtime = rawItemData['episode_run_time'];
+            date = rawItemData['first_air_date'];
+        }              
+        var genres = parseTmdbGenres(rawItemData['genres'], genresDict);
+        var spokenLanguage = parseTmdbLanguage(rawItemData['spoken_languages']);        
+        var overview = rawItemData['overview'];
+        var voteAverate = rawItemData['vote_average'];
+        var tagline = rawItemData['tagline'];
+        return new ItemDetail(id, category, title, genres, spokenLanguage, date, runtime, overview, voteAverate, tagline);
+    }
+}
+
+
 export {
     Item,
+    ItemDetail,
 };

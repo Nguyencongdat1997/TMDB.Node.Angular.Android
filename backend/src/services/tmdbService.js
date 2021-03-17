@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import {Item} from "../DTOs/models.js";
+import {Item, ItemDetail} from "../DTOs/models.js";
 
 
 var tmdpUrl = 'https://api.themoviedb.org/3';
@@ -162,6 +162,39 @@ async function getSearchResultsFunc(keyword){
 }
 
 
+async function getItemDetailFunc(id, category){
+    if (category != 'tv' && category != 'movie'){
+        return null;
+    }
+    
+    var queryUrl =  tmdpUrl + '/' + category + '/' + id + '?api_key=' + tmdpKey + '&language=en-US&&page=1';
+    var rawData = {};    
+    await axios.get(queryUrl)
+    .then(response => {     
+        rawData = response.data;    
+    })
+    .catch(error => {
+        console.log(error);
+    }); 
+
+    var genresQueryUrl = tmdpUrl + '/genre/' + category + '/list?api_key=' + tmdpKey + '&language=en-US';
+    var rawGenresData = {};    
+    await axios.get(genresQueryUrl)
+    .then(response => {     
+        rawGenresData = response.data;    
+    })
+    .catch(error => {
+        console.log(error);
+    }); 
+    var genresDict = rawGenresData.genres;
+    
+    var result= ItemDetail.fromItem(id, category, rawData, genresDict);
+    
+    return result;
+}
+
+
 //Export
 export const getHomeData = getHomeDataFunc;
 export const getSearchResult = getSearchResultsFunc;
+export const getItemDetail = getItemDetailFunc;
