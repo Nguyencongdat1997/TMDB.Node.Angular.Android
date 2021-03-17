@@ -1,6 +1,9 @@
 function getTmdbImageUrlFunc(rawImageUrl, type){
-    var tmdpImage = 'https://image.tmdb.org/t/p/';
-    return tmdpImage+type+rawImageUrl;
+    if (rawImageUrl == null || rawImageUrl == "" ){
+        return null;
+    }
+    var tmdpImage = 'https://image.tmdb.org/t/p/'+type+rawImageUrl;
+    return tmdpImage;
 }
 
 
