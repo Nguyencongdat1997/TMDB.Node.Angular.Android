@@ -2,9 +2,9 @@
 
 # TODO
 - [x] Initialize project
-- [ ] Contruct project structure
-    - [ ] NavBar
-    - [ ] Create Components
+- [x] Contruct project structure
+    - [x] NavBar
+    - [x] Create Components
 - [ ] Web-first design:
     - [ ] Homepage
         - [ ] Frame skeleton
