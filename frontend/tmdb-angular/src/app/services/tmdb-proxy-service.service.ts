@@ -1,9 +1,20 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import {ApiEndpoints} from '../constants/api-endpoints'
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class TmdbProxyServiceService {
+    public url = 'http://localhost:4000/api/v1/home';
 
-  constructor() { }
+    constructor(private http: HttpClient) { }
+
+    getHomeData(): Observable<any>{
+        var url = ApiEndpoints['HomeUrl'];
+        console.log(url);
+        return this.http.get(url);
+    }
 }

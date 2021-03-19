@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverUrl: "...", // TODO: configure GCP url
+  serverUrl: "http://localhost:4000",
 };
 
 /*
