@@ -1,6 +1,8 @@
 <div>
     <div>
-        
+        <ngbd-carousel-pause             
+            [imgItems]="carouselList">
+        </ngbd-carousel-pause>
     </div>
     <div>
         <div>Continue Watching</div>
@@ -26,4 +28,4 @@
 </div>
 
 
-<pre > {{(result$|async)|json}} </pre>
+<pre > {{(data)|json}} </pre>

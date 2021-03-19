@@ -14,7 +14,6 @@ export class TmdbProxyServiceService {
 
     getHomeData(): Observable<any>{
         var url = ApiEndpoints['HomeUrl'];
-        console.log(url);
         return this.http.get(url);
     }
 }

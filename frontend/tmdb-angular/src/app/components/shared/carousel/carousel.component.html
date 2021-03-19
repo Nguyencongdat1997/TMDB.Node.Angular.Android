@@ -1,0 +1,17 @@
+<div style="width:80%;">
+    <ngb-carousel #carousel [interval]="1500" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
+        (slide)="onSlide($event)">
+        <ng-template ngbSlide *ngFor="let imgItem of imgItems; index as i">
+            <div class="carousel-caption">
+            </div>
+            <a href="#" target="_blank" rel="nofollow noopener noreferrer">                
+                <div class="zoom-parent" onclick="">
+                    <div class="zoom-child" style="background-image: url({{imgItem.backdrop_path}});">                        
+                        .
+                    </div>
+                    <a href="#">Los Angeles</a>
+                </div>
+            </a>
+        </ng-template>
+    </ngb-carousel>
+</div>

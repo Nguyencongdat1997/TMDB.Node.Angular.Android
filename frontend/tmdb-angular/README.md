@@ -7,8 +7,8 @@
     - [x] Create Components
 - [ ] Web-first design:
     - [ ] Homepage
-        - [ ] Frame skeleton
-        - [ ] Carousel
+        - [x] Frame skeleton
+        - [x] Carousel
         - [ ] HorizontalMovieList Components
             - [ ] Continue watching (empty)
             - [ ] Popular&Top-rated&Trending Movie&TVShows

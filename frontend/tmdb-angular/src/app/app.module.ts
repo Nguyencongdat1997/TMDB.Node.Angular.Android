@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { MylistComponent } from './components/mylist/mylist.component';
+import { CarouselComponent } from './components/shared/carousel/carousel.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MylistComponent } from './components/mylist/mylist.component';
     AppComponent,
     HomeComponent,
     MovieDetailComponent,
-    MylistComponent
+    MylistComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,

@@ -8,13 +8,15 @@ import { TmdbProxyServiceService } from '../../services/tmdb-proxy-service.servi
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-    
-    @Input()
-    result$: Observable<any>;
+export class HomeComponent implements OnInit {    
+    data = [];
+    carouselList = [];
 
     constructor(private tmdbService: TmdbProxyServiceService) {
-        this.result$ = tmdbService.getHomeData();
+        tmdbService.getHomeData().subscribe(x => {
+            this.data = x;
+            this.carouselList = x.carousel_list.slice(0,5);
+        });
     }
 
     ngOnInit(): void {
