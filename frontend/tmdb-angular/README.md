@@ -1,7 +1,7 @@
 # TmdbAngular
 
 # TODO
-- [ ] Initialize project
+- [x] Initialize project
 - [ ] Contruct project structure
     - [ ] NavBar
     - [ ] Create Components

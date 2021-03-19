@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'tmdb-angular';
+  public isMenuCollapsed = true;
+  public selectedTab = 'home';
+
+  public navClick(target: string){    
+    this.isMenuCollapsed = true;
+    this.selectedTab = target;
+  }
 }
