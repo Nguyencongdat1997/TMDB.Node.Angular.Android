@@ -1,11 +1,12 @@
 import express from 'express';
-
+import cors from 'cors';
 import { registerAPIs } from "./routers/routerRegistor.js";
 
 
 const startServer = async () => {  
 	//Create app
 	const app = express();
+    app.use(cors());
 
 	//Create router
 	const router = express.Router();
