@@ -109,6 +109,79 @@ class Cast{
 }
 
 
+class CastExternalLinks{
+    constructor(imdbID, instaID, fbID, twiterID){
+        if (imdbID == null || imdbID==''){
+            this.imdb_id = null;
+        }
+        else{
+            this.imdb_id = imdbID;
+        }
+        if (instaID == null || instaID==''){
+            this.insta_id = null;
+        }
+        else{
+            this.insta_id = instaID;            
+        }
+        if (fbID == null || fbID==''){
+            this.fb_id = null;
+        }
+        else{
+            this.fb_id = fbID;
+        }
+        if (twiterID == null || twiterID==''){
+            this.twiter_id = null;
+        }
+        else{
+            this.twiter_id = twiterID;
+        }
+    }
+
+    static fromRawExternalLinks(rawExternalLinks){
+        return new CastExternalLinks(
+            rawExternalLinks['imdb_id'], 
+            rawExternalLinks['instagram_id'],
+            rawExternalLinks['facebook_id'], 
+            rawExternalLinks['twitter_id'],
+        );
+    }
+}
+
+
+class CastDetail{
+    constructor(id, name, imageUrl, birthDate, birthPlace, gender, knownFor, otherNames, homepage, externalLinks, biography){
+        this.id = id;
+        this.name = name;
+        this.image_url = imageUrl;
+        this.birth_date = birthDate;
+        this.birth_place = birthPlace;
+        this.gender = gender;
+        this.known_for = knownFor;
+        this.other_names = otherNames;
+        this.homepage = homepage;
+        this.external_links = externalLinks;
+        this.biography = biography;
+    }
+
+    static fromRawCastDetail(rawCastDetail, rawExternalLinks){
+        var id = rawCastDetail['id'];
+        var name = rawCastDetail['name'];
+        var imageUrl = getTmdbImageUrl(rawCastDetail['profile_path'], 'w500');
+        var birthDate = rawCastDetail['birthday'];
+        var birthPlace = rawCastDetail['place_of_birth'];
+        var gender = rawCastDetail['gender'];
+        var knownFor = rawCastDetail['known_for_department'];
+        var otherNames = rawCastDetail['also_known_as'].join(', ');
+        var biography = rawCastDetail['biography'];
+        var homepage = rawCastDetail['homepage'];
+        
+        var externalLinks = CastExternalLinks.fromRawExternalLinks(rawExternalLinks);
+
+        return new CastDetail(id, name, imageUrl, birthDate, birthPlace, gender, knownFor, otherNames, homepage, externalLinks, biography);
+    }
+}
+
+
 class Review{
     constructor(author, content, createAt, url, rating, avatarPath){
         this.author = author;
@@ -138,5 +211,6 @@ export {
     Item,
     ItemDetail,
     Cast,
+    CastDetail,
     Review,
 };

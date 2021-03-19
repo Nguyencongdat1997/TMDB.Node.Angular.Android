@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import {Item, ItemDetail, Cast, Review} from "../DTOs/models.js";
+import {Item, ItemDetail, Cast, CastDetail, Review} from "../DTOs/models.js";
 
 
 var tmdpUrl = 'https://api.themoviedb.org/3';
@@ -245,13 +245,13 @@ async function getItemDetailFunc(id, category){
         return Review.fromRawReview(x);
     });
 
-    // TODO: Get recommended movies
+    // Get recommended movies
     var rawRecommendations = await getRecommendedItems(category, id);
     var recommendations = rawRecommendations.results.map(x=>{
         return Item.fromItem(x, category);
     });
 
-    // TODO: Get similar movies
+    // Get similar movies
     var rawSimilarItems = await getSimilarItems(category, id);
     var similarItems = rawSimilarItems.results.map(x=>{
         return Item.fromItem(x, category);
@@ -270,7 +270,38 @@ async function getItemDetailFunc(id, category){
 }
 
 
+async function getCastDetailFunc(id){
+    // Get Detail
+    var queryUrl = tmdpUrl + '/person/' + id + '?api_key=' + tmdpKey + '&language=en-US&page=1';
+    var rawDetailData = {};    
+    await axios.get(queryUrl)
+    .then(response => {     
+        rawDetailData = response.data;    
+    })
+    .catch(error => {
+        console.log(error);
+    });     
+
+    // Get External Ids
+    var queryExternalIdsUrl =  tmdpUrl + '/person/' + id + '/external_ids?api_key=' + tmdpKey + '&language=en-US&page=1';
+    var rawExternalIds = {};    
+    await axios.get(queryExternalIdsUrl)
+    .then(response => {     
+        rawExternalIds = response.data;    
+    })
+    .catch(error => {
+        console.log(error);
+    }); 
+
+    // Merge data
+    var result= CastDetail.fromRawCastDetail(rawDetailData, rawExternalIds);
+
+    return result;
+}
+
+
 //Export
 export const getHomeData = getHomeDataFunc;
 export const getSearchResult = getSearchResultsFunc;
 export const getItemDetail = getItemDetailFunc;
+export const getCastDetail = getCastDetailFunc;

@@ -15,7 +15,7 @@ var registerAPIFuncs = (app, router) => {
     
     router.get('/item/:category/:id', getItemDetail);
     
-    router.get('/cast', getCastDetail);
+    router.get('/cast/:id', getCastDetail);
 
 }
 
