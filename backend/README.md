@@ -3,7 +3,7 @@ Express JS
 
 # TODO
 - [x] Construct project structure
-- [ ] APIs
+- [x] APIs
     - [x] /home: Get homepage data
       - [x] Get Home carousel:
       - [x] Get Popular movie
@@ -19,7 +19,7 @@ Express JS
       - [x] reviews
       - [x] recomended movie&tv
       - [x] similar movie&tv
-    - [ ] /cast: Get detail data of characters
+    - [x] /cast: Get detail data of characters
 - [ ] Deploy to GCP
 
 
