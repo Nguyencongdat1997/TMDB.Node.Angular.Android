@@ -162,6 +162,19 @@ async function getSearchResultsFunc(keyword){
 }
 
 
+async function getRecommendedItems(category, itemId){
+    var queryUrl =  tmdpUrl + '/' + category + '/' + itemId + '/recommendations?api_key=' + tmdpKey + '&language=en-US&&page=1';
+    var rawData = "";    
+    await axios.get(queryUrl)
+    .then(response => {     
+        rawData = response.data;    
+    })
+    .catch(error => {
+        console.log(error);
+    }); 
+    return rawData;   
+}
+
 async function getItemDetailFunc(id, category){
     if (category != 'tv' && category != 'movie'){
         return null;
@@ -219,13 +232,20 @@ async function getItemDetailFunc(id, category){
         return Review.fromRawReview(x);
     });
 
-    
+    // TODO: Get recommended movies
+    var rawRecommendations = await getRecommendedItems(category, id);
+    var recommendations = rawRecommendations.results.map(x=>{
+        return Item.fromItem(x, category);
+    });
+
+    // TODO: Get similar movies
 
     // Merge data
     var result= {
         item_detail: itemDetail,
         casts: casts,
         reviews: review,
+        recommendations: recommendations,
     };
 
     return result;
