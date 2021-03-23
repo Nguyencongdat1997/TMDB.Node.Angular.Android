@@ -1,27 +1,29 @@
-<div class="body">
-    <nav style="height: 5vh; margin:0" class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-        <a class="navbar-brand" [routerLink]="'.'">USC Films</a>
-
-        <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
-            &#9776;
-        </button>
-
-        <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
-            <ul id="topheader" class="nav">
-                <li [ngClass]="{'nav-active': selectedTab=='home'}">
-                    <a class="nav-link" [routerLink]="'.'" (click)="navClick('home')">Home</a>
-                </li>
-                <li [ngClass]="{'nav-active': selectedTab=='mylist'}">
-                    <a class="nav-link" [routerLink]="'mylist'" (click)="navClick('mylist')">My List</a>
-                </li>
-                <li>
-                    <a class="nav-link" [routerLink]="'watch/tv/1'" (click)="isMenuCollapsed = true">Search</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="scroll-bar-container">
+<div class="body">    
+    <div class="scroll-view-container">
         <ng-scrollbar class="customed-ngx-scrollbar" #scrollable track="all" pointerEventsMethod="scrollbar" [disabled]="false">
+            <nav class="navbar navbar-expand-lg navbar-light customed-navbar sticky-top"> 
+                <!-- TODO: sticky top only applied in somebrowsers -->
+                <a class="navbar-brand" [routerLink]="'.'">USC Films</a>
+        
+                <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+                    &#9776;
+                </button>
+        
+                <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+                    <ul id="topheader" class="nav">
+                        <li [ngClass]="{'nav-active': selectedTab=='home'}">
+                            <a class="nav-link" [routerLink]="'.'" (click)="navClick('home')">Home</a>
+                        </li>
+                        <li [ngClass]="{'nav-active': selectedTab=='mylist'}">
+                            <a class="nav-link" [routerLink]="'mylist'" (click)="navClick('mylist')">My List</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" [routerLink]="'watch/tv/1'" (click)="isMenuCollapsed = true">Search</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>     
+            
             <div class="router-outlet-content">
                 <router-outlet></router-outlet>
             </div>
