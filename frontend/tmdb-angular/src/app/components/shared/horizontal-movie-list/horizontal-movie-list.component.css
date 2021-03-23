@@ -4,13 +4,17 @@
 
 .horizontal-movies-list-container ::ng-deep .carousel-inner{
     margin-left: 3%;
-    padding-right: 3%;
+    width: 94%;
+    padding: 0;
+    margin-right: 3%;
 }
 .horizontal-movies-list-container ::ng-deep .carousel-control-prev{
     width: fit-content;
+    margin-left: 0;
 }
 .horizontal-movies-list-container ::ng-deep .carousel-control-next{
     width: fit-content;
+    margin-right: 2%;
 }
 
 .movie-item-div{
