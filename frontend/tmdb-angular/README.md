@@ -2,11 +2,11 @@
 
 # TODO
 - [x] Initialize project
-- [ ] Contruct project structure
+- [x] Contruct project structure
     - [x] NavBar
     - [x] Create Components
     - [x] Footer
-    - [ ] Custom Scrollbar
+    - [x] Custom Scrollbar
 - [ ] Web-first design:
     - [ ] Homepage
         - [x] Frame skeleton
