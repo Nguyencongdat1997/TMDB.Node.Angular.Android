@@ -15,18 +15,33 @@
     </div>
     <div>
         <div class="title">Top Rated Movies</div>
+        <app-horizontal-movie-list
+            [movieItemSets]="topRatedMovies">            
+        </app-horizontal-movie-list>
     </div>
     <div>
-        <div class="title">Treding Movies</div>
+        <div class="title">Trending Movies</div>
+        <app-horizontal-movie-list
+            [movieItemSets]="trendingMovies">            
+        </app-horizontal-movie-list>
     </div>
     <div>
         <div class="title">Popular TV Shows</div>
+        <app-horizontal-movie-list
+            [movieItemSets]="popularTvs">            
+        </app-horizontal-movie-list>
     </div>
     <div>
         <div class="title">Top Rated TV Shows</div>
+        <app-horizontal-movie-list
+            [movieItemSets]="topRatedTvs">            
+        </app-horizontal-movie-list>
     </div>
     <div>
-        <div class="title">Treding TV Shows</div>
+        <div class="title">Trending TV Shows</div>
+        <app-horizontal-movie-list
+            [movieItemSets]="trendingTvs">            
+        </app-horizontal-movie-list>
     </div>
 </div>
 

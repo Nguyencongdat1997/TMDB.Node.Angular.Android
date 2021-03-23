@@ -17,11 +17,19 @@
     padding:0;
 }
 
-.zoom-child{
+.zoom-child-placeholder{
+    background-image: url('../../../../assets/img/person-placeholder.png');
+    width:  86%;
     height: 86%;
-    width: 86%;
     margin-left: 7%;
     margin-top: 7%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.zoom-child{
+    height: 100%;
+    width: 100%;    
     background-size: cover;
     background-repeat: no-repeat;
     -webkit-transition: all .5s;
