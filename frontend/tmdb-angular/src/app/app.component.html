@@ -1,13 +1,13 @@
 <div class="body">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+    <nav style="height: 5vh; margin:0" class="navbar navbar-expand-lg navbar-light bg-light mb-3">
         <a class="navbar-brand" [routerLink]="'.'">USC Films</a>
 
         <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
             &#9776;
         </button>
 
-        <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">          
-            <ul id="topheader" class="nav" >
+        <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+            <ul id="topheader" class="nav">
                 <li [ngClass]="{'nav-active': selectedTab=='home'}">
                     <a class="nav-link" [routerLink]="'.'" (click)="navClick('home')">Home</a>
                 </li>
@@ -20,10 +20,13 @@
             </ul>
         </div>
     </nav>
-
-    <div class="router-outlet-content">
-        <router-outlet></router-outlet>
-    </div>
-
-    <div class="footer">Powered by TMDB. Developed by Nguyen Cong Dat</div>
+    <div class="scroll-bar-container">
+        <ng-scrollbar class="customed-ngx-scrollbar" #scrollable track="all" pointerEventsMethod="scrollbar" [disabled]="false">
+            <div class="router-outlet-content">
+                <router-outlet></router-outlet>
+            </div>
+    
+            <div class="footer">Powered by TMDB. Developed by Nguyen Cong Dat</div>
+        </ng-scrollbar>
+    </div>    
 </div>

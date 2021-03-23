@@ -2,7 +2,7 @@
     background-color: #050a30;
     color:white;
     height: 100%;
-    min-height: 100vh;
+    min-height: 100vh;    
 }
 
 .nav-active{
@@ -10,11 +10,32 @@
 }
 
 .router-outlet-content{
-    min-height: 90vh;
+    min-height: 89vh;
 }
 
+.scroll-bar-container{
+    height: 94vh; 
+    margin: 0; 
+}
+.customed-ngx-scrollbar{
+    --scrollbar-wrapper-color: red;
+    --scrollbar-border-radius: 7px;
+    --scrollbar-border-color: red;
+    --scrollbar-size: 10px;
+    --scrollbar-thumb-color: lightgrey;
+}
+
+/* .customed-ngx-scrollbar ::ng-deep .scrollbar{
+     
+      background-color: green;
+      border-radius: 4px;
+}
+.customed-ngx-scrollbar ::ng-deep  .scrollbar-thumb {
+      background-color: green;
+} */
+
 .footer{
-    height: 50px; 
+    height: 5vh; 
     padding-top: 10px;
     background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgba(0,0,0,1) 75%);
     text-align: center;
