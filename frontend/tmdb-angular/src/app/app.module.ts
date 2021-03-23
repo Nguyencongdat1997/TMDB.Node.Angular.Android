@@ -11,6 +11,7 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
 import { MylistComponent } from './components/mylist/mylist.component';
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
 import { HorizontalMovieListComponent } from './components/shared/horizontal-movie-list/horizontal-movie-list.component';
+import { TimeHourMinutePipe } from './pipes/time-hour-minute.pipe';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { HorizontalMovieListComponent } from './components/shared/horizontal-mov
     MovieDetailComponent,
     MylistComponent,
     CarouselComponent,
-    HorizontalMovieListComponent
+    HorizontalMovieListComponent,
+    TimeHourMinutePipe
   ],
   imports: [
     BrowserModule,

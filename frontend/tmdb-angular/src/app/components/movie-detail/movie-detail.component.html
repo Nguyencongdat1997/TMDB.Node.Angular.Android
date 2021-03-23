@@ -1,5 +1,32 @@
 <div *ngIf="data == null" >Waiting</div>
 <div *ngIf="data != null && data.length == 0" >Invalid information</div>
 <div *ngIf="data != null && data.length != 0" >
+    <div class="header row">
+        <div class="col-8"></div>
+        <div class="col-4">
+            <h1>{{data.item_detail.title}}</h1>
+            <p>{{data.item_detail.tagline}}</p>
+            <p>{{data.item_detail.tagline}}</p>
+            <p>{{data.item_detail.date|date:"yyyy"}} 
+                | &#9733;{{data.item_detail.vote_average}} 
+                | {{data.item_detail.runtime|timeHourMinute}}</p>
+            <p>Genres: {{data.item_detail.genres}}</p>
+            <p>Spoken languages: {{data.item_detail.spoken_language}}</p>
+            <button type="button" class="btn btn-primary">Add to WatchList</button>
+        </div>
+    </div>
+    <div class="description">
+        <div>Description </div>
+        {{data.item_detail.overview}}
+    </div>
+    <div class="Share">
+        <div>Share </div>
+    </div>
+    <div class="casts">
+        
+    </div>
+    <div class="reviews">
+        
+    </div>
     {{data|json}}
 </div>
