@@ -20,8 +20,8 @@
 .customed-ngx-scrollbar{
     --scrollbar-wrapper-color: red;
     --scrollbar-border-radius: 7px;
-    --scrollbar-border-color: red;
     --scrollbar-size: 10px;
+    --scrollbar-padding: 0px;
     --scrollbar-thumb-color: lightgrey;
 }
 .customed-ngx-scrollbar ::ng-deep .ng-scrollbar-track{
