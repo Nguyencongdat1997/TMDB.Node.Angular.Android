@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 import {ApiEndpoints} from '../constants/api-endpoints'
 
@@ -15,5 +16,17 @@ export class TmdbProxyServiceService {
     getHomeData(): Observable<any>{
         var url = ApiEndpoints['HomeUrl'];
         return this.http.get(url);
+    }
+
+    getItemDetail(id: string, category: string): Observable<any>{
+        var url = ApiEndpoints['ItemUrl'] + '/' + category + '/' + id;
+        return this.http
+                .get(url)
+                .pipe(
+                    catchError(error => {
+                        console.log('Response errors');
+                        return of([]);
+                    })
+                );
     }
 }

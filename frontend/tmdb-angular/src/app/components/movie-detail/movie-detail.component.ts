@@ -1,15 +1,42 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs';
+
+import { TmdbProxyServiceService } from '../../services/tmdb-proxy-service.service';
 
 @Component({
-  selector: 'app-movie-detail',
-  templateUrl: './movie-detail.component.html',
-  styleUrls: ['./movie-detail.component.css']
+    selector: 'app-movie-detail',
+    templateUrl: './movie-detail.component.html',
+    styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
 
-  constructor() { }
+    data: [];
+    _tmdbService: TmdbProxyServiceService;
 
-  ngOnInit(): void {
-  }
+    constructor(
+        private tmdbService: TmdbProxyServiceService,
+        private route: ActivatedRoute,
+    ) {
+        this._tmdbService = tmdbService;
+        this.data = null;
+    }
+
+    ngOnInit(): void {
+        var id = this.route.snapshot.paramMap.get('id');
+        var category = this.route.snapshot.paramMap.get('category');
+        if (category != 'movie' && category != 'tv'){
+            // TODO: do sthm
+        }
+        this.tmdbService.getItemDetail(id, category).subscribe(
+            data => {
+                this.data = data;            
+            }
+        );
+    }
+
+    ngOnDestroy() {
+        //this.sub.unsubscribe();
+    }
 
 }

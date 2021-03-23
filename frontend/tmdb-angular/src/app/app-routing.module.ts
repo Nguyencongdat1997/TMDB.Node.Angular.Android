@@ -7,8 +7,7 @@ import { MylistComponent } from './components/mylist/mylist.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'watch/tv/:id', component: MovieDetailComponent },
-    { path: 'watch/movie/:id', component: MovieDetailComponent },
+    { path: 'watch/:category/:id', component: MovieDetailComponent },
     { path: 'mylist', component: MylistComponent },
 ];
 
