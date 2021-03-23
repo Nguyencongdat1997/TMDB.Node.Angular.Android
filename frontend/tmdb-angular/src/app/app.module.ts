@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { MylistComponent } from './components/mylist/mylist.component';
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
+import { HorizontalMovieListComponent } from './components/shared/horizontal-movie-list/horizontal-movie-list.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CarouselComponent } from './components/shared/carousel/carousel.compone
     HomeComponent,
     MovieDetailComponent,
     MylistComponent,
-    CarouselComponent
+    CarouselComponent,
+    HorizontalMovieListComponent
   ],
   imports: [
     BrowserModule,

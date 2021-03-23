@@ -10,7 +10,7 @@
         - [x] Frame skeleton
         - [x] Carousel
         - [ ] HorizontalMovieList Components
-            - [ ] Continue watching (empty)
+            - [x] Continue watching (empty)
             - [ ] Popular&Top-rated&Trending Movie&TVShows
     - [ ] Movie detail page
         - [ ] Frame skeleton

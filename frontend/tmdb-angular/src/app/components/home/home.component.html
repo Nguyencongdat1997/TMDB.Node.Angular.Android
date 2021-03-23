@@ -1,29 +1,32 @@
-<div>
-    <div>
+<div style="padding-left:5%; width:90%">
+    <div style="padding-left:5%; width:90%">
         <ngbd-carousel-pause             
             [imgItems]="carouselList">
         </ngbd-carousel-pause>
     </div>
     <div>
-        <div>Continue Watching</div>
+        <div class="title">Continue Watching</div>        
     </div>
     <div>
-        <div>Popular Movies</div>
+        <div class="title">Popular Movies</div>
+        <app-horizontal-movie-list
+            [movieItemSets]="popularMovies">            
+        </app-horizontal-movie-list>
     </div>
     <div>
-        <div>Top Rated Movies</div>
+        <div class="title">Top Rated Movies</div>
     </div>
     <div>
-        <div>Treding Movies</div>
+        <div class="title">Treding Movies</div>
     </div>
     <div>
-        <div>Popular TV Shows</div>
+        <div class="title">Popular TV Shows</div>
     </div>
     <div>
-        <div>Top Rated TV Shows</div>
+        <div class="title">Top Rated TV Shows</div>
     </div>
     <div>
-        <div>Treding TV Shows</div>
+        <div class="title">Treding TV Shows</div>
     </div>
 </div>
 
