@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import {Item, ItemDetail, Cast, CastDetail, Review} from "../DTOs/models.js";
+import {Item, ItemDetail, Cast, CastDetail, Review, ItemExternalYoutubeVideos} from "../DTOs/models.js";
 
 
 var tmdpUrl = 'https://api.themoviedb.org/3';
@@ -188,6 +188,19 @@ async function getSimilarItems(category, itemId){
     return rawData;   
 }
 
+async function getExternalVideos(category, itemId){
+    var queryUrl =  tmdpUrl + '/' + category + '/' + itemId + '/videos?api_key=' + tmdpKey + '&language=en-US&&page=1';
+    var rawData = "";    
+    await axios.get(queryUrl)
+    .then(response => {     
+        rawData = response.data;    
+    })
+    .catch(error => {
+        console.log(error);
+    }); 
+    return rawData;   
+}
+
 async function getItemDetailFunc(id, category){
     if (category != 'tv' && category != 'movie'){
         return null;
@@ -262,6 +275,19 @@ async function getItemDetailFunc(id, category){
         return Item.fromItem(x, category);
     });
 
+    // Get youtube videos
+    var rawExternalVideos = await getExternalVideos(category, id);
+    var youtubeVideos = rawExternalVideos.results.map(x=>{        
+        return ItemExternalYoutubeVideos.fromRawItemExternalVideos(x);
+    });
+    var chosenYoutubeVideo = null;
+    if (youtubeVideos.length > 0){
+        chosenYoutubeVideo = youtubeVideos[0];
+    }
+    else{
+        chosenYoutubeVideo = new ItemExternalYoutubeVideos('YouTube', null, null, 'tzkWB85ULJY');
+    }
+
     // Merge data
     var result= {
         item_detail: itemDetail,
@@ -269,6 +295,7 @@ async function getItemDetailFunc(id, category){
         reviews: review,
         recommendations: recommendations,
         similars: similarItems,
+        youtube_video: chosenYoutubeVideo,
     };
 
     return result;

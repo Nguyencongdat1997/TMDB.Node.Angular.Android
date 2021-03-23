@@ -91,6 +91,31 @@ class ItemDetail{
 }
 
 
+class ItemExternalYoutubeVideos{
+    constructor(site, type, name, key){
+        this.site = site;
+        this.type = type;
+        this.name = name;
+        this.key = key;
+        this.url = 'https://www.youtube.com/watch?v=' +key;
+    }
+
+    static fromRawItemExternalVideos(rawItemExternalVideos){
+        var site = rawItemExternalVideos['site'];
+        if (site != 'YouTube'){
+            return
+        }
+
+        return new ItemExternalYoutubeVideos(
+            site, 
+            rawItemExternalVideos['type'],
+            rawItemExternalVideos['name'], 
+            rawItemExternalVideos['key'],
+        );
+    }
+}
+
+
 class Cast{
     constructor(id, name, character, profilePath){
         this.id = id;
@@ -213,4 +238,5 @@ export {
     Cast,
     CastDetail,
     Review,
+    ItemExternalYoutubeVideos
 };
