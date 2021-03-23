@@ -2,8 +2,12 @@
 <div *ngIf="data != null && data.length == 0" >Invalid information</div>
 <div *ngIf="data != null && data.length != 0" >
     <div class="header row">
-        <div class="col-8"></div>
-        <div class="col-4">
+        <div class="col-7">
+            <div class="embed-responsive embed-responsive-16by9">
+                <youtube-player videoId="PRQCAL_RMVo"></youtube-player>
+            </div>
+        </div>
+        <div class="col-5">
             <h1>{{data.item_detail.title}}</h1>
             <p>{{data.item_detail.tagline}}</p>
             <p>{{data.item_detail.tagline}}</p>

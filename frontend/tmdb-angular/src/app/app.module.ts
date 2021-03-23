@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { NgScrollbarModule, NG_SCROLLBAR_OPTIONS } from 'ngx-scrollbar';
+import { YouTubePlayerModule} from '@angular/youtube-player';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,7 +32,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     NgbModule,
     HttpClientModule,
     NgScrollbarModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    YouTubePlayerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

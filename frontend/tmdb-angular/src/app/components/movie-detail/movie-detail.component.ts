@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 
 import { TmdbProxyServiceService } from '../../services/tmdb-proxy-service.service';
 
+let apiLoaded=false;
+
 @Component({
     selector: 'app-movie-detail',
     templateUrl: './movie-detail.component.html',
@@ -33,6 +35,15 @@ export class MovieDetailComponent implements OnInit {
                 this.data = data;            
             }
         );
+
+        if (!apiLoaded) {
+            // This code loads the IFrame Player API code asynchronously, according to the instructions at
+            // https://developers.google.com/youtube/iframe_api_reference#Getting_Started
+            const tag = document.createElement('script');
+            tag.src = 'https://www.youtube.com/iframe_api';
+            document.body.appendChild(tag);
+            apiLoaded = true;
+          }
     }
 
     ngOnDestroy() {
