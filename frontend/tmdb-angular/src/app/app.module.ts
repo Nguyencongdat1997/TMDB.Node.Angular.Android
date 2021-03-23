@@ -12,6 +12,7 @@ import { MylistComponent } from './components/mylist/mylist.component';
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
 import { HorizontalMovieListComponent } from './components/shared/horizontal-movie-list/horizontal-movie-list.component';
 import { TimeHourMinutePipe } from './pipes/time-hour-minute.pipe';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { TimeHourMinutePipe } from './pipes/time-hour-minute.pipe';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
