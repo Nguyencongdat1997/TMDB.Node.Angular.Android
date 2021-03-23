@@ -8,12 +8,12 @@
     - [x] Footer
     - [x] Custom Scrollbar
 - [ ] Web-first design:
-    - [ ] Homepage
+    - [x] Homepage
         - [x] Frame skeleton
         - [x] Carousel
-        - [ ] HorizontalMovieList Components
+        - [x] HorizontalMovieList Components
             - [x] Continue watching (empty)
-            - [ ] Popular&Top-rated&Trending Movie&TVShows
+            - [x] Popular&Top-rated&Trending Movie&TVShows
     - [ ] Movie detail page
         - [ ] Frame skeleton
         - [ ] Trailer component
