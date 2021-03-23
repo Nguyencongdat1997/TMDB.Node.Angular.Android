@@ -1,6 +1,10 @@
 <div class="body">    
     <div class="scroll-view-container">
-        <ng-scrollbar class="customed-ngx-scrollbar" #scrollable track="all" pointerEventsMethod="scrollbar" [disabled]="false">
+        <ng-scrollbar class="customed-ngx-scrollbar" 
+                        #scrollable track="all" 
+                        pointerEventsMethod="scrollbar" 
+                        [disabled]="false"
+                        thumbClass="scrollbar-thumb">
             <nav class="navbar navbar-expand-lg navbar-light customed-navbar sticky-top"> 
                 <!-- TODO: sticky top only applied in somebrowsers -->
                 <a class="navbar-brand" [routerLink]="'.'">USC Films</a>

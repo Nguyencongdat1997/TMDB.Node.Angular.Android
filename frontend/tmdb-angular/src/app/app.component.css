@@ -56,7 +56,8 @@
 /* .customed-ngx-scrollbar ::ng-deep .scrollbar{     
       background-color: green;
       border-radius: 4px;
-}
-.customed-ngx-scrollbar ::ng-deep  .scrollbar-thumb {
-      background-color: green;
-} */
+}*/
+.customed-ngx-scrollbar ::ng-deep .scrollbar-thumb {
+    min-height: 100px !important;
+    max-height: 200px !important;
+} 
