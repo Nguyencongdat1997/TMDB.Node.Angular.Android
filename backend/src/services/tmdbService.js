@@ -202,6 +202,7 @@ async function getItemDetailFunc(id, category){
     })
     .catch(error => {
         console.log(error);
+        
     }); 
     var genresDict = rawGenresData.genres;
 
@@ -214,7 +215,11 @@ async function getItemDetailFunc(id, category){
     })
     .catch(error => {
         console.log(error);
+        rawData = null;
     }); 
+    if (rawData == null){
+        return "";
+    }
     var itemDetail = ItemDetail.fromItem(id, category, rawData, genresDict);
 
     // Get casts
