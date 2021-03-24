@@ -35,7 +35,7 @@ export class LocalStorageService {
         this.continueWatching = this.getContinueWatching();
         var currentIndex = this.continueWatching.findIndex((e) => {return e['id'] == newElement['id']})
         if (currentIndex>=0 && currentIndex < this.continueWatching.length){
-            this.continueWatching.splice(currentIndex);
+            this.continueWatching.splice(currentIndex, 1);
         }
         this.continueWatching.unshift(newElement);
         this.saveContinueWatching();
@@ -56,7 +56,7 @@ export class LocalStorageService {
         this.watchList = this.getWatchList();
         var currentIndex = this.watchList.findIndex((e) => {return e['id'] == newElement['id']})
         if (currentIndex>=0 && currentIndex < this.watchList.length){
-            this.watchList.splice(currentIndex);
+            this.watchList.splice(currentIndex, 1);
         }
         this.watchList.unshift(newElement);
         this.saveWatchList();
@@ -66,7 +66,7 @@ export class LocalStorageService {
         this.watchList = this.getWatchList();
         var currentIndex = this.watchList.findIndex((e) => {return e['id'] == element['id']});
         if (currentIndex>=0 && currentIndex < this.watchList.length){
-            this.watchList.splice(currentIndex);
+            this.watchList.splice(currentIndex, 1);
             this.saveWatchList();
             return true;
         }
