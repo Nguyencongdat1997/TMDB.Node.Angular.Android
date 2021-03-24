@@ -226,8 +226,23 @@ class Review{
         if (rating == null){
             rating = 0;
         }
-        var avatarPath = rawReview['author_details']['avatar_path'];
+        var avatarPath = Review.checkAvatarPath(rawReview['author_details']['avatar_path']);
         return new Review(author, content, createAt, url, rating, avatarPath);
+    }
+
+    static checkAvatarPath(url){
+        if (url == null || url.trim() == ""){
+            return "https://encryptedtbn0.gstatic.com/images?q=tbn:ANd9GcRHnPmUvFLjjmoYWAbLTEmLLIRCPpV_OgxCVA&usqp=CAU";
+        }
+        if (url.match(/\/http/)) { //ex: "/https://secure.gravatar.com/avatar/dadb1b759a8516c815cdcc58abcefc85.jpg"
+            return url.slice(1, url.length);
+        }
+        else if (url.match(/^\/\w+[.]\w+$/)) { //ex: "/j2KpvD880J95lqf3ct4u1MmWZhE.jpg"
+            return "https://image.tmdb.org/t/p/original" + url;
+        }
+        else{
+            return "https://encryptedtbn0.gstatic.com/images?q=tbn:ANd9GcRHnPmUvFLjjmoYWAbLTEmLLIRCPpV_OgxCVA&usqp=CAU";
+        }
     }
 }
 
