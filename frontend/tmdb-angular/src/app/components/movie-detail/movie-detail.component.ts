@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { TmdbProxyServiceService } from '../../services/tmdb-proxy-service.service';
+import {chunkArray} from '../../utils/chunkArray';
 
 let apiLoaded=false;
 
@@ -18,6 +19,8 @@ export class MovieDetailComponent implements OnInit {
     twitterShareText : string;
     casts: [];
     reviews: [];
+    recommendations: Array<Array<any>>;
+    similarItems: Array<Array<any>>;
 
     constructor(
         private tmdbService: TmdbProxyServiceService,
@@ -41,6 +44,8 @@ export class MovieDetailComponent implements OnInit {
                                         + "%23USC %23CSCI571 %23FightOn";
                 this.casts = data.casts;
                 this.reviews = data.reviews;
+                this.recommendations = chunkArray(data.recommendations,6);
+                this.similarItems = chunkArray( data.similars, 6);
             }
         );
 

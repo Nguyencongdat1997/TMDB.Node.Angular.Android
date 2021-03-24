@@ -2,6 +2,7 @@ import { Component, OnInit, Input} from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { TmdbProxyServiceService } from '../../services/tmdb-proxy-service.service';
+import {chunkArray} from '../../utils/chunkArray';
 
 @Component({
     selector: 'app-home',
@@ -43,14 +44,4 @@ export class HomeComponent implements OnInit {
 
 }
 
-function chunkArray(array, chunkSize){
-    var index = 0;
-    var arrayLength = array.length;
-    var chunkedArray = [];
-    
-    for (index = 0; index < arrayLength; index += chunkSize) {
-        var newChunk = array.slice(index, index+chunkSize);
-        chunkedArray.push(newChunk);
-    }
-    return chunkedArray;
-}
+

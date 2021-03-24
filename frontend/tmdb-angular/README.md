@@ -20,9 +20,9 @@
         - [x] Brief description, Detail description
         - [x] Sharing to twitter and facebook
         - [x] HorizontalCastList Components
-        - [ ] Reivews
-        - [ ] HorizontalMovieList Components
-            - [ ] Recommendations and Similar items
+        - [x] Reivews
+        - [x] HorizontalMovieList Components
+            - [x] Recommendations and Similar items
     - [ ] Cast detail popup
     - [ ] Watch list
         - [ ] Save data to local storage

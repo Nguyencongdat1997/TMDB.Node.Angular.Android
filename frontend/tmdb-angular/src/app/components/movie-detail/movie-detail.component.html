@@ -99,6 +99,17 @@
             </div>
         </div>
     </div>
-    
+    <div class="recommendations">
+        <div>Recommended Movies</div>
+        <app-horizontal-movie-list
+            [movieItemSets]="recommendations">            
+        </app-horizontal-movie-list>
+    </div>
+    <div class="similars">
+        <div>Similar Movies</div>
+        <app-horizontal-movie-list
+            [movieItemSets]="similarItems">            
+        </app-horizontal-movie-list>
+    </div>
     {{data|json}}
 </div>
