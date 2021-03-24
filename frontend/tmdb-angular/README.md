@@ -19,7 +19,7 @@
         - [x] Trailer component
         - [x] Brief description, Detail description
         - [x] Sharing to twitter and facebook
-        - [ ] HorizontalCastList Components
+        - [x] HorizontalCastList Components
         - [ ] Reivews
         - [ ] HorizontalMovieList Components
             - [ ] Recommendations and Similar items

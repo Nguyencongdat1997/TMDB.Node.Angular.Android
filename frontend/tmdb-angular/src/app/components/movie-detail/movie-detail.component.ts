@@ -16,6 +16,7 @@ export class MovieDetailComponent implements OnInit {
     data: [];
     _tmdbService: TmdbProxyServiceService;
     twitterShareText : string;
+    casts: [];
 
     constructor(
         private tmdbService: TmdbProxyServiceService,
@@ -37,6 +38,7 @@ export class MovieDetailComponent implements OnInit {
                 this.twitterShareText = "Wacth " + data.item_detail.title + "%0D%0A " 
                                         + data.youtube_video.url + "%0D%0A " 
                                         + "%23USC %23CSCI571 %23FightOn";
+                this.casts = data.casts;
             }
         );
 

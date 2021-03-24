@@ -2,12 +2,12 @@
 <div *ngIf="data != null && data.length == 0" >Invalid information</div>
 <div *ngIf="data != null && data.length != 0" >
     <div class="header row">
-        <div class="col-7">
+        <div class="col-7 mr-0 pr-0">
             <div class="embed-responsive embed-responsive-16by9">
                 <youtube-player videoId="{{data.youtube_video.key}}"></youtube-player>
             </div>
         </div>
-        <div class="col-5">
+        <div class="col-5 mr-0 pr-0">
             <h1>{{data.item_detail.title}}</h1>
             <p>{{data.item_detail.tagline}}</p>
             <p>{{data.item_detail.tagline}}</p>
@@ -33,17 +33,34 @@
                 <img src="../../../assets/img/twitter-icon.png">
             </a>
 
-            
             <a class="share-button-fb"
                 href="https://www.facebook.com/sharer/sharer.php?u={{data.youtube_video.url}}" 
                 target="_blank">
                 <img src="../../../assets/img/facebook-icon.png">
-            </a>
-            
+            </a>            
         </div>
     </div>
     <div class="casts">
-        
+        <div>Full Cast and Crew</div>
+        <div>
+            <div class="d-flex flex-row flex-nowrap overflow-auto pl-2">
+                <div *ngFor="let cast of casts;"
+                     class="col-2 card px-0 mx-2 my-2" 
+                     style="color:black;">
+                     <div class="card-header p-0">
+                        <div class="aspect-ratio aspect-ratio--3x4 person_img_placeholder"
+                             style="width: 100%">
+                            <img class="aspect-ratio--object" src="{{cast.profile_path}}">
+                        </div>    
+                    </div>                 
+                     <div class="card-body">
+                        <h6 class="card-title">{{cast.name}}</h6>
+                        <h6 class="card-title">AS</h6>
+                        <p class="card-text">{{cast.character}}</p>
+                     </div>
+                </div>       
+            </div>
+        </div>
     </div>
     <div class="reviews">
         
