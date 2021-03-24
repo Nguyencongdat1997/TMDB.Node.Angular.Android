@@ -70,11 +70,14 @@
                                 class="aspect-ratio--object reivew_ava_img_placeholder">
                             </div>
                             
-                            <img 
+                            <img *ngIf="review.avatar_path=='https://encryptedtbn0.gstatic.com/images?q=tbn:ANd9GcRHnPmUvFLjjmoYWAbLTEmLLIRCPpV_OgxCVA&usqp=CAU'"
                                 class="aspect-ratio--object"
                                 src="{{review.avatar_path}}"
                                 style="background: url(../../../assets/img/ReviewsPlaceholderImage.jpg) no-repeat scroll 0 0;
                                         background-size: cover;">
+                            <img *ngIf="review.avatar_path!='https://encryptedtbn0.gstatic.com/images?q=tbn:ANd9GcRHnPmUvFLjjmoYWAbLTEmLLIRCPpV_OgxCVA&usqp=CAU'"
+                            class="aspect-ratio--object"
+                            src="{{review.avatar_path}}">
                         </div>
                     </div>
                 </div>
