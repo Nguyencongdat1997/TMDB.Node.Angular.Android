@@ -26,10 +26,11 @@ export class MovieDetailComponent implements OnInit {
     reviews: [];
     recommendations: Array<Array<any>>;
     similarItems: Array<Array<any>>;
-    selectedCast= {
+    defaultCast = {
         'id': '',
         'name': '',
     };
+    selectedCast;
     isItemAddedToWatchList: Boolean;
 
     constructor(
@@ -39,6 +40,7 @@ export class MovieDetailComponent implements OnInit {
     ) {
         this._tmdbService = tmdbService;
         this.data = null;
+        this.selectedCast = this.defaultCast;
         this.localStorageService = new LocalStorageService();
     }
 
@@ -78,6 +80,7 @@ export class MovieDetailComponent implements OnInit {
     }
 
     openModal(content, castId) {
+        this.selectedCast = this.defaultCast;
         this.tmdbService.getCastDetail(castId).subscribe(
             data => {
                 this.selectedCast = data;
