@@ -15,9 +15,9 @@
             - [x] Continue watching (empty)
             - [x] Popular&Top-rated&Trending Movie&TVShows
     - [ ] Movie detail page
-        - [ ] Frame skeleton
-        - [ ] Trailer component
-        - [ ] Brief description, Detail descroption
+        - [x] Frame skeleton
+        - [x] Trailer component
+        - [x] Brief description, Detail description
         - [ ] Sharing to twitter and facebook
         - [ ] HorizontalCastList Components
         - [ ] Reivews
@@ -26,6 +26,7 @@
     - [ ] Cast detail popup
     - [ ] Watch list
         - [ ] Save data to local storage
+        - [ ] (detailpage)"Add to watchlist" button
         - [ ] Render watched movies
         - [ ] (homepage) Continue watching list
     - [ ] Search bar
