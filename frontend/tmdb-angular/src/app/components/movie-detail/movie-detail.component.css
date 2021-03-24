@@ -1,9 +1,19 @@
-.twitter-share-button{
+.share-button-twitter{
     width: 5vh;
     height: 5vh;
 }
 
-.twitter-share-button img{
+.share-button-twitter img{
+    width: inherit;
+    height: inherit;
+}
+
+.share-button-fb{
+    width: 3vh;
+    height: 3vh;
+}
+
+.share-button-fb img{
     width: inherit;
     height: inherit;
 }
