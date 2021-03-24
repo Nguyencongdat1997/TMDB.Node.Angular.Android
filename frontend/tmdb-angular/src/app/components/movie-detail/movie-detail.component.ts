@@ -20,7 +20,7 @@ export class MovieDetailComponent implements OnInit {
     data: [];
     movieItem: MovieItem;
     _tmdbService: TmdbProxyServiceService;
-    localStroageService: LocalStorageService;
+    localStorageService: LocalStorageService;
     twitterShareText : string;
     casts: [];
     reviews: [];
@@ -39,7 +39,7 @@ export class MovieDetailComponent implements OnInit {
     ) {
         this._tmdbService = tmdbService;
         this.data = null;
-        this.localStroageService = new LocalStorageService();
+        this.localStorageService = new LocalStorageService();
     }
 
     ngOnInit(): void {
@@ -59,7 +59,7 @@ export class MovieDetailComponent implements OnInit {
                 this.reviews = data.reviews;
                 this.recommendations = chunkArray(data.recommendations,6);
                 this.similarItems = chunkArray( data.similars, 6);
-                this.isItemAddedToWatchList = this.localStroageService.isItemInWatchList(this.movieItem);
+                this.isItemAddedToWatchList = this.localStorageService.isItemInWatchList(this.movieItem);
             }
         );
 
@@ -96,11 +96,11 @@ export class MovieDetailComponent implements OnInit {
     }
 
     addToWatchList() {
-        this.localStroageService.addWatchList(this.movieItem);
-        this.isItemAddedToWatchList = this.localStroageService.isItemInWatchList(this.movieItem);
+        this.localStorageService.addWatchList(this.movieItem);
+        this.isItemAddedToWatchList = this.localStorageService.isItemInWatchList(this.movieItem);
     }
     removeFromWatchList() {
-        this.localStroageService.removeFromWatchList(this.movieItem);
-        this.isItemAddedToWatchList = this.localStroageService.isItemInWatchList(this.movieItem);
+        this.localStorageService.removeFromWatchList(this.movieItem);
+        this.isItemAddedToWatchList = this.localStorageService.isItemInWatchList(this.movieItem);
     }
 }

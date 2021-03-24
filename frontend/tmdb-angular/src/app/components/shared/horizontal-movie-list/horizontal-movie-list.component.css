@@ -22,12 +22,12 @@
 }
 
 .zoom-child-placeholder{
-    background-image: url('../../../../assets/img/person-placeholder.png');
+    background-image: url('../../../../assets/img/movie-placeholder.jpg');
     width:  86%;
     height: 86%;
     margin-left: 7%;
     margin-top: 7%;
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
