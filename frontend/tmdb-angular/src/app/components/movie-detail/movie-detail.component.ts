@@ -17,6 +17,7 @@ export class MovieDetailComponent implements OnInit {
     _tmdbService: TmdbProxyServiceService;
     twitterShareText : string;
     casts: [];
+    reviews: [];
 
     constructor(
         private tmdbService: TmdbProxyServiceService,
@@ -39,6 +40,7 @@ export class MovieDetailComponent implements OnInit {
                                         + data.youtube_video.url + "%0D%0A " 
                                         + "%23USC %23CSCI571 %23FightOn";
                 this.casts = data.casts;
+                this.reviews = data.reviews;
             }
         );
 
