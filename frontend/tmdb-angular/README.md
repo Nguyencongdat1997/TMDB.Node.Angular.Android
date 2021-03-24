@@ -18,7 +18,7 @@
         - [x] Frame skeleton
         - [x] Trailer component
         - [x] Brief description, Detail description
-        - [ ] Sharing to twitter and facebook
+        - [x] Sharing to twitter and facebook
         - [ ] HorizontalCastList Components
         - [ ] Reivews
         - [ ] HorizontalMovieList Components

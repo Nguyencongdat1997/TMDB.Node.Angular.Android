@@ -1,12 +1,7 @@
 .body{
     background-color: #050a30;
     color:white;
-    height: 100%;    
-}
-
-.scroll-view-container{
-    height: 100%; 
-    margin: 0; 
+    /* height: 100%;     */
 }
 
 .customed-navbar {
@@ -36,28 +31,3 @@
     text-align: center;
 }
 
-.customed-ngx-scrollbar{
-    --scrollbar-wrapper-color: red;
-    --scrollbar-border-radius: 7px;
-    --scrollbar-size: 10px;
-    --scrollbar-padding: 0px;
-    --scrollbar-thumb-color: lightgrey;
-}
-.customed-ngx-scrollbar ::ng-deep .ng-scrollbar-track{
-    border-radius: 1vh;
-    background-image: linear-gradient(to bottom, rgb(220,220,220,0.3) , rgb(1,1,1,0)), 
-                      linear-gradient(to left, rgb(220,220,220,0.3), rgb(1,1,1,0)), 
-                      linear-gradient(to top, rgb(220,220,220,0.3) , rgb(1,1,1,0)), 
-                      linear-gradient(to right, rgb(220,220,220,0.3), rgb(1,1,1,0));
-    background-size: 100% 3px, 3px 100%, 100% 3px, 3px 100%;
-    background-position: top left, top right, bottom right, bottom left;
-    background-repeat: no-repeat;
-}
-/* .customed-ngx-scrollbar ::ng-deep .scrollbar{     
-      background-color: green;
-      border-radius: 4px;
-}*/
-.customed-ngx-scrollbar ::ng-deep .scrollbar-thumb {
-    min-height: 100px !important;
-    max-height: 200px !important;
-} 
