@@ -14,7 +14,7 @@
         - [x] HorizontalMovieList Components
             - [x] Continue watching (empty)
             - [x] Popular&Top-rated&Trending Movie&TVShows
-    - [ ] Movie detail page
+    - [x] Movie detail page
         - [x] Frame skeleton
         - [x] Trailer component
         - [x] Brief description, Detail description
