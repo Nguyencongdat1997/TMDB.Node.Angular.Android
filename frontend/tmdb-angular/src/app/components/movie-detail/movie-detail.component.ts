@@ -5,6 +5,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { TmdbProxyServiceService } from '../../services/tmdb-proxy-service.service';
 import {chunkArray} from '../../utils/chunkArray';
+import {LocalStorageService} from '../../services/local-storage-service';
+import { MovieItem } from 'src/app/models/movieItems';
 
 let apiLoaded=false;
 
@@ -16,7 +18,9 @@ let apiLoaded=false;
 export class MovieDetailComponent implements OnInit {
 
     data: [];
+    movieItem: MovieItem;
     _tmdbService: TmdbProxyServiceService;
+    localStroageService: LocalStorageService;
     twitterShareText : string;
     casts: [];
     reviews: [];
@@ -26,14 +30,16 @@ export class MovieDetailComponent implements OnInit {
         'id': '',
         'name': '',
     };
+    isItemAddedToWatchList: Boolean;
 
     constructor(
         private tmdbService: TmdbProxyServiceService,
         private route: ActivatedRoute,
-        private modalService: NgbModal,
+        private modalService: NgbModal,        
     ) {
         this._tmdbService = tmdbService;
         this.data = null;
+        this.localStroageService = new LocalStorageService();
     }
 
     ngOnInit(): void {
@@ -45,6 +51,7 @@ export class MovieDetailComponent implements OnInit {
         this.tmdbService.getItemDetail(id, category).subscribe(
             data => {
                 this.data = data;    
+                this.movieItem = MovieItem.fromJSON(data.item_detail);
                 this.twitterShareText = "Wacth " + data.item_detail.title + "%0D%0A " 
                                         + data.youtube_video.url + "%0D%0A " 
                                         + "%23USC %23CSCI571 %23FightOn";
@@ -52,6 +59,7 @@ export class MovieDetailComponent implements OnInit {
                 this.reviews = data.reviews;
                 this.recommendations = chunkArray(data.recommendations,6);
                 this.similarItems = chunkArray( data.similars, 6);
+                this.isItemAddedToWatchList = this.localStroageService.isItemInWatchList(this.movieItem);
             }
         );
 
@@ -85,5 +93,14 @@ export class MovieDetailComponent implements OnInit {
                 //   this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
                 }
             );
-      }
+    }
+
+    addToWatchList() {
+        this.localStroageService.addWatchList(this.movieItem);
+        this.isItemAddedToWatchList = this.localStroageService.isItemInWatchList(this.movieItem);
+    }
+    removeFromWatchList() {
+        this.localStroageService.removeFromWatchList(this.movieItem);
+        this.isItemAddedToWatchList = this.localStroageService.isItemInWatchList(this.movieItem);
+    }
 }

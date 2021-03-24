@@ -24,10 +24,13 @@
         - [x] HorizontalMovieList Components
             - [x] Recommendations and Similar items
     - [ ] Cast detail popup
+        - [ ] Add scroll view (4:27)
     - [ ] Watch list
-        - [ ] Save data to local storage
+        - [x] Save data to local storage
         - [ ] (detailpage)"Add to watchlist" button
         - [ ] Render watched movies
+    - [ ] Continue watching list
+        - [ ] Save data to local storage
         - [ ] (homepage) Continue watching list
     - [ ] Search bar
 - [ ] RWD (reponsive)

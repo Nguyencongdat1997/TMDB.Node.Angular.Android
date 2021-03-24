@@ -16,7 +16,14 @@
                 | {{data.item_detail.runtime|timeHourMinute}}</p>
             <p>Genres: {{data.item_detail.genres}}</p>
             <p>Spoken languages: {{data.item_detail.spoken_language}}</p>
-            <button type="button" class="btn btn-primary">Add to WatchList</button>
+            <button *ngIf="isItemAddedToWatchList!=true" type="button" 
+                    class="btn btn-primary" (click)="addToWatchList()">
+                Add to WatchList
+            </button>
+            <button *ngIf="isItemAddedToWatchList==true" type="button" 
+                    class="btn btn-primary" (click)="removeFromWatchList()">
+                Remove from WatchList
+            </button>
         </div>
     </div>
     <div class="description">
