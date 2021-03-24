@@ -13,6 +13,7 @@ import { MylistComponent } from './components/mylist/mylist.component';
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
 import { HorizontalMovieListComponent } from './components/shared/horizontal-movie-list/horizontal-movie-list.component';
 import { TimeHourMinutePipe } from './pipes/time-hour-minute.pipe';
+import { GenderPipe } from './pipes/gender.pipe';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { TimeHourMinutePipe } from './pipes/time-hour-minute.pipe';
     MylistComponent,
     CarouselComponent,
     HorizontalMovieListComponent,
-    TimeHourMinutePipe
+    TimeHourMinutePipe,
+    GenderPipe
   ],
   imports: [
     BrowserModule,

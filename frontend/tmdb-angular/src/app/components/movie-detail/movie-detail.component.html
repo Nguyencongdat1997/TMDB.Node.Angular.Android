@@ -41,7 +41,10 @@
         <div>Full Cast and Crew</div>
         <div>
             <div class="d-flex flex-row flex-nowrap overflow-auto pl-2">
-                <div *ngFor="let cast of casts;" class="col-2 card px-0 mx-2 my-2" style="color:black;">
+                <div *ngFor="let cast of casts;" 
+                    class="col-2 card px-0 mx-2 my-2" 
+                    style="color:black;"
+                    (click)="openModal(modalContent, cast.id)">
                     <div class="card-header p-0">
                         <div class="aspect-ratio aspect-ratio--3x4 person_img_placeholder" style="width: 100%">
                             <img class="aspect-ratio--object" src="{{cast.profile_path}}">
@@ -69,15 +72,12 @@
                             <div *ngIf="review.avatar_path==null"
                                 class="aspect-ratio--object reivew_ava_img_placeholder">
                             </div>
-                            
+
                             <img *ngIf="review.avatar_path=='https://encryptedtbn0.gstatic.com/images?q=tbn:ANd9GcRHnPmUvFLjjmoYWAbLTEmLLIRCPpV_OgxCVA&usqp=CAU'"
-                                class="aspect-ratio--object"
-                                src="{{review.avatar_path}}"
-                                style="background: url(../../../assets/img/ReviewsPlaceholderImage.jpg) no-repeat scroll 0 0;
+                                class="aspect-ratio--object" src="{{review.avatar_path}}" style="background: url(../../../assets/img/ReviewsPlaceholderImage.jpg) no-repeat scroll 0 0;
                                         background-size: cover;">
                             <img *ngIf="review.avatar_path!='https://encryptedtbn0.gstatic.com/images?q=tbn:ANd9GcRHnPmUvFLjjmoYWAbLTEmLLIRCPpV_OgxCVA&usqp=CAU'"
-                            class="aspect-ratio--object"
-                            src="{{review.avatar_path}}">
+                                class="aspect-ratio--object" src="{{review.avatar_path}}">
                         </div>
                     </div>
                 </div>
@@ -85,8 +85,7 @@
                     <div>
                         <h6 class="card-title">
                             A review created by {{review.author}}
-                            <button type="button" 
-                                    style="background-color: black; 
+                            <button type="button" style="background-color: black; 
                                             color: white; 
                                             border-radius: 20px;
                                             border-color: black;">
@@ -96,30 +95,87 @@
                     </div>
                     <div>
                         Written by {{review.author}} on {{review.create_at|date:"medium"}}
-                    </div> 
+                    </div>
                     <div class="three-line-limited-content">
                         {{review.content}}
-                    </div>    
+                    </div>
                     <div>
-                        <a href="{{review.url}}" target="_blank"
-                            style="color: blue; text-decoration: underline;">
+                        <a href="{{review.url}}" target="_blank" style="color: blue; text-decoration: underline;">
                             Read the rest
                         </a>
-                    </div>                
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="recommendations">
         <div>Recommended Movies</div>
-        <app-horizontal-movie-list
-            [movieItemSets]="recommendations">            
+        <app-horizontal-movie-list [movieItemSets]="recommendations">
         </app-horizontal-movie-list>
     </div>
     <div class="similars">
         <div>Similar Movies</div>
-        <app-horizontal-movie-list
-            [movieItemSets]="similarItems">            
+        <app-horizontal-movie-list [movieItemSets]="similarItems">
         </app-horizontal-movie-list>
     </div>
 </div>
+
+<ng-template #modalContent let-modal>
+    <div *ngIf="selectedCast == null">No cast data</div>
+    <div *ngIf="selectedCast != null">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">{{selectedCast.name}}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-3 mx-0">
+                    <div class="aspect-ratio aspect-ratio--3x4 person_img_placeholder" style="width: 100%">
+                        <img class="aspect-ratio--object" src="{{selectedCast.image_url}}">
+                    </div>
+                </div>
+                <div class="col-8 ml-1">
+                    <div>
+                        <p *ngIf="selectedCast.birth_date != null">Birth: {{selectedCast.birth_date|date:'yyyy-MM-dd'}}</p>
+                        <p *ngIf="selectedCast.birth_place != null">Birth Place: {{selectedCast.birth_place}}</p>
+                        <p *ngIf="selectedCast.gender != null">Gender: {{selectedCast.gender|gender}}</p>
+                        <p *ngIf="selectedCast.known_for != null">Known for: {{selectedCast.known_for}}</p>
+                        <p *ngIf="selectedCast.other_names != null">Also Known as: {{selectedCast.other_names}}</p>
+                    </div>
+                    <div *ngIf="selectedCast.external_links != null">
+                        <a *ngIf="selectedCast.external_links.imdb_id != null" 
+                            href="https://imdb.com/name/{{selectedCast.external_links.imdb_id}}" 
+                            target="_blank" class="share-button-imdb mr-1"
+                            ngbTooltip="Vist IMDB" placement="top" tooltipClass="custom-tooltip">
+                            <img src="../../../assets/img/imdb-icon.png">
+                        </a>
+                        <a *ngIf="selectedCast.external_links.insta_id != null" 
+                            href="https://instagram.com/{{selectedCast.external_links.insta_id}}" 
+                            target="_blank" class="share-button-insta mr-1"
+                            ngbTooltip="Vist Instagram" placement="top" tooltipClass="custom-tooltip">
+                            <img src="../../../assets/img/insta-icon.png">
+                        </a>
+                        <a *ngIf="selectedCast.external_links.fb_id != null" 
+                            href="https://facebook.com/{{selectedCast.external_links.fb_id}}" 
+                            target="_blank" class="share-button-fb mr-1"
+                            ngbTooltip="Vist Facebook" placement="top" tooltipClass="custom-tooltip">
+                            <img src="../../../assets/img/facebook-icon.png">
+                        </a>
+                        <a *ngIf="selectedCast.external_links.twiter_id != null" 
+                            href="https://twitter.com/{{selectedCast.external_links.twiter_id}}" 
+                            target="_blank" class="share-button-twitter mr-1"
+                            ngbTooltip="Vist Twitter" placement="top" tooltipClass="custom-tooltip">
+                            <img src="../../../assets/img/twitter-icon.png">
+                        </a>                        
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="selectedCast.biography != null">
+                <diV>Biography</diV>
+                <div>{{selectedCast.biography}}</div>
+            </div>
+        </div>
+    </div>
+</ng-template>

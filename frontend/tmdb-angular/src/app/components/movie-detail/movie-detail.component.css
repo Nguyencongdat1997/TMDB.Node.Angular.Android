@@ -17,3 +17,35 @@
     width: inherit;
     height: inherit;
 }
+
+.share-button-insta{
+    width: 3vh;
+    height: 3vh;
+}
+
+.share-button-insta img{
+    width: inherit;
+    height: inherit;
+}
+
+.share-button-imdb{
+    width: 3vh;
+    height: 3vh;
+}
+
+.share-button-imdb img{
+    width: inherit;
+    height: inherit;
+}
+
+
+::ng-deep .custom-tooltip .arrow::before {
+    border-top-color:white;    
+}
+
+::ng-deep .custom-tooltip .tooltip-inner {
+    background-color: white;
+    color: black;
+    box-shadow:  0 1px 1px 0 gray ;
+}
+

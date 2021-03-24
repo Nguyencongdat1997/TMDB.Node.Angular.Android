@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { TmdbProxyServiceService } from '../../services/tmdb-proxy-service.service';
 import {chunkArray} from '../../utils/chunkArray';
@@ -21,10 +22,15 @@ export class MovieDetailComponent implements OnInit {
     reviews: [];
     recommendations: Array<Array<any>>;
     similarItems: Array<Array<any>>;
+    selectedCast= {
+        'id': '',
+        'name': '',
+    };
 
     constructor(
         private tmdbService: TmdbProxyServiceService,
         private route: ActivatedRoute,
+        private modalService: NgbModal,
     ) {
         this._tmdbService = tmdbService;
         this.data = null;
@@ -63,4 +69,21 @@ export class MovieDetailComponent implements OnInit {
         //this.sub.unsubscribe();
     }
 
+    openModal(content, castId) {
+        this.tmdbService.getCastDetail(castId).subscribe(
+            data => {
+                this.selectedCast = data;
+            }
+        );
+
+        this.modalService
+            .open(content, {ariaLabelledBy: 'modal-basic-title', size: 'xl'})
+            .result
+            .then((result) => {
+                //   this.closeResult = `Closed with: ${result}`;
+                }, (reason) => {
+                //   this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+                }
+            );
+      }
 }

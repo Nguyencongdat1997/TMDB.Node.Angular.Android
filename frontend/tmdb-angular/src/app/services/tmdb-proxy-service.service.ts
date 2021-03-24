@@ -29,4 +29,16 @@ export class TmdbProxyServiceService {
                     })
                 );
     }
+
+    getCastDetail(id: string): Observable<any>{
+        var url = ApiEndpoints['CastUrl'] + '/' + id;
+        return this.http
+                .get(url)
+                .pipe(
+                    catchError(error => {
+                        console.log('Response errors');
+                        return of({});
+                    })
+                );
+    }
 }
