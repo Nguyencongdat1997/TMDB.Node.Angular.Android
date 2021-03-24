@@ -12,7 +12,6 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.2.5",
-    "@angular/cdk": "^11.2.5",
     "@angular/common": "~11.2.5",
     "@angular/compiler": "~11.2.5",
     "@angular/core": "~11.2.5",
@@ -25,7 +24,6 @@
     "@angular/youtube-player": "^11.2.5",
     "@ng-bootstrap/ng-bootstrap": "^9.0.2",
     "bootstrap": "^4.5.0",
-    "ngx-scrollbar": "^7.5.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

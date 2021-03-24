@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
-import { NgScrollbarModule, NG_SCROLLBAR_OPTIONS } from 'ngx-scrollbar';
 import { YouTubePlayerModule} from '@angular/youtube-player';
+// import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +13,6 @@ import { MylistComponent } from './components/mylist/mylist.component';
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
 import { HorizontalMovieListComponent } from './components/shared/horizontal-movie-list/horizontal-movie-list.component';
 import { TimeHourMinutePipe } from './pipes/time-hour-minute.pipe';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -31,8 +30,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    NgScrollbarModule,
-    NoopAnimationsModule,
+    // NoopAnimationsModule,
     YouTubePlayerModule
   ],
   providers: [],
