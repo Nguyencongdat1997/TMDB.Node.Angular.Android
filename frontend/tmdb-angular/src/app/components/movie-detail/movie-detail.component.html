@@ -64,10 +64,18 @@
         <div *ngFor="let review of reviews;" class="card px-0 mx-2 my-2" style="color:black;">
             <div class="row" style="width: 100%;">
                 <div class="col-2">
-                    <div class="ratio ratio-1x1" style="width: 80%">
-                        <div *ngIf="review.avatar_path==null" class="reivew_ava_img_placeholder"></div>
-                        <img
-                            src="{{review.avatar_path}}">
+                    <div style="width: 80%">
+                        <div class="aspect-ratio aspect-ratio--1x1">
+                            <div *ngIf="review.avatar_path==null"
+                                class="aspect-ratio--object reivew_ava_img_placeholder">
+                            </div>
+                            
+                            <img 
+                                class="aspect-ratio--object"
+                                src="{{review.avatar_path}}"
+                                style="background: url(../../../assets/img/ReviewsPlaceholderImage.jpg) no-repeat scroll 0 0;
+                                        background-size: cover;">
+                        </div>
                     </div>
                 </div>
                 <div class="col-10">

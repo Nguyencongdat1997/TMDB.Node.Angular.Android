@@ -25,6 +25,10 @@ Recommendation: For ratio that is greater than 1x1, ex:16x9, 4x3, use boostrap5 
     padding-bottom: 133.3333%;
 }
 
+.aspect-ratio--1x1 {
+    padding-bottom: 100%;
+}
+
 
 .img-responsive-16by9 {
     display: block;
@@ -32,3 +36,4 @@ Recommendation: For ratio that is greater than 1x1, ex:16x9, 4x3, use boostrap5 
     padding-bottom: 56.25%;
     overflow: hidden;
 }
+
