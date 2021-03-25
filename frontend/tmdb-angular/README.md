@@ -30,8 +30,8 @@
         - [ ] (detailpage)"Add to watchlist" button
             - [ ] Set timeout for alerts
         - [x] Render watched movies
-    - [ ] Continue watching list
-        - [ ] Save data to local storage
-        - [ ] (homepage) Continue watching list
+    - [x] Continue watching list
+        - [x] Save data to local storage
+        - [x] (homepage) Continue watching list
     - [ ] Search bar
 - [ ] RWD (reponsive)

@@ -64,7 +64,9 @@ export class MovieDetailComponent implements OnInit {
                 this.reviews = data.reviews;
                 this.recommendations = chunkArray(data.recommendations,6);
                 this.similarItems = chunkArray( data.similars, 6);
+
                 this.isItemAddedToWatchList = this.localStorageService.isItemInWatchList(this.movieItem);
+                this.localStorageService.addContinueWatching(this.movieItem);
             }
         );
 

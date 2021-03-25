@@ -2,7 +2,8 @@ import { Component, OnInit, Input} from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { TmdbProxyServiceService } from '../../services/tmdb-proxy-service.service';
-import {chunkArray} from '../../utils/chunkArray';
+import { chunkArray } from '../../utils/chunkArray';
+import { LocalStorageService} from '../../services/local-storage-service';
 
 @Component({
     selector: 'app-home',
@@ -10,6 +11,7 @@ import {chunkArray} from '../../utils/chunkArray';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {    
+    
     data = [];
     _defaultItem = {
         "id": 0,
@@ -19,6 +21,7 @@ export class HomeComponent implements OnInit {
         "category": "movie"
     };
     carouselList = [this._defaultItem];
+    continueWathcingList: Array<Array<any>>;
     popularMovies = [Array.from({length:6}, (_)=>(this._defaultItem))];
     topRatedMovies =  [Array.from({length:6}, (_)=>(this._defaultItem))];
     trendingMovies = [Array.from({length:6}, (_)=>(this._defaultItem))];
@@ -37,6 +40,9 @@ export class HomeComponent implements OnInit {
             this.topRatedTvs = chunkArray(x.topRated_tvs, 6);
             this.trendingTvs = chunkArray(x.trending_tvs, 6);
         });
+        
+        var localStorageService = new LocalStorageService();
+        this.continueWathcingList = chunkArray(localStorageService.getContinueWatching(), 6);
     }
 
     ngOnInit(): void {

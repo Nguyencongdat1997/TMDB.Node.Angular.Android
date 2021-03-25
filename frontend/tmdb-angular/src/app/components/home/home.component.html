@@ -4,8 +4,11 @@
             [imgItems]="carouselList">
         </ngbd-carousel-pause>
     </div>
-    <div>
-        <div class="title">Continue Watching</div>        
+    <div *ngIf="continueWathcingList.length > 0">
+        <div class="title">Continue Watching</div>   
+        <app-horizontal-movie-list
+            [movieItemSets]="continueWathcingList">            
+        </app-horizontal-movie-list>     
     </div>
     <div>
         <div class="title">Popular Movies</div>
