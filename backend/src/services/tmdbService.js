@@ -158,7 +158,7 @@ async function getSearchResultsFunc(keyword){
         return Item.fromSearchResultItem(rawItemData);
     });
     
-    return result;
+    return result.slice(0,7);
 }
 
 
