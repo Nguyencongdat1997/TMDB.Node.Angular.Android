@@ -14,6 +14,8 @@ import { CarouselComponent } from './components/shared/carousel/carousel.compone
 import { HorizontalMovieListComponent } from './components/shared/horizontal-movie-list/horizontal-movie-list.component';
 import { TimeHourMinutePipe } from './pipes/time-hour-minute.pipe';
 import { GenderPipe } from './pipes/gender.pipe';
+import { SearchComponent } from './components/shared/search/search.component';
+import { SearchMovieNamePipe } from './pipes/search-movie-name.pipe';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { GenderPipe } from './pipes/gender.pipe';
     CarouselComponent,
     HorizontalMovieListComponent,
     TimeHourMinutePipe,
-    GenderPipe
+    GenderPipe,
+    SearchComponent,
+    SearchMovieNamePipe
   ],
   imports: [
     BrowserModule,
