@@ -1,3 +1,4 @@
+
 <div *ngIf="data == null">Waiting</div>
 <div *ngIf="data != null && data.length == 0">Invalid information</div>
 <div *ngIf="data != null && data.length != 0">
@@ -17,13 +18,18 @@
             <p>Genres: {{data.item_detail.genres}}</p>
             <p>Spoken languages: {{data.item_detail.spoken_language}}</p>
             <button *ngIf="isItemAddedToWatchList!=true" type="button" 
-                    class="btn btn-primary" (click)="addToWatchList()">
+                    class="btn btn-primary" (click)="addToWatchList()"
+                    >
                 Add to WatchList
-            </button>
+            </button>            
             <button *ngIf="isItemAddedToWatchList==true" type="button" 
-                    class="btn btn-primary" (click)="removeFromWatchList()">
+                    class="btn btn-primary" (click)="removeFromWatchList()"
+                    >
                 Remove from WatchList
-            </button>
+            </button>            
+            <div #alertcontainer class="my-2">               
+                
+            </div>
         </div>
     </div>
     <div class="description">
@@ -186,3 +192,4 @@
         </div>
     </div>
 </ng-template>
+

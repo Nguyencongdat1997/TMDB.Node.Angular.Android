@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
@@ -16,6 +16,8 @@ let apiLoaded=false;
     styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
+    
+    @ViewChild('alertcontainer') alertContainer: ElementRef;
 
     data: [];
     movieItem: MovieItem;
@@ -32,6 +34,7 @@ export class MovieDetailComponent implements OnInit {
     };
     selectedCast;
     isItemAddedToWatchList: Boolean;
+    isAddedAlertShow = true;
 
     constructor(
         private tmdbService: TmdbProxyServiceService,
@@ -101,9 +104,36 @@ export class MovieDetailComponent implements OnInit {
     addToWatchList() {
         this.localStorageService.addWatchList(this.movieItem);
         this.isItemAddedToWatchList = this.localStorageService.isItemInWatchList(this.movieItem);
+        this.showAlert(true);
     }
+    
     removeFromWatchList() {
         this.localStorageService.removeFromWatchList(this.movieItem);
         this.isItemAddedToWatchList = this.localStorageService.isItemInWatchList(this.movieItem);
+        this.showAlert(false);
+    }
+    
+    showAlert(isAdded){
+        if (isAdded){
+            this.alertContainer.nativeElement.innerHTML= `
+                <div class="alert alert-success alert-dismissible" style="display: inline-block" role="alert"
+                ">
+                    Added to WatchList.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            `;
+        }
+        else{
+            this.alertContainer.nativeElement.innerHTML= `
+                <div class="alert alert-danger alert-dismissible" style="display: inline-block" role="alert">
+                    Remove from WatchList.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            `;
+        }
     }
 }

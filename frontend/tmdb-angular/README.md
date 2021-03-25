@@ -28,7 +28,8 @@
     - [ ] Watch list
         - [x] Save data to local storage
         - [ ] (detailpage)"Add to watchlist" button
-        - [ ] Render watched movies
+            - [ ] Set timeout for alerts
+        - [x] Render watched movies
     - [ ] Continue watching list
         - [ ] Save data to local storage
         - [ ] (homepage) Continue watching list
