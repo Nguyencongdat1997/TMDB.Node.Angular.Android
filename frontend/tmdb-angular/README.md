@@ -33,5 +33,5 @@
     - [x] Continue watching list
         - [x] Save data to local storage
         - [x] (homepage) Continue watching list
-    - [ ] Search bar
+    - [x] Search bar
 - [ ] RWD (reponsive)
