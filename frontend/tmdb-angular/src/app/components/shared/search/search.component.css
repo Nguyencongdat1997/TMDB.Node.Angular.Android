@@ -20,3 +20,7 @@
 .search-container ::ng-deep .dropdown-item{
     color: white;
 }
+
+.search-item a{
+    text-decoration: none;
+}

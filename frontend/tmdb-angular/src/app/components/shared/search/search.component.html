@@ -2,15 +2,18 @@
     <input class="form-control w-100 search-bar" placeholder="Search" [ngbTypeahead]="search" [resultTemplate]="rt"/>
     <ng-template #rt let-r="result" let-t="term">
         <!-- <ngb-highlight [result]="r.site" [term]="t"></ngb-highlight> -->
-        <div *ngIf="r != null" class="row" style="width: 300px;">
-            <div class="col-4 mx-1 pr-0">
-                <div class="aspect-ratio aspect-ratio--16x9 movie_img_placeholder" style="width: 100%;">
-                    <img class="aspect-ratio--object" src="{{r.backdrop_path}}">
+        <div *ngIf="r != null" class="row search-item" style="width: 300px;" 
+                (click)="openNewTab('watch/movie/'+r.id);">
+            <!-- <a href="watch/movie/{{r.id}}"> -->
+                <div class="col-4 mx-1 pr-0">
+                    <div class="aspect-ratio aspect-ratio--16x9 movie_img_placeholder" style="width: 100%;">
+                        <img class="aspect-ratio--object" src="{{r.backdrop_path}}">
+                    </div>
                 </div>
-            </div>
-            <div class="col-7 mx-1 pl-0">
-                <span class="one-line-limited-content" [innerHTML]="r.title| searchMovieName:t"></span>
-            </div>
+                <div class="col-7 mx-1 pl-0">
+                    <span class="one-line-limited-content" [innerHTML]="r.title| searchMovieName:t"></span>
+                </div>
+            <!-- </a> -->
         </div>
     </ng-template>
 </div>

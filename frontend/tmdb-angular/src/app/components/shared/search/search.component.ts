@@ -41,4 +41,8 @@ export class SearchComponent implements OnInit {
     //         ),
     //         tap(() => this.searching = false)
     //     )
+
+    public openNewTab(url){
+        window.open(url, '_self');
+    }
 }
