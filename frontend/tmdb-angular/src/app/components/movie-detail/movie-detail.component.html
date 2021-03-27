@@ -142,52 +142,58 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-3 mx-0">
-                    <div class="aspect-ratio aspect-ratio--3x4 person_img_placeholder" style="width: 100%">
-                        <img class="aspect-ratio--object" src="{{selectedCast.image_url}}">
+        <div class="modal-body" >
+            <div style="overflow-y: hidden; height: calc(100vh - 15rem);">
+                <div class="px-2" style="overflow-y: auto; height: 100%; overflow-x: hidden;">
+                    
+                    <div class="row">
+                        <div class="col-3 mx-0">
+                            <div class="aspect-ratio aspect-ratio--3x4 person_img_placeholder" style="width: 100%">
+                                <img class="aspect-ratio--object" src="{{selectedCast.image_url}}">
+                            </div>
+                        </div>
+                        <div class="col-8 ml-1">
+                            <div>
+                                <p *ngIf="selectedCast.birth_date != null">Birth: {{selectedCast.birth_date|date:'yyyy-MM-dd'}}</p>
+                                <p *ngIf="selectedCast.birth_place != null">Birth Place: {{selectedCast.birth_place}}</p>
+                                <p *ngIf="selectedCast.gender != null">Gender: {{selectedCast.gender|gender}}</p>
+                                <p *ngIf="selectedCast.known_for != null">Known for: {{selectedCast.known_for}}</p>
+                                <p *ngIf="selectedCast.other_names != null">Also Known as: {{selectedCast.other_names}}</p>
+                            </div>
+                            <div *ngIf="selectedCast.external_links != null">
+                                <a *ngIf="selectedCast.external_links.imdb_id != null" 
+                                    href="https://imdb.com/name/{{selectedCast.external_links.imdb_id}}" 
+                                    target="_blank" class="share-button-imdb mr-1"
+                                    ngbTooltip="Vist IMDB" placement="top" tooltipClass="custom-tooltip">
+                                    <img src="../../../assets/img/imdb-icon.png">
+                                </a>
+                                <a *ngIf="selectedCast.external_links.insta_id != null" 
+                                    href="https://instagram.com/{{selectedCast.external_links.insta_id}}" 
+                                    target="_blank" class="share-button-insta mr-1"
+                                    ngbTooltip="Vist Instagram" placement="top" tooltipClass="custom-tooltip">
+                                    <img src="../../../assets/img/insta-icon.png">
+                                </a>
+                                <a *ngIf="selectedCast.external_links.fb_id != null" 
+                                    href="https://facebook.com/{{selectedCast.external_links.fb_id}}" 
+                                    target="_blank" class="share-button-fb mr-1"
+                                    ngbTooltip="Vist Facebook" placement="top" tooltipClass="custom-tooltip">
+                                    <img src="../../../assets/img/facebook-icon.png">
+                                </a>
+                                <a *ngIf="selectedCast.external_links.twiter_id != null" 
+                                    href="https://twitter.com/{{selectedCast.external_links.twiter_id}}" 
+                                    target="_blank" class="share-button-twitter mr-1"
+                                    ngbTooltip="Vist Twitter" placement="top" tooltipClass="custom-tooltip">
+                                    <img src="../../../assets/img/twitter-icon.png">
+                                </a>                        
+                            </div>
+                        </div>
                     </div>
+                    <div *ngIf="selectedCast.biography != null">
+                        <diV>Biography</diV>
+                        <div>{{selectedCast.biography}}</div>
+                    </div>
+
                 </div>
-                <div class="col-8 ml-1">
-                    <div>
-                        <p *ngIf="selectedCast.birth_date != null">Birth: {{selectedCast.birth_date|date:'yyyy-MM-dd'}}</p>
-                        <p *ngIf="selectedCast.birth_place != null">Birth Place: {{selectedCast.birth_place}}</p>
-                        <p *ngIf="selectedCast.gender != null">Gender: {{selectedCast.gender|gender}}</p>
-                        <p *ngIf="selectedCast.known_for != null">Known for: {{selectedCast.known_for}}</p>
-                        <p *ngIf="selectedCast.other_names != null">Also Known as: {{selectedCast.other_names}}</p>
-                    </div>
-                    <div *ngIf="selectedCast.external_links != null">
-                        <a *ngIf="selectedCast.external_links.imdb_id != null" 
-                            href="https://imdb.com/name/{{selectedCast.external_links.imdb_id}}" 
-                            target="_blank" class="share-button-imdb mr-1"
-                            ngbTooltip="Vist IMDB" placement="top" tooltipClass="custom-tooltip">
-                            <img src="../../../assets/img/imdb-icon.png">
-                        </a>
-                        <a *ngIf="selectedCast.external_links.insta_id != null" 
-                            href="https://instagram.com/{{selectedCast.external_links.insta_id}}" 
-                            target="_blank" class="share-button-insta mr-1"
-                            ngbTooltip="Vist Instagram" placement="top" tooltipClass="custom-tooltip">
-                            <img src="../../../assets/img/insta-icon.png">
-                        </a>
-                        <a *ngIf="selectedCast.external_links.fb_id != null" 
-                            href="https://facebook.com/{{selectedCast.external_links.fb_id}}" 
-                            target="_blank" class="share-button-fb mr-1"
-                            ngbTooltip="Vist Facebook" placement="top" tooltipClass="custom-tooltip">
-                            <img src="../../../assets/img/facebook-icon.png">
-                        </a>
-                        <a *ngIf="selectedCast.external_links.twiter_id != null" 
-                            href="https://twitter.com/{{selectedCast.external_links.twiter_id}}" 
-                            target="_blank" class="share-button-twitter mr-1"
-                            ngbTooltip="Vist Twitter" placement="top" tooltipClass="custom-tooltip">
-                            <img src="../../../assets/img/twitter-icon.png">
-                        </a>                        
-                    </div>
-                </div>
-            </div>
-            <div *ngIf="selectedCast.biography != null">
-                <diV>Biography</diV>
-                <div>{{selectedCast.biography}}</div>
             </div>
         </div>
     </div>

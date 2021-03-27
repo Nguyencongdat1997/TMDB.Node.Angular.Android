@@ -93,7 +93,7 @@ export class MovieDetailComponent implements OnInit {
         );
 
         this.modalService
-            .open(content, {ariaLabelledBy: 'modal-basic-title', size: 'xl'})
+            .open(content, {ariaLabelledBy: 'modal-basic-title', size: 'xl', scrollable: true})
             .result
             .then((result) => {
                 //   this.closeResult = `Closed with: ${result}`;

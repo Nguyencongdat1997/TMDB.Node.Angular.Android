@@ -49,3 +49,19 @@
     box-shadow:  0 1px 1px 0 gray ;
 }
 
+
+.modal-body ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px lightgrey; 
+    border-radius: 7px;
+    background-color: white;
+}
+
+.modal-body ::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+    padding: 0px;
+    background: lightgrey;
+} 
+
+.modal-body ::-webkit-scrollbar-thumb:hover {
+    background: grey; 
+}
