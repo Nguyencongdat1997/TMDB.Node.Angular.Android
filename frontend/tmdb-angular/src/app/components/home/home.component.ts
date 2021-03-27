@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
     _defaultItem = {
         "id": 0,
         "title": "",
-        "poster_path": "../../../../assets/img/movie-placeholder.png",
+        "poster_path": "../../../../assets/img/movie-placeholder.jpg",
         "backdrop_path": "../../../../assets/img/movie-placeholder.jpg",
         "category": "movie"
     };
