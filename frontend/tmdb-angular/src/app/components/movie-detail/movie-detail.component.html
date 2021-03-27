@@ -64,7 +64,8 @@
                     (click)="openModal(modalContent, cast.id)">
                     <div class="card-header p-0">
                         <div class="aspect-ratio aspect-ratio--3x4 person_img_placeholder" style="width: 100%">
-                            <img class="aspect-ratio--object" src="{{cast.profile_path}}">
+                            <img class="aspect-ratio--object" src="{{cast.profile_path}}"
+                            onerror="this.style.display='none'">
                         </div>
                     </div>
                     <div class="card-body">
@@ -85,11 +86,11 @@
             <div class="row" style="width: 100%;">
                 <div class="col-2">
                     <div style="width: 80%">
-                        <div class="aspect-ratio aspect-ratio--1x1">
+                        <div class="aspect-ratio aspect-ratio--1x1 reivew_ava_img_placeholder">
                             <img class="aspect-ratio--object" 
                                 src="{{review.avatar_path}}" 
-                                style="background: url(../../../assets/img/ReviewsPlaceholderImage.jpg) no-repeat scroll 0 0;
-                                    background-size: cover;">
+                                style="background-color: white;" 
+                                onerror="this.style.display='none'">
                         </div>
                     </div>
                 </div>
