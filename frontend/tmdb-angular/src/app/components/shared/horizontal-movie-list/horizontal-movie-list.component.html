@@ -1,5 +1,5 @@
 <div class="horizontal-movies-list-container">
-    <ngb-carousel *ngIf="images" interval="false" style="width: 100%;">
+    <ngb-carousel *ngIf="movieItemSets && movieItemSets.length>0" interval="false" style="width: 100%;">
         <ng-template ngbSlide *ngFor="let movieItemSet of movieItemSets;">
             <div class="row movie-items-row">
                 <div *ngFor="let movieItem of movieItemSet;" class="col-2 movie-item-div">

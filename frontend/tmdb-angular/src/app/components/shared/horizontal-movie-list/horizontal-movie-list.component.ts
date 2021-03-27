@@ -7,9 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HorizontalMovieListComponent implements OnInit {
     @Input()
-    movieItemSets: any;
+    movieItemSets: [[]];
 
-    images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
     constructor() { }
 
     ngOnInit(): void {

@@ -125,12 +125,12 @@
             </div>
         </div>
     </div>
-    <div class="recommendations">
+    <div *ngIf="recommendations!=null && recommendations.length > 0" class="recommendations">
         <div>Recommended Movies</div>
         <app-horizontal-movie-list [movieItemSets]="recommendations">
         </app-horizontal-movie-list>
     </div>
-    <div class="similars">
+    <div *ngIf="similarItems!=null && similarItems.length > 0" class="similars">
         <div>Similar Movies</div>
         <app-horizontal-movie-list [movieItemSets]="similarItems">
         </app-horizontal-movie-list>
