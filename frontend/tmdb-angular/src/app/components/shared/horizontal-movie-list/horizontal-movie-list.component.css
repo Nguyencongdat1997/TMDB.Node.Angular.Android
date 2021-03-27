@@ -13,7 +13,12 @@
 }
 .horizontal-movies-list-container ::ng-deep .carousel-control-next{
     width: fit-content;
-    margin-right: 2%;
+    margin-left: 3%;
+}
+
+.movie-items-row{
+    width:100%; 
+    margin-left: 5px;
 }
 
 .movie-item-div{

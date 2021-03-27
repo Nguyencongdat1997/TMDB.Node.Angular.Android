@@ -1,7 +1,7 @@
 <div class="horizontal-movies-list-container">
     <ngb-carousel *ngIf="images" interval="false" style="width: 100%;">
         <ng-template ngbSlide *ngFor="let movieItemSet of movieItemSets;">
-            <div class="row" style="width:100%;">
+            <div class="row movie-items-row">
                 <div *ngFor="let movieItem of movieItemSet;" class="col-2 movie-item-div">
                     <div class="aspect-ratio aspect-ratio--9x16">
                         <div class="aspect-ratio--object">
