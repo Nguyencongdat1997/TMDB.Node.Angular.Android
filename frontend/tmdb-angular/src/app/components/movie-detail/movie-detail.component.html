@@ -17,18 +17,22 @@
                 | {{data.item_detail.runtime|timeHourMinute}}</p>
             <p>Genres: {{data.item_detail.genres}}</p>
             <p>Spoken languages: {{data.item_detail.spoken_language}}</p>
-            <button *ngIf="isItemAddedToWatchList!=true" type="button" 
-                    class="btn btn-primary" (click)="addToWatchList()"
-                    >
-                Add to WatchList
-            </button>            
-            <button *ngIf="isItemAddedToWatchList==true" type="button" 
-                    class="btn btn-primary" (click)="removeFromWatchList()"
-                    >
-                Remove from WatchList
-            </button>            
-            <div #alertcontainer class="my-2">               
-                
+
+            <button type="button" class="btn btn-primary" (click)=addToWatchListBtnClickedHandle()>
+                {{isItemAddedToWatchList ? 'Remove from WatchList' : 'Add to WatchList'}}
+              </button>
+
+            <div class="my-2">               
+                <div class="alert-container alert mt-2" role="alert" 
+                    [class.show]="isAlertShowed" 
+                    [class.alert-primary]="isItemAddedToWatchList"
+                    [class.alert-danger]="!isItemAddedToWatchList">
+                    {{isItemAddedToWatchList ? 'Added to watch list' : 'Removed from WatchList.'}}
+                    <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"> -->
+                    <button type="button" class="close" (click)="isAlertShowed=false;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

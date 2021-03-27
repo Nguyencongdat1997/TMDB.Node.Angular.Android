@@ -23,12 +23,12 @@
         - [x] Reivews
         - [x] HorizontalMovieList Components
             - [x] Recommendations and Similar items
-    - [ ] Cast detail popup
-        - [ ] Add scroll view (4:27)
-    - [ ] Watch list
+    - [x] Cast detail popup
+        - [x] Add scroll view (4:27)
+    - [x] Watch list
         - [x] Save data to local storage
-        - [ ] (detailpage)"Add to watchlist" button
-            - [ ] Set timeout for alerts
+        - [x] (detailpage)"Add to watchlist" button
+            - [x] Set timeout for alerts
         - [x] Render watched movies
     - [x] Continue watching list
         - [x] Save data to local storage

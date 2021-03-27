@@ -33,8 +33,9 @@ export class MovieDetailComponent implements OnInit {
         'name': '',
     };
     selectedCast;
-    isItemAddedToWatchList: Boolean;
-    isAddedAlertShow = true;
+    isItemAddedToWatchList: boolean;
+    isAlertShowed = false;
+    timeOut: any;
 
     constructor(
         private tmdbService: TmdbProxyServiceService,
@@ -103,39 +104,23 @@ export class MovieDetailComponent implements OnInit {
             );
     }
 
-    addToWatchList() {
-        this.localStorageService.addWatchList(this.movieItem);
-        this.isItemAddedToWatchList = this.localStorageService.isItemInWatchList(this.movieItem);
-        this.showAlert(true);
-    }
-    
-    removeFromWatchList() {
-        this.localStorageService.removeFromWatchList(this.movieItem);
-        this.isItemAddedToWatchList = this.localStorageService.isItemInWatchList(this.movieItem);
-        this.showAlert(false);
-    }
-    
-    showAlert(isAdded){
-        if (isAdded){
-            this.alertContainer.nativeElement.innerHTML= `
-                <div class="alert alert-success alert-dismissible" style="display: inline-block" role="alert"
-                ">
-                    Added to WatchList.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            `;
+    addToWatchListBtnClickedHandle(){
+        if (this.isItemAddedToWatchList){
+            this.localStorageService.addWatchList(this.movieItem);
         }
         else{
-            this.alertContainer.nativeElement.innerHTML= `
-                <div class="alert alert-danger alert-dismissible" style="display: inline-block" role="alert">
-                    Remove from WatchList.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            `;
+            this.localStorageService.removeFromWatchList(this.movieItem);
         }
+        this.isItemAddedToWatchList = !this.localStorageService.isItemInWatchList(this.movieItem);
+        this.showAlert();
+    }    
+    
+    showAlert(){
+        this.isAlertShowed = true;
+        clearTimeout(this.timeOut);
+
+        this.timeOut = setTimeout(() => {
+            this.isAlertShowed = false;
+        }, 5000);
     }
 }

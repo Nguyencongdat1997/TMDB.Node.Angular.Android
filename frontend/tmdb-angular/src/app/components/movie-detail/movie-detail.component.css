@@ -65,3 +65,12 @@
 .modal-body ::-webkit-scrollbar-thumb:hover {
     background: grey; 
 }
+
+.alert-container {
+    display: none;
+    width: 300px;
+}
+
+.alert-container.show {
+    display: inline-block;
+}

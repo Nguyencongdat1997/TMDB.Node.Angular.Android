@@ -73,7 +73,7 @@ export class LocalStorageService {
         return false;
     }
 
-    public isItemInWatchList(element: MovieItem): Boolean{
+    public isItemInWatchList(element: MovieItem): boolean{
         this.watchList = this.getWatchList();
         var currentIndex = this.watchList.findIndex((e) => {return e['id'] == element['id']});
         if (currentIndex>=0 && currentIndex < this.watchList.length){
