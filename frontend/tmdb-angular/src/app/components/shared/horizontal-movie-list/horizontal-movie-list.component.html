@@ -1,19 +1,24 @@
 <div class="horizontal-movies-list-container">
     <ngb-carousel *ngIf="images" interval="false" style="width: 100%;">
         <ng-template ngbSlide *ngFor="let movieItemSet of movieItemSets;">
-            <div class="row" style="width:100%; height:450px;">
+            <div class="row" style="width:100%;">
                 <div *ngFor="let movieItem of movieItemSet;" class="col-2 movie-item-div">
-                    <div class="carousel-caption">
-                    </div>
-                    <a href="watch/movie/{{movieItem.id}}" rel="nofollow noopener noreferrer">
-                        <div class="zoom-parent" onclick="">
-                            <div class="zoom-child-placeholder">
-                                <div class="zoom-child" style="background-image: url({{movieItem.poster_path}});">
-                                    <div class="movie-item-title">{{movieItem.title}}</div>
-                                </div>
+                    <div class="aspect-ratio aspect-ratio--9x16">
+                        <div class="aspect-ratio--object">
+                            <div class="carousel-caption">
                             </div>
+                            <a href="watch/movie/{{movieItem.id}}" rel="nofollow noopener noreferrer">
+                                <div class="zoom-parent" onclick="">
+                                    <div class="zoom-child-placeholder">
+                                        <div class="zoom-child" style="background-image: url({{movieItem.poster_path}});">
+                                            <div class="movie-item-title one-line-limited-content">{{movieItem.title}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </a>
+                    </div>
+                    
                 </div>
             </div>
         </ng-template>

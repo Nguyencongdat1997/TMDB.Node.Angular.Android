@@ -1,16 +1,20 @@
 <div *ngIf="movieItems==null || movieItems.length==0">No items found in WatchList</div>
 <div *ngIf="movieItems!=null || movieItems.length>0">
-    <div *ngFor="let movieItemSet of movieItems;" class="row" style="height: 500px;">
-        <div *ngFor="let movieItem of movieItemSet;" class="col-2 movie-item-div">        
-            <a href="watch/movie/{{movieItem.id}}" style="height: 100%; width: 100%;">
-                <div class="zoom-parent" onclick="">
-                    <div class="zoom-child-placeholder">
-                        <div class="zoom-child" style="background-image: url({{movieItem.poster_path}});">
-                            <div class="movie-item-title">{{movieItem.title}}</div>
+    <div *ngFor="let movieItemSet of movieItems;" class="row">
+        <div *ngFor="let movieItem of movieItemSet;" class="col-2 movie-item-div">    
+            <div class="aspect-ratio aspect-ratio--9x16">
+                <div class="aspect-ratio--object">
+                    <a href="watch/movie/{{movieItem.id}}" style="height: 100%; width: 100%;">
+                        <div class="zoom-parent" onclick="">
+                            <div class="zoom-child-placeholder">
+                                <div class="zoom-child" style="background-image: url({{movieItem.poster_path}});">
+                                    <div class="movie-item-title one-line-limited-content">{{movieItem.title}}</div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </a>
+                    </a>
+                </div>    
+            </div> 
         </div>
     </div>        
 </div>
