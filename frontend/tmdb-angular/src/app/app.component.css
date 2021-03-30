@@ -15,8 +15,14 @@
 .navbar-toggler{
     color:white;
 }
-.nav-active{
-    font-weight: bold;
+.nav-active a{
+    color: white !important;
+    text-decoration: none;
+}
+.header-nav-bar a{
+    color: grey;
+    text-decoration: none;
+
 }
 
 .router-outlet-content{

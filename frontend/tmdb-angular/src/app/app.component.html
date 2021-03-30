@@ -9,10 +9,10 @@
 
         <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
             <ul id="topheader" class="nav navbar-nav mr-auto">
-                <li [ngClass]="{'nav-active': selectedTab=='home'}">
+                <li [ngClass]="{'nav-active': selectedTab=='home'}" class="header-nav-bar">
                     <a class="mx-2" [routerLink]="'.'" (click)="navClick('home')">Home</a>
                 </li>
-                <li [ngClass]="{'nav-active': selectedTab=='mylist'}">
+                <li [ngClass]="{'nav-active': selectedTab=='mylist'}" class="header-nav-bar">
                     <a class="mx-2" [routerLink]="'mylist'" (click)="navClick('mylist')">My List</a>
                 </li>
                 
