@@ -28,3 +28,4 @@ html, body {
     background: grey; 
 }
 
+* { outline: none; } 
