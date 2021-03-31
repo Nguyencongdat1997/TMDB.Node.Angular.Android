@@ -121,7 +121,7 @@ export class MovieDetailComponent implements OnInit {
         else{
             this.localStorageService.removeFromWatchList(this.movieItem);
         }
-        this.isItemAddedToWatchList = !this.localStorageService.isItemInWatchList(this.movieItem);
+        this.isItemAddedToWatchList = this.localStorageService.isItemInWatchList(this.movieItem);
         this.showAlert();
     }    
     
