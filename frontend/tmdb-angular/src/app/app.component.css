@@ -9,20 +9,24 @@
     color: white;
     margin: 0;
 }
-.navbar-brand{
+.header-navbar-brand{
     color: white;
+    text-decoration: none;
+    font-size: large;
+    padding-left:30px;
+    padding-right:20px;
 }
+
 .navbar-toggler{
     color:white;
 }
-.nav-active a{
+.header-nav-active a{
     color: white !important;
     text-decoration: none;
 }
 .header-nav-bar a{
     color: grey;
     text-decoration: none;
-
 }
 
 .router-outlet-content{
