@@ -1,0 +1,29 @@
+@media (max-width: 600px) {
+    body{
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 600px) {
+    .font-l1{
+        font-size: 6vw;
+    } 
+    .font-l2{
+        font-size: 5vw;
+    } 
+    .font-l3{
+        font-size: 4vw;
+    } 
+    .font-l4{
+        font-size: 2vw;
+    } 
+    .font-l5{
+        font-size: 1.5vw;
+    } 
+    .font-l6{
+        font-size: 1.25vw;
+    } 
+    .font-l7{
+        font-size: 1.2vw;
+    } 
+}
