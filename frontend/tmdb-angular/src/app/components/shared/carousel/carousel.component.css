@@ -11,10 +11,19 @@
     width: fit-content;
 }
 
+@media (max-width: 777px) {
+    .zoom-child{
+        height: 30vh;
+    }
+}
+@media (min-width: 777px) {
+    .zoom-child{
+        height: 50vh;
+    }
+}
 
 .zoom-child{
-    width: 100%;
-    height: 50vh;
+    width: 100%;    
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;

@@ -16,8 +16,15 @@ export class CarouselComponent {
     pauseOnIndicator = false;
     pauseOnHover = true;
     pauseOnFocus = true;
+    mobile: boolean;
 
     @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
+
+    constructor(){
+        if (window.screen.width > 777){
+            this.mobile = true;
+        }
+    }
 
     togglePaused() {
         if (this.paused) {

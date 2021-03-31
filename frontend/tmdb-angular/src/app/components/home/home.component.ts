@@ -30,19 +30,23 @@ export class HomeComponent implements OnInit {
     trendingTvs = [Array.from({length:6}, (_)=>(this._defaultItem))];
 
     constructor(private tmdbService: TmdbProxyServiceService) {
+        var chunkSize = 6;
+        if (window.screen.width <= 777){
+            chunkSize = 1;
+        }
         tmdbService.getHomeData().subscribe(x => {
             this.data = x;
-            this.carouselList = x.carousel_list.slice(0,5);
-            this.popularMovies = chunkArray(x.popular_movies, 6);
-            this.topRatedMovies = chunkArray(x.topRated_movies, 6);
-            this.trendingMovies = chunkArray(x.trending_movies, 6);
-            this.popularTvs = chunkArray(x.popular_tvs, 6);
-            this.topRatedTvs = chunkArray(x.topRated_tvs, 6);
-            this.trendingTvs = chunkArray(x.trending_tvs, 6);
+            this.carouselList = x.carousel_list.slice(0,5);                            
+            this.popularMovies = chunkArray(x.popular_movies, chunkSize);
+            this.topRatedMovies = chunkArray(x.topRated_movies, chunkSize);
+            this.trendingMovies = chunkArray(x.trending_movies, chunkSize);
+            this.popularTvs = chunkArray(x.popular_tvs, chunkSize);
+            this.topRatedTvs = chunkArray(x.topRated_tvs, chunkSize);
+            this.trendingTvs = chunkArray(x.trending_tvs, chunkSize);
         });
         
         var localStorageService = new LocalStorageService();
-        this.continueWathcingList = chunkArray(localStorageService.getContinueWatching(), 6);
+        this.continueWathcingList = chunkArray(localStorageService.getContinueWatching(), chunkSize);
     }
 
     ngOnInit(): void {

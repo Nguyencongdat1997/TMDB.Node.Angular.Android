@@ -8,8 +8,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HorizontalMovieListComponent implements OnInit {
     @Input()
     movieItemSets: [[]];
+    mobile: boolean;
 
-    constructor() { }
+    constructor() {
+        if (window.screen.width > 777){
+            this.mobile = true;
+        }
+    }
 
     ngOnInit(): void {
     }

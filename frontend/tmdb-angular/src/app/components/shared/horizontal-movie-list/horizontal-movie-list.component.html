@@ -1,8 +1,9 @@
 <div class="horizontal-movies-list-container">
-    <ngb-carousel *ngIf="movieItemSets && movieItemSets.length>0" interval="false" style="width: 100%;">
+    <ngb-carousel *ngIf="movieItemSets && movieItemSets.length>0" interval="false" style="width: 100%;"
+        [showNavigationIndicators]="mobile">
         <ng-template ngbSlide *ngFor="let movieItemSet of movieItemSets;">
             <div class="row movie-items-row">
-                <div *ngFor="let movieItem of movieItemSet;" class="col-2 movie-item-div">
+                <div *ngFor="let movieItem of movieItemSet;" class="col-xs-10 col-md-2 col-lg-2 col-sm-10 movie-item-div">
                     <div class="aspect-ratio aspect-ratio--9x16">
                         <div class="aspect-ratio--object">
                             <div class="carousel-caption">

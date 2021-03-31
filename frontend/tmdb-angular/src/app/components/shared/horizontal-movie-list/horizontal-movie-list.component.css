@@ -9,16 +9,34 @@
 }
 .horizontal-movies-list-container ::ng-deep .carousel-control-prev{
     width: fit-content;
+    height: 20%;
+    position: absolute;
+    top: 30%;
+    padding: 5px;
     margin-left: 0;
 }
 .horizontal-movies-list-container ::ng-deep .carousel-control-next{
     width: fit-content;
-    margin-left: 3%;
+    height: 20%;
+    position: absolute;
+    top: 30%;
+    padding: 5px;
+    padding-left: 1vw;
 }
 
 .movie-items-row{
-    width:100%; 
     margin-left: 5px;
+}
+@media (max-width: 777px) {
+    .movie-items-row{
+        width: 95%;    
+        margin-left: 2%;
+    }
+}
+@media (min-width: 777px) {
+    .movie-items-row{
+        width: 100%;    
+    }
 }
 
 .movie-item-div{
@@ -45,6 +63,7 @@
     -o-transition: all .5s;
     transition: all .5s;
 }
+
 
 .zoom-parent {
     width: 100%;
