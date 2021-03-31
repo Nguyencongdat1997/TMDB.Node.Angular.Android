@@ -1,20 +1,25 @@
-<div *ngIf="movieItems==null || movieItems.length==0">No items found in WatchList</div>
-<div *ngIf="movieItems!=null || movieItems.length>0">
-    <div *ngFor="let movieItemSet of movieItems;" class="row">
-        <div *ngFor="let movieItem of movieItemSet;" class="col-2 movie-item-div">    
-            <div class="aspect-ratio aspect-ratio--9x16">
-                <div class="aspect-ratio--object">
-                    <a href="watch/movie/{{movieItem.id}}" style="height: 100%; width: 100%;">
-                        <div class="zoom-parent" onclick="">
-                            <div class="zoom-child-placeholder">
-                                <div class="zoom-child" style="background-image: url({{movieItem.poster_path}});">
-                                    <div class="movie-item-title one-line-limited-content">{{movieItem.title}}</div>
+<div style="padding-left:8%; width:90%">
+    <div *ngIf="movieItems==null || movieItems.length==0" class="font-l4" style="text-align: center; font-weight: bold;">
+        No items found in WatchList.
+    </div>
+    <div *ngIf="movieItems!=null && movieItems.length>0">
+        <div class="font-l4" style="font-weight: bold;"> My WatchList</div>
+        <div *ngFor="let movieItemSet of movieItems;" class="row" style="padding-left:2%;">
+            <div *ngFor="let movieItem of movieItemSet;" class="col-2 movie-item-div">    
+                <div class="aspect-ratio aspect-ratio--9x16">
+                    <div class="aspect-ratio--object">
+                        <a href="watch/movie/{{movieItem.id}}" style="height: 100%; width: 100%;">
+                            <div class="zoom-parent" onclick="">
+                                <div class="zoom-child-placeholder">
+                                    <div class="zoom-child" style="background-image: url({{movieItem.poster_path}});">
+                                        <div class="movie-item-title one-line-limited-content">{{movieItem.title}}</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>    
-            </div> 
-        </div>
-    </div>        
+                        </a>
+                    </div>    
+                </div> 
+            </div>
+        </div>        
+    </div>
 </div>
