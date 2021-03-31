@@ -17,7 +17,7 @@
     height: 50vh;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top;
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
     -o-transition: all .5s;
