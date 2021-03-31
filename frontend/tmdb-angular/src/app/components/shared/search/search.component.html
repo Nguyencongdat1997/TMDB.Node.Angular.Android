@@ -1,5 +1,5 @@
-<div class="search-container">
-    <input class="form-control w-100 search-bar" placeholder="Search" [ngbTypeahead]="search" [resultTemplate]="rt"/>
+<div class="search-container font-l7">
+    <input class="form-control w-100 search-bar font-l7" placeholder="Search" [ngbTypeahead]="search" [resultTemplate]="rt"/>
     <ng-template #rt let-r="result" let-t="term">
         <!-- <ngb-highlight [result]="r.site" [term]="t"></ngb-highlight> -->
         <div *ngIf="r != null" class="row search-item" style="width: 300px;" 

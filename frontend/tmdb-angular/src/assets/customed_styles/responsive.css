@@ -1,7 +1,28 @@
 @media (max-width: 777px) {
+    .font-l1{
+        font-size: 18vw;
+    } 
+    .font-l2{
+        font-size: 15vw;
+    } 
+    .font-l3{
+        font-size: 9vw;
+    } 
+    .font-l4{
+        font-size: 6vw;
+    } 
+    .font-l5{
+        font-size: 4.5vw;
+    } 
+    .font-l6{
+        font-size: 3.75vw;
+    } 
     body{
-        font-size: 10px;
+        font-size: 3.75vw;
     }
+    .font-l7{
+        font-size: 3.6vw;
+    } 
 }
 
 @media (min-width: 777px) {

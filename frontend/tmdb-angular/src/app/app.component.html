@@ -1,14 +1,14 @@
 <div class="body">    
     <nav class="navbar navbar-expand-lg navbar-light customed-navbar sticky-top"> 
     <!-- TODO: sticky top only applied in somebrowsers -->
-        <a class="header-navbar-brand" [routerLink]="'/'">USC Films</a>
+        <a class="header-navbar-brand font-l6" [routerLink]="'/'">USC Films</a>
 
         <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
             &#9776;
         </button>
 
         <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
-            <ul id="topheader" class="nav navbar-nav mr-auto">
+            <ul id="topheader" class="nav navbar-nav mr-auto font-l7">
                 <li [routerLinkActive]="['header-nav-active']" [routerLinkActiveOptions]="{exact:true}" class="header-nav-bar">
                     <a class="mx-2" [routerLink]="'/'" (click)="navClick('home')">Home</a>
                 </li>
