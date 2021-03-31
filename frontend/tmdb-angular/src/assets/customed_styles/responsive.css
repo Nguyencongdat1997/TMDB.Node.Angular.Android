@@ -12,7 +12,7 @@
         font-size: 5vw;
     } 
     .font-l3{
-        font-size: 4vw;
+        font-size: 3vw;
     } 
     .font-l4{
         font-size: 2vw;
@@ -23,6 +23,9 @@
     .font-l6{
         font-size: 1.25vw;
     } 
+    body{
+        font-size: 1.25vw;
+    }
     .font-l7{
         font-size: 1.2vw;
     } 
