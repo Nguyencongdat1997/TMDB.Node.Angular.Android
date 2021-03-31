@@ -36,12 +36,22 @@ export class MovieDetailComponent implements OnInit {
     isItemAddedToWatchList: boolean;
     isAlertShowed = false;
     timeOut: any;
+    chunkSize = 6;
+    mobile: boolean;
 
     constructor(
         private tmdbService: TmdbProxyServiceService,
         private route: ActivatedRoute,
         private modalService: NgbModal,        
     ) {
+        if (window.screen.width <= 777){
+            this.chunkSize = 1;
+            this.mobile = true;
+        }
+        else{
+            this.chunkSize = 6;
+            this.mobile = false;
+        }
         this._tmdbService = tmdbService;
         this.data = null;
         this.selectedCast = this.defaultCast;
@@ -63,8 +73,8 @@ export class MovieDetailComponent implements OnInit {
                                         + "%23USC %23CSCI571 %23FightOn";
                 this.casts = data.casts;
                 this.reviews = data.reviews;
-                this.recommendations = chunkArray(data.recommendations,6);
-                this.similarItems = chunkArray( data.similars, 6);
+                this.recommendations = chunkArray(data.recommendations, this.chunkSize);
+                this.similarItems = chunkArray( data.similars, this.chunkSize);
 
                 this.isItemAddedToWatchList = this.localStorageService.isItemInWatchList(this.movieItem);
                 this.localStorageService.addContinueWatching(this.movieItem);

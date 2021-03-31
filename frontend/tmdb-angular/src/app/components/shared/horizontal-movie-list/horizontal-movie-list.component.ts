@@ -11,8 +11,11 @@ export class HorizontalMovieListComponent implements OnInit {
     mobile: boolean;
 
     constructor() {
-        if (window.screen.width > 777){
+        if (window.screen.width <= 777){
             this.mobile = true;
+        }
+        else{
+            this.mobile = false;
         }
     }
 

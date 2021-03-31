@@ -21,8 +21,11 @@ export class CarouselComponent {
     @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
 
     constructor(){
-        if (window.screen.width > 777){
+        if (window.screen.width <= 777){
             this.mobile = true;
+        }
+        else{
+            this.mobile = false;
         }
     }
 

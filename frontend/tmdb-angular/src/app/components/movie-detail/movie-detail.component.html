@@ -2,7 +2,7 @@
     <div *ngIf="data == null">Loading...</div>
     <div *ngIf="data != null && data.length == 0">Invalid information</div>
     <div *ngIf="data != null && data.length != 0">
-        <div class="header row" style="padding-left:10%; width:88%; padding-top: 30px;">
+        <div *ngIf="!mobile" class="header row" style="padding-left:10%; width:88%; padding-top: 30px;">            
             <div class="col-8 mr-0 pr-0">
                 <div class="embed-responsive embed-responsive-16by9">
                     <youtube-player videoId="{{data.youtube_video.key}}"></youtube-player>
@@ -10,6 +10,40 @@
             </div>
             <div class="col-4 mr-0 pr-0">
                 <p class="font-l3">{{data.item_detail.title}}</p>
+                <p class="font-l5"><i>{{data.item_detail.tagline}}</i></p>                
+                <p class="font-l5">{{data.item_detail.date|date:"yyyy"}}
+                    | &#9733; {{data.item_detail.vote_average}}
+                    | {{data.item_detail.runtime|timeHourMinute}}</p>
+                <p><b class="font-l7">Genres: </b><span class="font-l6">{{data.item_detail.genres}}</span></p>
+                <p><b class="font-l7">Spoken languages: </b><span class="font-l6">{{data.item_detail.spoken_language}}</span></p>
+
+                <button type="button" class="btn btn-primary" (click)=addToWatchListBtnClickedHandle()>
+                    {{isItemAddedToWatchList ? 'Remove from WatchList' : 'Add to WatchList'}}
+                </button>
+
+                <div class="my-2">               
+                    <div class="alert-container alert mt-2" role="alert" 
+                        [class.show]="isAlertShowed" 
+                        [class.alert-primary]="isItemAddedToWatchList"
+                        [class.alert-danger]="!isItemAddedToWatchList">
+                        {{isItemAddedToWatchList ? 'Added to watch list' : 'Removed from WatchList.'}}
+                        <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"> -->
+                        <button type="button" class="close" (click)="isAlertShowed=false;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="mobile" class="header row" style="padding-left:10%; width:88%; padding-top: 30px;"> 
+            <!-- Mobile RWD -->
+            <div class="col-12 mr-0 pr-0">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <youtube-player videoId="{{data.youtube_video.key}}"></youtube-player>
+                </div>
+            </div>
+            <div class="col-11 mr-0 pr-0">
+                <p class="font-l3" style="padding-top: 10px;">{{data.item_detail.title}}</p>
                 <p class="font-l5"><i>{{data.item_detail.tagline}}</i></p>                
                 <p class="font-l5">{{data.item_detail.date|date:"yyyy"}}
                     | &#9733; {{data.item_detail.vote_average}}
@@ -58,7 +92,9 @@
             <div>
                 <div class="d-flex flex-row flex-nowrap overflow-auto pl-2">
                     <div *ngFor="let cast of casts;" 
-                        class="col-2 card rounded px-0 mx-2 my-2 " 
+                        class="card rounded px-0 mx-2 my-2" 
+                        [class.col-2]="!mobile"
+                        [class.col-6]="mobile"
                         style="color:black;"
                         (click)="openModal(modalContent, cast.id)">
                         <div class="card-header p-0">
@@ -84,8 +120,9 @@
                 </div>
             </div>
             <div *ngFor="let review of reviews;" class="card px-0 mx-2 my-2" style="color:black;">
-                <div class="row" style="width: 100%;">
-                    <div class="col-2">
+                <div [class.row]="!mobile" style="width: 100%;">
+                    <div [class.col-2]="!mobile"
+                         [class.col-6]="mobile">
                         <div style="width: 60%; margin-left:20%;margin-top:10%;">
                             <div class="aspect-ratio aspect-ratio--1x1">
                                 <img class="aspect-ratio--object rounded-circle" 
@@ -95,10 +132,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-10" style="padding:10px;">
+                    <div [class.col-10]="!mobile" 
+                         style="padding:10px;">
                         <div>
                             <h6 class="font-l6" style="font-weight: bold; padding:0; margin:0;">
                                 A review created by {{review.author}}
+                                <br *ngIf="mobile">
                                 <button type="button" style="background-color: black; 
                                                 color: white; 
                                                 border-radius: 20px;
