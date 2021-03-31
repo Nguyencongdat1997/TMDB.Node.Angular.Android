@@ -105,7 +105,7 @@ export class MovieDetailComponent implements OnInit {
     }
 
     addToWatchListBtnClickedHandle(){
-        if (this.isItemAddedToWatchList){
+        if (!this.isItemAddedToWatchList){
             this.localStorageService.addWatchList(this.movieItem);
         }
         else{
