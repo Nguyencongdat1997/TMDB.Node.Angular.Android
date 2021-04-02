@@ -119,7 +119,7 @@
                     <span class="font-l4" style="font-weight: bold; color:gray"> {{reviews.length}}</span>
                 </div>
             </div>
-            <div *ngFor="let review of reviews;" class="card px-0 mx-2 my-2" style="color:black;">
+            <div *ngFor="let review of reviews.slice(0,10);" class="card px-0 mx-2 my-2" style="color:black;">
                 <div [class.row]="!mobile" style="width: 100%;">
                     <div [class.col-2]="!mobile"
                          [class.col-6]="mobile">
