@@ -234,7 +234,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div *ngIf="selectedCast.biography != null" style="margin-top: 10px;">
+                        <div *ngIf="selectedCast.biography != null && selectedCast.biography != '' " style="margin-top: 10px;">
                             <div class="font-l4" style="font-weight: bold;">Biography</div>
                             <div class="font-l7">{{selectedCast.biography}}</div>
                         </div>
