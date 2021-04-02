@@ -188,10 +188,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" >
+            <div class="modal-body" style="padding:0">
                 <div style="overflow-y: hidden; height: calc(100vh - 15rem);">
-                    <div class="px-2" style="overflow-y: auto; height: 100%; overflow-x: hidden;">
-                        
+                    <div *ngIf="!mobile" style="overflow-y: auto; height: 100%; overflow-x: hidden; padding:20px;">                        
                         <div class="row">
                             <div class="col-3 mx-0">
                                 <div class="aspect-ratio aspect-ratio--3x4 person_img_placeholder" style="width: 100%">
@@ -239,7 +238,53 @@
                             <div class="font-l4" style="font-weight: bold;">Biography</div>
                             <div class="font-l7">{{selectedCast.biography}}</div>
                         </div>
-
+                    </div>
+                    <div *ngIf="mobile" style="overflow-y: auto; height: 100%; overflow-x: hidden; padding:10px;">                        
+                        <div class="mx-0">
+                            <div class="aspect-ratio aspect-ratio--3x4 person_img_placeholder" style="width: 100%">
+                                <img class="aspect-ratio--object" src="{{selectedCast.image_url}}">
+                            </div>
+                        </div>
+                        <div class="ml-1">
+                            <div class="font-l7">
+                                <p *ngIf="selectedCast.birth_date != null" style="margin:0">Birth: {{selectedCast.birth_date|date:'yyyy-MM-dd'}}</p>
+                                <p *ngIf="selectedCast.birth_place != null" style="margin:0">Birth Place: {{selectedCast.birth_place}}</p>
+                                <p *ngIf="selectedCast.gender != null" style="margin:0">Gender: {{selectedCast.gender|gender}}</p>
+                                <p *ngIf="selectedCast.homepage != null" style="margin:0">Website: <span style="color:blue">{{selectedCast.homepage}}</span></p>
+                                <p *ngIf="selectedCast.known_for != null" style="margin:0">Known for: {{selectedCast.known_for}}</p>
+                                <p *ngIf="selectedCast.other_names != null" style="margin:0">Also Known as: {{selectedCast.other_names}}</p>
+                            </div>
+                            <div *ngIf="selectedCast.external_links != null" style="margin-top: 10px;">
+                                <a *ngIf="selectedCast.external_links.imdb_id != null" 
+                                    href="https://imdb.com/name/{{selectedCast.external_links.imdb_id}}" 
+                                    target="_blank" class="share-button-imdb mr-1"
+                                    ngbTooltip="Vist IMDB" placement="top" tooltipClass="custom-tooltip">
+                                    <img src="../../../assets/img/imdb-icon.png">
+                                </a>
+                                <a *ngIf="selectedCast.external_links.insta_id != null" 
+                                    href="https://instagram.com/{{selectedCast.external_links.insta_id}}" 
+                                    target="_blank" class="share-button-insta mr-1"
+                                    ngbTooltip="Vist Instagram" placement="top" tooltipClass="custom-tooltip">
+                                    <img src="../../../assets/img/insta-icon.png">
+                                </a>
+                                <a *ngIf="selectedCast.external_links.fb_id != null" 
+                                    href="https://facebook.com/{{selectedCast.external_links.fb_id}}" 
+                                    target="_blank" class="share-button-fb mr-1"
+                                    ngbTooltip="Vist Facebook" placement="top" tooltipClass="custom-tooltip">
+                                    <img src="../../../assets/img/facebook-icon.png">
+                                </a>
+                                <a *ngIf="selectedCast.external_links.twiter_id != null" 
+                                    href="https://twitter.com/{{selectedCast.external_links.twiter_id}}" 
+                                    target="_blank" class="share-button-twitter mr-1"
+                                    ngbTooltip="Vist Twitter" placement="top" tooltipClass="custom-tooltip">
+                                    <img src="../../../assets/img/twitter-icon.png">
+                                </a>                        
+                            </div>
+                        </div>
+                        <div *ngIf="selectedCast.biography != null" style="margin-top: 10px;">
+                            <div class="font-l4" style="font-weight: bold;">Biography</div>
+                            <div class="font-l7">{{selectedCast.biography}}</div>
+                        </div>
                     </div>
                 </div>
             </div>
