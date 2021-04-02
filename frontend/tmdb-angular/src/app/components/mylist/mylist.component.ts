@@ -13,10 +13,22 @@ export class MylistComponent implements OnInit {
 
     localStorageService: LocalStorageService;
     movieItems: MovieItem[][];
+    mobile: boolean;
+    chunkSize = 6;
 
     constructor() { 
+        if (window.screen.width <= 777){
+            this.chunkSize = 1;
+            this.mobile = true;
+        }
+        else{
+            this.chunkSize = 6;
+            this.mobile = false;
+        }
+
         this.localStorageService = new LocalStorageService;
-        this.movieItems = chunkArray(this.localStorageService.getWatchList(),6);
+        this.movieItems = chunkArray(this.localStorageService.getWatchList(),this.chunkSize);
+
     }
 
     ngOnInit(): void {
