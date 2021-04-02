@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-root',
@@ -10,12 +9,19 @@ export class AppComponent {
     public isMenuCollapsed = true;
     public selectedTab = 'home';
 
+    mobile:boolean;
+
     public navClick(target: string) {
         this.isMenuCollapsed = true;
         this.selectedTab = target;
     }
 
-    constructor(router: Router){
-        
+    constructor(){
+        if (window.screen.width <= 500){
+            this.mobile = true;
+        }
+        else{
+            this.mobile = false;
+        }        
     }
 }
