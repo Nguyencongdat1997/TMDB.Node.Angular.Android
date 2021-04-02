@@ -18,7 +18,7 @@ class Item {
         }
         var id = rawItemData["id"];
         var posterPath = getTmdbImageUrl(rawItemData["poster_path"], 'w500');
-        var backdropPath = getTmdbImageUrl(rawItemData["backdrop_path"], 'w500');
+        var backdropPath = getTmdbImageUrl(rawItemData["backdrop_path"], 'original');
         var title = "";
         if (category == 'movie') {
             title = rawItemData["title"];
@@ -36,7 +36,7 @@ class Item {
         }
         var id = rawItemData["id"];
         var posterPath = getTmdbImageUrl(rawItemData["poster_path"], 'w500');
-        var backdropPath = getTmdbImageUrl(rawItemData["backdrop_path"], 'w500');
+        var backdropPath = getTmdbImageUrl(rawItemData["backdrop_path"], 'original');
         var title = "";
         if (category == 'movie') {
             title = rawItemData["title"];
@@ -101,7 +101,7 @@ class ItemDetail {
         var tagline = rawItemData['tagline'];
 
         var posterPath = getTmdbImageUrl(rawItemData["poster_path"], 'w500');
-        var backdropPath = getTmdbImageUrl(rawItemData["backdrop_path"], 'w500');
+        var backdropPath = getTmdbImageUrl(rawItemData["backdrop_path"], 'original');
 
         return new ItemDetail(id, category, title, genres, spokenLanguage, date, runtime, 
                             overview, voteAverate, tagline, posterPath, backdropPath);
