@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
         });
         
         var localStorageService = new LocalStorageService();
-        this.continueWathcingList = chunkArray(localStorageService.getContinueWatching(), chunkSize);
+        this.continueWathcingList = chunkArray(localStorageService.getContinueWatching().slice(0,24), chunkSize);
     }
 
     ngOnInit(): void {

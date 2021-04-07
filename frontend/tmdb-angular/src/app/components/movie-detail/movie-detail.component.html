@@ -87,7 +87,8 @@
                 </a>
             </div>
         </div>
-        <div class="casts" style="padding-left:10%; width:88%;">
+        <div *ngIf="casts!=null && casts.length > 0" 
+            class="casts" style="padding-left:10%; width:88%;">
             <div class="font-l4" style="margin-top: 25px; margin-bottom: 2px; padding-left: 1%; font-weight: bold;">Full Cast and Crew</div>
             <div>
                 <div class="d-flex flex-row flex-nowrap overflow-auto pl-2">
@@ -112,7 +113,8 @@
                 </div>
             </div>
         </div>
-        <div class="reviews" style="padding-left:10%; width:88%;">
+        <div *ngIf="reviews!=null && reviews.length > 0" 
+            class="reviews" style="padding-left:10%; width:88%;">
             <div>
                 <div style="margin-top: 25px; margin-bottom: 2px; padding-left: 1%;">
                     <span class="font-l4" style="font-weight: bold;">Reviews </span>
