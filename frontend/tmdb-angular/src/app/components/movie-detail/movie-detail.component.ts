@@ -38,6 +38,7 @@ export class MovieDetailComponent implements OnInit {
     timeOut: any;
     chunkSize = 6;
     mobile: boolean;
+    categoryTitle: string;
 
     constructor(
         private tmdbService: TmdbProxyServiceService,
@@ -64,6 +65,13 @@ export class MovieDetailComponent implements OnInit {
         if (category != 'movie' && category != 'tv'){
             // TODO: do sthm
         }
+        if (category == 'movie'){
+            this.categoryTitle = 'Movies';
+        }
+        if (category == 'tv'){
+            this.categoryTitle = 'TV Shows';
+        }
+
         this.tmdbService.getItemDetail(id, category).subscribe(
             data => {
                 this.data = data;    

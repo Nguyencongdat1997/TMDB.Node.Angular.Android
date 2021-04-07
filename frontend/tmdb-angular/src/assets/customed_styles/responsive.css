@@ -23,6 +23,9 @@
     .font-l7{
         font-size: 3.6vw;
     } 
+    .font-l8{
+        font-size: 3vw;
+    } 
 }
 
 @media (min-width: 777px) {
@@ -49,5 +52,8 @@
     }
     .font-l7{
         font-size: 1.2vw;
+    } 
+    .font-l8{
+        font-size: 1vw;
     } 
 }

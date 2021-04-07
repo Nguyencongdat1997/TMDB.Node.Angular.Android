@@ -165,7 +165,7 @@
         </div>
         <div *ngIf="recommendations!=null && recommendations.length > 0" 
             class="recommendations" style="padding-left:10%; width:88%; padding-top:20px;">
-            <div class="font-l4" style="font-weight: bold;">Recommended Movies</div>
+            <div class="font-l4" style="font-weight: bold;">Recommended {{categoryTitle}}</div>
             <div>
                 <app-horizontal-movie-list  [movieItemSets]="recommendations">
                 </app-horizontal-movie-list>
@@ -173,7 +173,7 @@
         </div>
         <div *ngIf="similarItems!=null && similarItems.length > 0" 
             class="similars" style="padding-left:10%; width:88%; padding-top:20px;">
-            <div class="font-l4"  style="font-weight: bold;">Similar Movies</div>
+            <div class="font-l4"  style="font-weight: bold;">Similar {{categoryTitle}}</div>
             <div>
                 <app-horizontal-movie-list [movieItemSets]="similarItems">
                 </app-horizontal-movie-list>
