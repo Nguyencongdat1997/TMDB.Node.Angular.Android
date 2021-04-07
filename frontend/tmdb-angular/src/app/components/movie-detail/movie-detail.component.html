@@ -204,7 +204,7 @@
                                     <p *ngIf="selectedCast.birth_date != null" style="margin:0">Birth: {{selectedCast.birth_date|date:'yyyy-MM-dd'}}</p>
                                     <p *ngIf="selectedCast.birth_place != null" style="margin:0">Birth Place: {{selectedCast.birth_place}}</p>
                                     <p *ngIf="selectedCast.gender != null" style="margin:0">Gender: {{selectedCast.gender|gender}}</p>
-                                    <p *ngIf="selectedCast.homepage != null" style="margin:0">Website: <span style="color:blue">{{selectedCast.homepage}}</span></p>
+                                    <p *ngIf="selectedCast.homepage != null" style="margin:0">Website: <a href="{{selectedCast.homepage}}" target="_blank" style="color:blue">{{selectedCast.homepage}}</a></p>
                                     <p *ngIf="selectedCast.known_for != null" style="margin:0">Known for: {{selectedCast.known_for}}</p>
                                     <p *ngIf="selectedCast.other_names != null" style="margin:0">Also Known as: {{selectedCast.other_names}}</p>
                                 </div>
@@ -256,7 +256,7 @@
                                 <p *ngIf="selectedCast.birth_date != null" style="margin:0">Birth: {{selectedCast.birth_date|date:'yyyy-MM-dd'}}</p>
                                 <p *ngIf="selectedCast.birth_place != null" style="margin:0">Birth Place: {{selectedCast.birth_place}}</p>
                                 <p *ngIf="selectedCast.gender != null" style="margin:0">Gender: {{selectedCast.gender|gender}}</p>
-                                <p *ngIf="selectedCast.homepage != null" style="margin:0">Website: <span style="color:blue">{{selectedCast.homepage}}</span></p>
+                                <p *ngIf="selectedCast.homepage != null" style="margin:0">Website: <a href="{{selectedCast.homepage}}" target="_blank" style="color:blue">{{selectedCast.homepage}}</a></p>
                                 <p *ngIf="selectedCast.known_for != null" style="margin:0">Known for: {{selectedCast.known_for}}</p>
                                 <p *ngIf="selectedCast.other_names != null" style="margin:0">Also Known as: {{selectedCast.other_names}}</p>
                             </div>
