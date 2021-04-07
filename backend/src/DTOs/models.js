@@ -91,7 +91,7 @@ class ItemDetail {
         }
         if (category == 'tv') {
             title = rawItemData['name'];
-            runtime = rawItemData['episode_run_time'];
+            runtime = rawItemData['episode_run_time'][0]; // Get only minutes of episode
             date = rawItemData['first_air_date'];
         }
         var genres = parseTmdbGenres(rawItemData['genres'], genresDict);
