@@ -57,3 +57,9 @@
         font-size: 1vw;
     } 
 }
+
+@media (max-width: 777px) {
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
