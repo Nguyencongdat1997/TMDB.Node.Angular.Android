@@ -281,10 +281,23 @@ async function getItemDetailFunc(id, category){
         return ItemExternalYoutubeVideos.fromRawItemExternalVideos(x);
     });
     var chosenYoutubeVideo = null;
-    if (youtubeVideos.length > 0){
-        chosenYoutubeVideo = youtubeVideos[0];
-    }
-    else{
+    for (var i = 0; i < youtubeVideos.length; i++) {
+        var video = youtubeVideos[i];
+        if (video.type=='Trailer' && video.site=='YouTube'){
+            chosenYoutubeVideo = video;
+            break;
+        }
+    }    
+    if (chosenYoutubeVideo == null){
+        for (var i = 0; i < youtubeVideos.length; i++) {
+            var video = youtubeVideos[i];
+            if (video.type=='Teaser' && video.site=='YouTube'){
+                chosenYoutubeVideo = video;
+                break;
+            }
+        }  
+    }   
+    if (chosenYoutubeVideo == null){     
         chosenYoutubeVideo = new ItemExternalYoutubeVideos('YouTube', null, null, 'tzkWB85ULJY');
     }
 
