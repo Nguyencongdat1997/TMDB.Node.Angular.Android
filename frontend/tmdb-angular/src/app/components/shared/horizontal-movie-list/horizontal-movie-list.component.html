@@ -13,10 +13,13 @@
                                     <div class="zoom-child-placeholder">
                                         <div class="zoom-child" style="background-image: url({{movieItem.poster_path}});">
                                             <div class="font-l8 movie-item-title two-line-limited-content">{{movieItem.title}}</div>
+                                            <div *ngIf="mobile" class="font-l8 movie-item-title-mobile">{{movieItem.title}}</div>
                                         </div>
-                                    </div>
+                                    </div>                                    
                                 </div>
+                                
                             </a>
+                           
                         </div>
                     </div>
                     
