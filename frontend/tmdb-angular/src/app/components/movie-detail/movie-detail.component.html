@@ -10,12 +10,12 @@
             </div>
             <div class="col-4 mr-0 pr-0">
                 <p class="font-l3">{{data.item_detail.title}}</p>
-                <p class="font-l5"><i>{{data.item_detail.tagline}}</i></p>                
-                <p class="font-l5">{{data.item_detail.date|date:"yyyy"}}
+                <p class="font-l5 content-text"><i>{{data.item_detail.tagline}}</i></p>                
+                <p class="font-l5 content-text">{{data.item_detail.date|date:"yyyy"}}
                     | &#9733; {{data.item_detail.vote_average}}
                     | {{data.item_detail.runtime|timeHourMinute}}</p>
-                <p><b class="font-l7">Genres: </b><span class="font-l6">{{data.item_detail.genres}}</span></p>
-                <p><b class="font-l7">Spoken languages: </b><span class="font-l6">{{data.item_detail.spoken_language}}</span></p>
+                <p><b class="font-l7">Genres: </b><span class="font-l6 content-text">{{data.item_detail.genres}}</span></p>
+                <p><b class="font-l7">Spoken languages: </b><span class="font-l6 content-text">{{data.item_detail.spoken_language}}</span></p>
 
                 <button type="button" class="btn btn-primary" (click)=addToWatchListBtnClickedHandle()>
                     {{isItemAddedToWatchList ? 'Remove from WatchList' : 'Add to WatchList'}}
@@ -44,12 +44,12 @@
             </div>
             <div class="col-11 mr-0 pr-0">
                 <p class="font-l3" style="padding-top: 10px;">{{data.item_detail.title}}</p>
-                <p class="font-l5"><i>{{data.item_detail.tagline}}</i></p>                
-                <p class="font-l5">{{data.item_detail.date|date:"yyyy"}}
+                <p class="font-l5 content-text"><i>{{data.item_detail.tagline}}</i></p>                
+                <p class="font-l5 content-text">{{data.item_detail.date|date:"yyyy"}}
                     | &#9733; {{data.item_detail.vote_average}}
                     | {{data.item_detail.runtime|timeHourMinute}}</p>
-                <p><b class="font-l7">Genres: </b><span class="font-l6">{{data.item_detail.genres}}</span></p>
-                <p><b class="font-l7">Spoken languages: </b><span class="font-l6">{{data.item_detail.spoken_language}}</span></p>
+                <p><b class="font-l7">Genres: </b><span class="font-l6 content-text">{{data.item_detail.genres}}</span></p>
+                <p><b class="font-l7">Spoken languages: </b><span class="font-l6 content-text">{{data.item_detail.spoken_language}}</span></p>
 
                 <button type="button" class="btn btn-primary" (click)=addToWatchListBtnClickedHandle()>
                     {{isItemAddedToWatchList ? 'Remove from WatchList' : 'Add to WatchList'}}
@@ -71,7 +71,7 @@
         </div>
         <div class="description font-l6" style="padding-left:10%; width:88%; padding-top: 10px;">
             <div style="margin-top: 15px; margin-bottom: 2px; font-weight: bold;padding-left: 1%; ">Description</div>
-            <div style="padding-left: 1%;">{{data.item_detail.overview}}</div>
+            <div class="content-text" style="padding-left: 1%;">{{data.item_detail.overview}}</div>
         </div>
         <div class="Share font-l6" style="padding-left:10%; width:88%; padding-top: 15px;">
             <div style="margin-top: 25px; margin-bottom: 2px; font-weight: bold; padding-left: 1%;">Share </div>
