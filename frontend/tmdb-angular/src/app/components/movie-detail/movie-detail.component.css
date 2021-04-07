@@ -39,7 +39,7 @@
 }
 
 
-::ng-deep .custom-tooltip .arrow::before {
+/* ::ng-deep .custom-tooltip .arrow::before {
     border-top-color:white;    
 }
 
@@ -47,7 +47,7 @@
     background-color: white;
     color: black;
     box-shadow:  0 1px 1px 0 gray ;
-}
+} */
 
 
 .modal-body ::-webkit-scrollbar-track {
