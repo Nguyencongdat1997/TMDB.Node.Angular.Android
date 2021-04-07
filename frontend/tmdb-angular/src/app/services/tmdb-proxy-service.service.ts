@@ -9,8 +9,6 @@ import { ApiEndpoints } from '../constants/api-endpoints'
     providedIn: 'root'
 })
 export class TmdbProxyServiceService {
-    public url = 'http://localhost:4000/api/v1/home';
-
     constructor(private http: HttpClient) { }
 
     getHomeData(): Observable<any> {
