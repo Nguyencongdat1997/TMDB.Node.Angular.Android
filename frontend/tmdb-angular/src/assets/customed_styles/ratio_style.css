@@ -1,0 +1,43 @@
+/* These classes are used for ratio that is smaller than 1x1. Ex:9x16, 3x4
+Recommendation: For ratio that is greater than 1x1, ex:16x9, 4x3, use boostrap5 ratio instead */
+
+.aspect-ratio {
+    height: 0;
+    position: relative;
+}
+
+.aspect-ratio--object {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.aspect-ratio--9x16 {
+    padding-bottom: 177.7777%;
+}
+
+.aspect-ratio--3x4 {
+    padding-bottom: 133.3333%;
+}
+
+.aspect-ratio--1x1 {
+    padding-bottom: 100%;
+}
+
+.aspect-ratio--16x9 {
+    padding-bottom: 56.25%;
+}
+
+
+.img-responsive-16by9 {
+    display: block;
+    height: 0;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+}
+

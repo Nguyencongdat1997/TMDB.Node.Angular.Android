@@ -1,0 +1,24 @@
+
+.person_img_placeholder {
+    /* width: 185;
+    height: 277; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../img/person-placeholder.png');
+}
+
+.movie_img_placeholder {
+    /* width: 780;
+    height: 439; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../img/movie-placeholder.jpg');
+}
+
+.reivew_ava_img_placeholder {
+    /* width: 780;
+    height: 780; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../img/ReviewsPlaceholderImage.jpg');
+}

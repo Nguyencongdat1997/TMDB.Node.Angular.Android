@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import {Item, ItemDetail, Cast, CastDetail, Review} from "../DTOs/models.js";
+import {Item, ItemDetail, Cast, CastDetail, Review, ItemExternalYoutubeVideos} from "../DTOs/models.js";
 
 
 var tmdpUrl = 'https://api.themoviedb.org/3';
@@ -158,7 +158,7 @@ async function getSearchResultsFunc(keyword){
         return Item.fromSearchResultItem(rawItemData);
     });
     
-    return result;
+    return result.slice(0,7);
 }
 
 
@@ -188,6 +188,19 @@ async function getSimilarItems(category, itemId){
     return rawData;   
 }
 
+async function getExternalVideos(category, itemId){
+    var queryUrl =  tmdpUrl + '/' + category + '/' + itemId + '/videos?api_key=' + tmdpKey + '&language=en-US&&page=1';
+    var rawData = "";    
+    await axios.get(queryUrl)
+    .then(response => {     
+        rawData = response.data;    
+    })
+    .catch(error => {
+        console.log(error);
+    }); 
+    return rawData;   
+}
+
 async function getItemDetailFunc(id, category){
     if (category != 'tv' && category != 'movie'){
         return null;
@@ -202,6 +215,7 @@ async function getItemDetailFunc(id, category){
     })
     .catch(error => {
         console.log(error);
+        
     }); 
     var genresDict = rawGenresData.genres;
 
@@ -214,7 +228,11 @@ async function getItemDetailFunc(id, category){
     })
     .catch(error => {
         console.log(error);
+        rawData = null;
     }); 
+    if (rawData == null){
+        return "";
+    }
     var itemDetail = ItemDetail.fromItem(id, category, rawData, genresDict);
 
     // Get casts
@@ -257,6 +275,32 @@ async function getItemDetailFunc(id, category){
         return Item.fromItem(x, category);
     });
 
+    // Get youtube videos
+    var rawExternalVideos = await getExternalVideos(category, id);
+    var youtubeVideos = rawExternalVideos.results.map(x=>{        
+        return ItemExternalYoutubeVideos.fromRawItemExternalVideos(x);
+    });
+    var chosenYoutubeVideo = null;
+    for (var i = 0; i < youtubeVideos.length; i++) {
+        var video = youtubeVideos[i];
+        if (video.type=='Trailer' && video.site=='YouTube'){
+            chosenYoutubeVideo = video;
+            break;
+        }
+    }    
+    if (chosenYoutubeVideo == null){
+        for (var i = 0; i < youtubeVideos.length; i++) {
+            var video = youtubeVideos[i];
+            if (video.type=='Teaser' && video.site=='YouTube'){
+                chosenYoutubeVideo = video;
+                break;
+            }
+        }  
+    }   
+    if (chosenYoutubeVideo == null){     
+        chosenYoutubeVideo = new ItemExternalYoutubeVideos('YouTube', null, null, 'tzkWB85ULJY');
+    }
+
     // Merge data
     var result= {
         item_detail: itemDetail,
@@ -264,6 +308,7 @@ async function getItemDetailFunc(id, category){
         reviews: review,
         recommendations: recommendations,
         similars: similarItems,
+        youtube_video: chosenYoutubeVideo,
     };
 
     return result;

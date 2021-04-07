@@ -1,0 +1,304 @@
+<div>
+    <div *ngIf="data == null">Loading...</div>
+    <div *ngIf="data != null && data.length == 0">Invalid information</div>
+    <div *ngIf="data != null && data.length != 0">
+        <div *ngIf="!mobile" class="header row" style="padding-left:10%; width:88%; padding-top: 30px;">            
+            <div class="col-8 mr-0 pr-0">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <youtube-player videoId="{{data.youtube_video.key}}"></youtube-player>
+                </div>
+            </div>
+            <div class="col-4 mr-0 pr-0">
+                <p class="font-l3">{{data.item_detail.title}}</p>
+                <p class="font-l5 content-text"><i>{{data.item_detail.tagline}}</i></p>                
+                <p class="font-l5 content-text">{{data.item_detail.date|date:"yyyy"}}
+                    | &#9733; {{data.item_detail.vote_average}}
+                    | {{data.item_detail.runtime|timeHourMinute}}</p>
+                <p><b class="font-l7">Genres: </b><span class="font-l6 content-text">{{data.item_detail.genres}}</span></p>
+                <p><b class="font-l7">Spoken languages: </b><span class="font-l6 content-text">{{data.item_detail.spoken_language}}</span></p>
+
+                <button type="button" class="btn btn-primary" (click)=addToWatchListBtnClickedHandle()>
+                    {{isItemAddedToWatchList ? 'Remove from WatchList' : 'Add to WatchList'}}
+                </button>
+
+                <div class="my-2">               
+                    <div class="alert-container alert mt-2" role="alert" 
+                        [class.show]="isAlertShowed" 
+                        [class.alert-primary]="isItemAddedToWatchList"
+                        [class.alert-danger]="!isItemAddedToWatchList">
+                        {{isItemAddedToWatchList ? 'Added to watch list' : 'Removed from WatchList.'}}
+                        <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"> -->
+                        <button type="button" class="close" (click)="isAlertShowed=false;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="mobile" class="header row" style="padding-left:10%; width:95%; padding-top: 30px;"> 
+            <!-- Mobile RWD -->
+            <div class="col-12 mr-0 pr-0">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <youtube-player videoId="{{data.youtube_video.key}}"></youtube-player>
+                </div>
+            </div>
+            <div class="col-11 mr-0 pr-0">
+                <p class="font-l3" style="padding-top: 10px;">{{data.item_detail.title}}</p>
+                <p class="font-l5 content-text"><i>{{data.item_detail.tagline}}</i></p>                
+                <p class="font-l5 content-text">{{data.item_detail.date|date:"yyyy"}}
+                    | &#9733; {{data.item_detail.vote_average}}
+                    | {{data.item_detail.runtime|timeHourMinute}}</p>
+                <p><b class="font-l7">Genres: </b><span class="font-l6 content-text">{{data.item_detail.genres}}</span></p>
+                <p><b class="font-l7">Spoken languages: </b><span class="font-l6 content-text">{{data.item_detail.spoken_language}}</span></p>
+
+                <button type="button" class="btn btn-primary" (click)=addToWatchListBtnClickedHandle()>
+                    {{isItemAddedToWatchList ? 'Remove from WatchList' : 'Add to WatchList'}}
+                </button>
+
+                <div class="my-2">               
+                    <div class="alert-container alert mt-2" role="alert" 
+                        [class.show]="isAlertShowed" 
+                        [class.alert-primary]="isItemAddedToWatchList"
+                        [class.alert-danger]="!isItemAddedToWatchList">
+                        {{isItemAddedToWatchList ? 'Added to watch list' : 'Removed from WatchList.'}}
+                        <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"> -->
+                        <button type="button" class="close" (click)="isAlertShowed=false;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="description font-l6" style="padding-left:10%; width:88%; padding-top: 10px;">
+            <div style="margin-top: 15px; margin-bottom: 2px; font-weight: bold;padding-left: 1%; ">Description</div>
+            <div class="content-text" style="padding-left: 1%;">{{data.item_detail.overview}}</div>
+        </div>
+        <div class="Share font-l6" style="padding-left:10%; width:88%; padding-top: 15px;">
+            <div style="margin-top: 25px; margin-bottom: 2px; font-weight: bold; padding-left: 1%;">Share </div>
+            <div style="padding-left: 1%;">
+                <a class="share-button-twitter" href="https://twitter.com/intent/tweet?text={{twitterShareText}}"
+                    target="_blank" data-size="large">
+                    <img src="../../../assets/img/twitter-icon.png">
+                </a>
+
+                <a class="share-button-fb" href="https://www.facebook.com/sharer/sharer.php?u={{data.youtube_video.url}}"
+                    target="_blank">
+                    <img src="../../../assets/img/facebook-icon.png">
+                </a>
+            </div>
+        </div>
+        <div *ngIf="casts!=null && casts.length > 0" 
+            class="casts" style="padding-left:10%; width:88%;">
+            <div class="font-l4" style="margin-top: 25px; margin-bottom: 2px; padding-left: 1%; font-weight: bold;">Full Cast and Crew</div>
+            <div>
+                <div class="d-flex flex-row flex-nowrap overflow-auto pl-2"
+                    [class.hide-scrollbar]="mobile">
+                    <div *ngFor="let cast of casts;" 
+                        class="card rounded px-0 mx-2 my-2" 
+                        [class.col-2]="!mobile"
+                        [class.col-6]="mobile"
+                        style="color:black;"
+                        (click)="openModal(modalContent, cast.id)">
+                        <div class="card-header p-0">
+                            <div class="aspect-ratio aspect-ratio--3x4 person_img_placeholder" style="width: 100%">
+                                <img class="aspect-ratio--object" src="{{cast.profile_path}}"
+                                onerror="this.style.display='none'">
+                            </div>
+                        </div>
+                        <div class="card-body" style="text-align: center; padding: 2px;">
+                            <p class="font-l7" style="font-weight: bold; padding:0; margin:0;">{{cast.name}}</p>
+                            <p class="font-l7" style="font-weight: bold; padding:0; margin:0;">AS</p>
+                            <p class="font-l7" style="padding:0; margin:0;">{{cast.character}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="reviews!=null && reviews.length > 0" 
+            class="reviews" style="padding-left:10%; width:88%;">
+            <div>
+                <div style="margin-top: 25px; margin-bottom: 2px; padding-left: 1%;">
+                    <span class="font-l4" style="font-weight: bold;">Reviews </span>
+                    <span class="font-l4" style="font-weight: bold; color:gray"> {{reviews.length}}</span>
+                </div>
+            </div>
+            <div *ngFor="let review of reviews.slice(0,10);" class="card px-0 mx-2 my-2" style="color:black;">
+                <div [class.row]="!mobile" style="width: 100%;">
+                    <div [class.col-2]="!mobile"
+                         [class.col-6]="mobile">
+                        <div style="width: 60%; margin-left:20%;margin-top:10%;">
+                            <div class="aspect-ratio aspect-ratio--1x1">
+                                <img class="aspect-ratio--object rounded-circle" 
+                                    src="{{review.avatar_path}}" 
+                                    style="background-color: white;" 
+                                    onerror="this.style.display='none'">
+                            </div>
+                        </div>
+                    </div>
+                    <div [class.col-10]="!mobile" 
+                         style="padding:10px;">
+                        <div>
+                            <h6 class="font-l6" style="font-weight: bold; padding:0; margin:0;">
+                                A review created by {{review.author}}
+                                <br *ngIf="mobile">
+                                <button type="button" style="background-color: black; 
+                                                color: white; 
+                                                border-radius: 20px;
+                                                border-color: black;">
+                                    &#9733; {{review.rating}}
+                                </button>
+                            </h6>
+                        </div>
+                        <div class="font-l7" style="color:grey; padding-top: 15px;">
+                            Written by {{review.author}} on {{review.create_at|date:"medium"}}
+                        </div>
+                        <div class="three-line-limited-content font-l7" style="padding-top: 8px;">
+                            {{review.content}}
+                        </div>
+                        <div  class="font-l7" style="padding-top: 8px;">
+                            <a href="{{review.url}}" target="_blank" style="color: #070b85; text-decoration: underline;">
+                                Read the rest
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="recommendations!=null && recommendations.length > 0" 
+            class="recommendations" style="padding-left:10%; width:88%; padding-top:20px;">
+            <div class="font-l4" style="font-weight: bold;">Recommended {{categoryTitle}}</div>
+            <div>
+                <app-horizontal-movie-list  [movieItemSets]="recommendations">
+                </app-horizontal-movie-list>
+            </div>
+        </div>
+        <div *ngIf="similarItems!=null && similarItems.length > 0" 
+            class="similars" style="padding-left:10%; width:88%; padding-top:20px;">
+            <div class="font-l4"  style="font-weight: bold;">Similar {{categoryTitle}}</div>
+            <div>
+                <app-horizontal-movie-list [movieItemSets]="similarItems">
+                </app-horizontal-movie-list>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #modalContent let-modal>
+        <div *ngIf="selectedCast == null">No cast data</div>
+        <div *ngIf="selectedCast != null">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">{{selectedCast.name}}</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="padding:0">
+                <div style="overflow-y: hidden;" [ngStyle]="{ 'height': mobile ? 'calc(100vh - 5rem)':'calc(95vh - 15rem)'}">
+                    <div *ngIf="!mobile" style="overflow-y: auto; height: 100%; overflow-x: hidden; padding:20px;">                        
+                        <div class="row">
+                            <div class="col-3 mx-0">
+                                <div class="aspect-ratio aspect-ratio--3x4 person_img_placeholder" style="width: 100%">
+                                    <img class="aspect-ratio--object" src="{{selectedCast.image_url}}">
+                                </div>
+                            </div>
+                            <div class="col-8 ml-1">
+                                <div class="font-l7">
+                                    <p *ngIf="selectedCast.birth_date != null" style="margin:0">Birth: {{selectedCast.birth_date|date:'yyyy-MM-dd'}}</p>
+                                    <p *ngIf="selectedCast.birth_place != null" style="margin:0">Birth Place: {{selectedCast.birth_place}}</p>
+                                    <p *ngIf="selectedCast.gender != null" style="margin:0">Gender: {{selectedCast.gender|gender}}</p>
+                                    <p *ngIf="selectedCast.homepage != null" style="margin:0">Website: <a href="{{selectedCast.homepage}}" target="_blank" style="color:blue">{{selectedCast.homepage}}</a></p>
+                                    <p *ngIf="selectedCast.known_for != null" style="margin:0">Known for: {{selectedCast.known_for}}</p>
+                                    <p *ngIf="selectedCast.other_names != null" style="margin:0">Also Known as: {{selectedCast.other_names}}</p>
+                                </div>
+                                <div *ngIf="selectedCast.external_links != null" style="margin-top: 10px;">
+                                    <a *ngIf="selectedCast.external_links.imdb_id != null" 
+                                        href="https://imdb.com/name/{{selectedCast.external_links.imdb_id}}" 
+                                        target="_blank" class="share-button-imdb mr-1"
+                                        ngbPopover="Vist IMDB" triggers="mouseenter:mouseleave">
+                                        <!-- ngbTooltip="Vist IMDB" placement="top" tooltipClass="custom-tooltip"> -->
+                                        <img src="../../../assets/img/imdb-icon.png">
+                                    </a>
+                                    <a *ngIf="selectedCast.external_links.insta_id != null" 
+                                        href="https://instagram.com/{{selectedCast.external_links.insta_id}}" 
+                                        target="_blank" class="share-button-insta mr-1"
+                                        ngbPopover="Vist Instagram" triggers="mouseenter:mouseleave">
+                                        <!-- ngbTooltip="Vist Instagram" placement="top" tooltipClass="custom-tooltip"> -->
+                                        <img src="../../../assets/img/insta-icon.png">
+                                    </a>
+                                    <a *ngIf="selectedCast.external_links.fb_id != null" 
+                                        href="https://facebook.com/{{selectedCast.external_links.fb_id}}" 
+                                        target="_blank" class="share-button-fb mr-1"
+                                        ngbPopover="Vist Facebook" triggers="mouseenter:mouseleave">
+                                        <!-- ngbTooltip="Vist Facebook" placement="top" tooltipClass="custom-tooltip"> -->
+                                        <img src="../../../assets/img/facebook-icon.png">
+                                    </a>
+                                    <a *ngIf="selectedCast.external_links.twiter_id != null" 
+                                        href="https://twitter.com/{{selectedCast.external_links.twiter_id}}" 
+                                        target="_blank" class="share-button-twitter mr-1"
+                                        ngbPopover="Vist Twitter" triggers="mouseenter:mouseleave">
+                                        <!-- ngbTooltip="Vist Twitter" placement="top" tooltipClass="custom-tooltip"> -->
+                                        <img src="../../../assets/img/twitter-icon.png">
+                                    </a>                        
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="selectedCast.biography != null && selectedCast.biography != '' " style="margin-top: 10px;">
+                            <div class="font-l4" style="font-weight: bold;">Biography</div>
+                            <div class="font-l7">{{selectedCast.biography}}</div>
+                        </div>
+                    </div>
+                    <div *ngIf="mobile" style="overflow-y: auto; height: 100%; overflow-x: hidden; padding:10px;">                        
+                        <div class="mx-0">
+                            <div class="aspect-ratio aspect-ratio--3x4 person_img_placeholder" style="width: 100%">
+                                <img class="aspect-ratio--object" src="{{selectedCast.image_url}}">
+                            </div>
+                        </div>
+                        <div class="ml-1">
+                            <div class="font-l7">
+                                <p *ngIf="selectedCast.birth_date != null" style="margin:0">Birth: {{selectedCast.birth_date|date:'yyyy-MM-dd'}}</p>
+                                <p *ngIf="selectedCast.birth_place != null" style="margin:0">Birth Place: {{selectedCast.birth_place}}</p>
+                                <p *ngIf="selectedCast.gender != null" style="margin:0">Gender: {{selectedCast.gender|gender}}</p>
+                                <p *ngIf="selectedCast.homepage != null" style="margin:0">Website: <a href="{{selectedCast.homepage}}" target="_blank" style="color:blue">{{selectedCast.homepage}}</a></p>
+                                <p *ngIf="selectedCast.known_for != null" style="margin:0">Known for: {{selectedCast.known_for}}</p>
+                                <p *ngIf="selectedCast.other_names != null" style="margin:0">Also Known as: {{selectedCast.other_names}}</p>
+                            </div>
+                            <div *ngIf="selectedCast.external_links != null" style="margin-top: 10px;">
+                                <a *ngIf="selectedCast.external_links.imdb_id != null" 
+                                    href="https://imdb.com/name/{{selectedCast.external_links.imdb_id}}" 
+                                    target="_blank" class="share-button-imdb mr-1"
+                                    ngbPopover="Vist IMDB" triggers="mouseenter:mouseleave">
+                                    <!-- ngbTooltip="Vist IMDB" placement="top" tooltipClass="custom-tooltip"> -->
+                                    <img src="../../../assets/img/imdb-icon.png">
+                                </a>
+                                <a *ngIf="selectedCast.external_links.insta_id != null" 
+                                    href="https://instagram.com/{{selectedCast.external_links.insta_id}}" 
+                                    target="_blank" class="share-button-insta mr-1"
+                                    ngbPopover="Vist Instagram" triggers="mouseenter:mouseleave">
+                                    <!-- ngbTooltip="Vist Instagram" placement="top" tooltipClass="custom-tooltip"> -->
+                                    <img src="../../../assets/img/insta-icon.png">
+                                </a>
+                                <a *ngIf="selectedCast.external_links.fb_id != null" 
+                                    href="https://facebook.com/{{selectedCast.external_links.fb_id}}" 
+                                    target="_blank" class="share-button-fb mr-1"
+                                    ngbPopover="Vist Facebook" triggers="mouseenter:mouseleave">
+                                    <!-- ngbTooltip="Vist Facebook" placement="top" tooltipClass="custom-tooltip"> -->
+                                    <img src="../../../assets/img/facebook-icon.png">
+                                </a>
+                                <a *ngIf="selectedCast.external_links.twiter_id != null" 
+                                    href="https://twitter.com/{{selectedCast.external_links.twiter_id}}" 
+                                    target="_blank" class="share-button-twitter mr-1"
+                                    ngbPopover="Vist Twitter" triggers="mouseenter:mouseleave">
+                                    <!-- ngbTooltip="Vist Twitter" placement="top" tooltipClass="custom-tooltip"> -->
+                                    <img src="../../../assets/img/twitter-icon.png">
+                                </a>                        
+                            </div>
+                        </div>
+                        <div *ngIf="selectedCast.biography != null" style="margin-top: 10px;">
+                            <div class="font-l4" style="font-weight: bold;">Biography</div>
+                            <div class="font-l7">{{selectedCast.biography}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

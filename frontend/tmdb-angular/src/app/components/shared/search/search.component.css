@@ -1,0 +1,26 @@
+.search-container .search-bar{
+    color: white;
+    background-color: #010c20;
+    border-top-color: #010c20;
+    border-left-color: #010c20;
+    border-right-color: #010c20;
+    box-shadow: none;
+}
+
+.search-container .search-bar:focus{
+    box-shadow: none;
+}
+
+.search-container ::ng-deep .dropdown-menu { 
+    color: white;
+    background-color: #050a30;
+    border: 1px solid white;
+}
+
+.search-container ::ng-deep .dropdown-item{
+    color: white;
+}
+
+.search-item a{
+    text-decoration: none;
+}
