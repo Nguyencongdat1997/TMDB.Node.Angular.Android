@@ -5,9 +5,9 @@ import { getCastDetail } from "../controllers/castController.js";
 
 
 var registerAPIFuncs = (app, router) => {
-	app.get('/', function(req, res) {
-		res.status(200).send('Welcome to the service.');
-	});
+	// app.get('/', function(req, res) {
+	// 	res.status(200).send('Welcome to the service.');
+	// });
 
     router.get('/home', getHomeData);
 

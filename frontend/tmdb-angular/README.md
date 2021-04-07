@@ -34,4 +34,11 @@
         - [x] Save data to local storage
         - [x] (homepage) Continue watching list
     - [x] Search bar
-- [ ] RWD (reponsive)
+- [x] RWD (reponsive)
+- [ ] Deploy to GCP
+
+# Building steps
+- Update production environment parameters
+- Run: ng build
+- Copy generated folder in ./dist to Backend folder
+- Reconfig and deploy Backend with static files
