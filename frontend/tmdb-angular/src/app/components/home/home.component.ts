@@ -28,11 +28,17 @@ export class HomeComponent implements OnInit {
     popularTvs = [Array.from({length:6}, (_)=>(this._defaultItem))];
     topRatedTvs = [Array.from({length:6}, (_)=>(this._defaultItem))];
     trendingTvs = [Array.from({length:6}, (_)=>(this._defaultItem))];
+    mobile = false;
 
     constructor(private tmdbService: TmdbProxyServiceService) {
         var chunkSize = 6;
         if (window.screen.width <= 777){
             chunkSize = 1;
+            this.mobile = true;
+        }
+        if (window.screen.width > 777){
+            chunkSize = 6;
+            this.mobile = false;
         }
         tmdbService.getHomeData().subscribe(x => {
             this.data = x;
