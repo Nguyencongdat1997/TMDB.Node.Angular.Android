@@ -45,4 +45,11 @@ export class SearchComponent implements OnInit {
     public openNewTab(url){
         window.open(url, '_self');
     }
+
+    inputFormatSearchItem(value: any){
+        if (value.title){
+            return value.title;
+        }
+        return value;
+    }
 }
