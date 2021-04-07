@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverUrl: "http://localhost:4000",
+  serverUrl: "https://innate-legacy-310016.wl.r.appspot.com",
 };
 
 /*

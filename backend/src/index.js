@@ -19,13 +19,13 @@ const startServer = async () => {
     const __dirname = path.resolve(path.dirname('./'));
     app.use(express.static(path.join(__dirname, 'dist/tmdb-angular')));
 	app.use('/api/v1', router);
-    app.use('/', function(req, res){
+    app.use('/*', function(req, res){
         res.sendFile(path.join(__dirname + '/dist/tmdb-angular/index.html'));
     })
 
 	// Expose app
-	app.listen({ port: 4000 }, () =>
-		console.log(`🚀 Server ready at http://localhost:4000`)
+	app.listen({ port: 8080 }, () =>
+		console.log(`🚀 Server ready at http://localhost:8080`)
 	)
 };
 

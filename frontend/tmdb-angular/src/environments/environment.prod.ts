@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  serverUrl: "http://localhost:5000", // TODO: configure GCP url
+  serverUrl: "https://innate-legacy-310016.wl.r.appspot.com", // TODO: configure GCP url
 };
