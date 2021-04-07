@@ -192,7 +192,7 @@
                 </button>
             </div>
             <div class="modal-body" style="padding:0">
-                <div style="overflow-y: hidden; height: calc(100vh - 15rem);">
+                <div style="overflow-y: hidden;" [ngStyle]="{ 'height': mobile ? 'calc(100vh - 5rem)':'calc(95vh - 15rem)'}">
                     <div *ngIf="!mobile" style="overflow-y: auto; height: 100%; overflow-x: hidden; padding:20px;">                        
                         <div class="row">
                             <div class="col-3 mx-0">
