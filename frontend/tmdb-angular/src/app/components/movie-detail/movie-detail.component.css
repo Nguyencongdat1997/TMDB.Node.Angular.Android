@@ -78,3 +78,7 @@
 .content-text{
     opacity: 0.8;
 }
+
+.hide-scrollbar-x::-webkit-scrollbar {
+    display: none;
+}
