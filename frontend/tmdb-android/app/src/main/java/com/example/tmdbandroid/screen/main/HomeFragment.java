@@ -17,6 +17,8 @@ import com.example.tmdbandroid.R;
 
 public class HomeFragment extends Fragment {
 
+    private FragmentHomeBinding binding;
+
     public static HomeFragment newInstance() {
         return new HomeFragment();
     }
@@ -24,19 +26,20 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        FragmentHomeBinding binding = FragmentHomeBinding.inflate(inflater);
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
         binding.setLifecycleOwner(this);
 
-        HomeViewModelFactory viewModelFactory = new HomeViewModelFactory(this.getContext());
+        HomeViewModelFactory viewModelFactory = new HomeViewModelFactory(getActivity().getApplication());
         binding.setViewModel(new ViewModelProvider(this, viewModelFactory).get(HomeViewModel.class));
 
-//        return inflater.inflate(R.layout.fragment_home, container, false);
-        return binding.getRoot();
+        View view = binding.getRoot();
+        return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
 }

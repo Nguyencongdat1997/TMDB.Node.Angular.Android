@@ -1,17 +1,23 @@
-package com.example.tmdbandroid.models;
+package com.example.tmdbandroid.DTOs;
+
+import com.google.gson.annotations.SerializedName;
 
 public class ItemDetail {
     public String id;
     public String category;
     public String title;
     public String genres;
+    @SerializedName("spoken_language")
     public String spokenLanguage;
     public String date;
     public String runtime;
     public String overview;
-    public String voteAverate;
+    @SerializedName("vote_average")
+    public String voteAverage;
     public String tagline;
+    @SerializedName("poster_path")
     public String posterPath;
+    @SerializedName("backdrop_path")
     public String backdropPath;
     public ItemDetail (String id,
                        String category,
@@ -21,7 +27,7 @@ public class ItemDetail {
                        String date,
                        String runtime,
                        String overview,
-                       String voteAverate,
+                       String voteAverage,
                        String tagline,
                        String posterPath,
                        String backdropPath
@@ -34,7 +40,7 @@ public class ItemDetail {
         this.date = date;
         this.runtime = runtime;
         this.overview = overview;
-        this.voteAverate = voteAverate;
+        this.voteAverage = voteAverage;
         this.tagline = tagline;
         this.posterPath = posterPath;
         this.backdropPath = backdropPath;

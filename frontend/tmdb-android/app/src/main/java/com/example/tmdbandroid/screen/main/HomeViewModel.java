@@ -1,5 +1,6 @@
 package com.example.tmdbandroid.screen.main;
 
+import android.app.Application;
 import android.content.Context;
 
 import androidx.lifecycle.LiveData;
@@ -12,6 +13,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.tmdbandroid.DTOs.HomePageDTO;
 import com.example.tmdbandroid.services.network.VolleyQueueSingletonManager;
+import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
@@ -27,14 +29,17 @@ public class HomeViewModel extends ViewModel {
     }
 
     Context context;
+    Application application;
+    Gson gson;
 
-    public HomeViewModel(Context context){
-        this.context = context;
+    public HomeViewModel(Application application){
+        this.application = application;
+        gson = new Gson();
 
         _status = new MutableLiveData<String>();
         _homepageDto = new MutableLiveData<HomePageDTO>();
 
-        _status.postValue("Hello Home");
+        _status.setValue("Hello Home");
         updateData();
     }
 
@@ -44,14 +49,17 @@ public class HomeViewModel extends ViewModel {
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        _status.postValue(response.toString());
+                        _status.setValue("Successful");
+                        HomePageDTO object = gson.fromJson(response.toString(), HomePageDTO.class);
+                        _homepageDto.postValue(object);
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        _status.setValue("Failed");
                         // TODO: Handle error
                     }
                 });
-        VolleyQueueSingletonManager.getInstance(context).addToRequestQueue(jsonObjectRequest);
+        VolleyQueueSingletonManager.getInstance(application).addToRequestQueue(jsonObjectRequest);
     }
 }
