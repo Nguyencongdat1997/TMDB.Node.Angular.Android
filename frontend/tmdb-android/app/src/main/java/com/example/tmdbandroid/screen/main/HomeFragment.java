@@ -1,7 +1,9 @@
 package com.example.tmdbandroid.screen.main;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,14 +13,19 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.tmdbandroid.DTOs.HomePageDTO;
 import com.example.tmdbandroid.databinding.FragmentHomeBinding;
 
 import com.example.tmdbandroid.R;
+import com.example.tmdbandroid.screen.components.homeSlider.SliderAdapter;
+import com.smarteist.autoimageslider.SliderView;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private HomeViewModel viewModel;
+    private Context context;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -29,6 +36,8 @@ public class HomeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         binding.setLifecycleOwner(this);
+
+        context = getContext();
 
         HomeViewModelFactory viewModelFactory = new HomeViewModelFactory(getActivity().getApplication());
         viewModel = (new ViewModelProvider(this, viewModelFactory)).get(HomeViewModel.class);
@@ -47,6 +56,8 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        viewModel.getHomepageDto().observe(this, nowPlayingListUpdateObserver);
+
         View view = binding.getRoot();
         return view;
     }
@@ -56,5 +67,17 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    private Observer<HomePageDTO> nowPlayingListUpdateObserver = new Observer<HomePageDTO>() {
+        @Override
+        public void onChanged(HomePageDTO homePageDTO) {
+            SliderAdapter homeSliderApdater = new SliderAdapter(context, homePageDTO.carouselList.subList(0,6));
+            binding.homeSlider.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
+            binding.homeSlider.setSliderAdapter(homeSliderApdater);
+            binding.homeSlider.setScrollTimeInSec(3);
+            binding.homeSlider.setAutoCycle(true);
+            binding.homeSlider.startAutoCycle();
+        }
+    };
 
 }

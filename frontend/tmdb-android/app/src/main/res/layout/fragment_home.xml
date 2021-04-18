@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="USC Films"
-                android:textSize="30sp"
+                android:textSize="30dp"
                 app:layout_constraintLeft_toRightOf="@id/theaterIconBtn"
                 app:layout_constraintBottom_toBottomOf="parent"/>
             <Button
@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Movie"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:insetLeft="0dp"
                 android:insetRight="0dp"
                 android:minWidth="0dp"
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TV Show"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -62,54 +62,70 @@
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Movie Carousel"
-                    android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}"
-                    android:textSize="30sp"/>
+                    android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}">
+                    <com.smarteist.autoimageslider.SliderView
+                        android:id="@+id/homeSlider"
+                        android:layout_width="match_parent"
+                        android:layout_height="430dp"
+                        android:layout_centerInParent="true"
+                        app:sliderAnimationDuration="600"
+                        app:sliderAutoCycleDirection="back_and_forth"
+                        app:sliderIndicatorAnimationDuration="600"
+                        app:sliderIndicatorEnabled="true"
+                        app:sliderIndicatorGravity="center_horizontal|bottom"
+                        app:sliderIndicatorMargin="15dp"
+                        app:sliderIndicatorOrientation="horizontal"
+                        app:sliderIndicatorPadding="3dp"
+                        app:sliderIndicatorRadius="2dp"
+                        app:sliderIndicatorSelectedColor="@color/blue"
+                        app:sliderIndicatorUnselectedColor="@color/white"
+                        app:sliderScrollTimeInSec="1" />
+                </RelativeLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Movie Top-Rated"
                     android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}"
-                    android:textSize="30sp"/>
+                    android:textSize="30dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Movie Popular"
                     android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}"
-                    android:textSize="30sp"/>
+                    android:textSize="30dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tv Carousel"
                     android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
-                    android:textSize="30sp"/>
+                    android:textSize="30dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tv Top-Rated"
                     android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
-                    android:textSize="30sp"/>
+                    android:textSize="30dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tv Popular"
                     android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
-                    android:textSize="30sp"/>
+                    android:textSize="30dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.status}"
-                    android:textSize="30sp"/>
+                    android:textSize="30dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.homepageDto.carouselList[1].title}"
-                    android:textSize="30sp"/>
+                    android:textSize="30dp"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
