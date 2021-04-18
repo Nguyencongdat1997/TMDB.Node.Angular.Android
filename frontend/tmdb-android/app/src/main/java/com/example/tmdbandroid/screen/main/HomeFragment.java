@@ -18,6 +18,7 @@ import com.example.tmdbandroid.R;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    private HomeViewModel viewModel;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -30,7 +31,21 @@ public class HomeFragment extends Fragment {
         binding.setLifecycleOwner(this);
 
         HomeViewModelFactory viewModelFactory = new HomeViewModelFactory(getActivity().getApplication());
-        binding.setViewModel(new ViewModelProvider(this, viewModelFactory).get(HomeViewModel.class));
+        viewModel = (new ViewModelProvider(this, viewModelFactory)).get(HomeViewModel.class);
+        binding.setViewModel(viewModel);
+
+        binding.movieTabBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.setMovieTabOpened(true);
+            }
+        });
+        binding.tvTabBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.setMovieTabOpened(false);
+            }
+        });
 
         View view = binding.getRoot();
         return view;

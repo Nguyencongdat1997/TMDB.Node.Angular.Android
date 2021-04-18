@@ -28,6 +28,13 @@ public class HomeViewModel extends ViewModel {
         return _homepageDto;
     }
 
+    private MutableLiveData<Boolean> _movieTabOpened;
+    public LiveData<Boolean> getMovieTabOpened() {
+        return _movieTabOpened;
+    }
+    public void setMovieTabOpened(boolean newValue) { this._movieTabOpened.setValue(newValue); }
+
+
     Context context;
     Application application;
     Gson gson;
@@ -38,7 +45,9 @@ public class HomeViewModel extends ViewModel {
 
         _status = new MutableLiveData<String>();
         _homepageDto = new MutableLiveData<HomePageDTO>();
+        _movieTabOpened = new MutableLiveData<Boolean>();
 
+        _movieTabOpened.setValue(true);
         _status.setValue("Hello Home");
         updateData();
     }
