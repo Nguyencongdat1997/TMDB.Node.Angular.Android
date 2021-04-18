@@ -10,6 +10,30 @@
             android:id="@+id/searchItemImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/searchItemCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:textAllCaps="true"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_star_24"
+            android:layout_toLeftOf="@id/searchItemRate"/>
+        <TextView
+            android:id="@+id/searchItemRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:textAllCaps="true"/>
+        <TextView
+            android:id="@+id/searchItemTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:textAllCaps="true"/>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

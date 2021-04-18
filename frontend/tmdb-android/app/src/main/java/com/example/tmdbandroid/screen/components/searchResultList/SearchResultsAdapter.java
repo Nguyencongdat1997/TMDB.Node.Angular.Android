@@ -11,6 +11,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.PopupMenu;
@@ -37,12 +38,21 @@ public class SearchResultsAdapter
             extends RecyclerView.ViewHolder {
 
         ImageView movieItemImageView;
+        TextView titleTextView;
+        TextView rateTextView;
+        TextView categoryAndTimeTextView;
 
         public MyView(View view)
         {
             super(view);
             movieItemImageView = (ImageView) view
                     .findViewById(R.id.searchItemImage);
+            titleTextView = (TextView) view
+                    .findViewById(R.id.searchItemTitle);
+            rateTextView = (TextView) view
+                    .findViewById(R.id.searchItemRate);
+            categoryAndTimeTextView = (TextView) view
+                    .findViewById(R.id.searchItemCategory);
         }
     }
 
@@ -75,11 +85,16 @@ public class SearchResultsAdapter
         }
         Glide.with(viewHolder.itemView)
                 .load(selectedItem.backdropPath)
-                .error(R.drawable.ic_launcher_foreground)
+                .error(R.drawable.movie_placeholder)
                 .transform(new MultiTransformation<>(
                         new CenterCrop(), new RoundedCorners(20)
                 ))
                 .into(viewHolder.movieItemImageView);
+        viewHolder.titleTextView.setText(selectedItem.title);
+        viewHolder.rateTextView.setText("10"); // TODO: update this in backend
+        String txtCategory = selectedItem.category == "movie" ? "movie" : "tv shows";
+        String year = "2010";
+        viewHolder.categoryAndTimeTextView.setText(selectedItem.category + " (" + year + ")");
     }
 
     @Override
