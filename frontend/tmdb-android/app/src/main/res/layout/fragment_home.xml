@@ -90,12 +90,22 @@
                     android:text="Movie Top-Rated"
                     android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}"
                     android:textSize="30dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/homeTopRatedMovieList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Movie Popular"
                     android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}"
                     android:textSize="30dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/homePopularMovieList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -113,18 +123,6 @@
                     android:layout_height="wrap_content"
                     android:text="Tv Popular"
                     android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
-                    android:textSize="30dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.status}"
-                    android:textSize="30dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.homepageDto.carouselList[1].title}"
                     android:textSize="30dp"/>
             </LinearLayout>
         </ScrollView>
