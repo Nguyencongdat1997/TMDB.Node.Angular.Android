@@ -100,7 +100,7 @@ public class HomeFragment extends Fragment {
         RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(recyclerViewLayoutManager);
 
-        HorizontalRecycleViewAdapter horizontalListApdater = new HorizontalRecycleViewAdapter(list);
+        HorizontalRecycleViewAdapter horizontalListApdater = new HorizontalRecycleViewAdapter(context, list);
 
         LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(
                 context,
