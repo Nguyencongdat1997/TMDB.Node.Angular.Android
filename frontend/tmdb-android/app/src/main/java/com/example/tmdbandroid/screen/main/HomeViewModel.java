@@ -12,6 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.tmdbandroid.DTOs.HomePageDTO;
+import com.example.tmdbandroid.constant.APIEndpoints;
 import com.example.tmdbandroid.services.network.VolleyQueueSingletonManager;
 import com.google.gson.Gson;
 
@@ -53,7 +54,7 @@ public class HomeViewModel extends ViewModel {
     }
 
     public void updateData(){
-        String url = "https://innate-legacy-310016.wl.r.appspot.com/api/v1/home";
+        String url = APIEndpoints.HomeUrl;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
