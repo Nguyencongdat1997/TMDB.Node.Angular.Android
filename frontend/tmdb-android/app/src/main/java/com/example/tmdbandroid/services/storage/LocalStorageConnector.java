@@ -2,6 +2,7 @@ package com.example.tmdbandroid.services.storage;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.example.tmdbandroid.DTOs.Item;
 import com.google.gson.Gson;
@@ -48,6 +49,7 @@ public class LocalStorageConnector {
     public List<Item> getWatchList() {
         String jsonTxtData = pref.getString(watchListKey,"[]");
         List<Item> watchList = Arrays.asList(gson.fromJson(jsonTxtData, Item[].class));
+        Log.v("DEV", "watchlist " + watchList +" : " + watchList.getClass());
         return watchList;
     }
 

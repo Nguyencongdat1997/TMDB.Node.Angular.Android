@@ -2,6 +2,7 @@ package com.example.tmdbandroid.screen.main;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -40,7 +41,7 @@ public class HomeViewModel extends ViewModel {
     }
     private boolean isInWatchList(Item item, List<Item>  watchList){
         for (int i =0; i<watchList.size(); i++){
-            if (item.id == watchList.get(i).id){
+            if (item.id.equals(watchList.get(i).id)){
                 return true;
             }
         }
@@ -58,8 +59,8 @@ public class HomeViewModel extends ViewModel {
         _localWatchlist.setValue(watchlist);
     }
     public void addItemToWatchList(Item item){
-        List<Item> watchList = _localWatchlist.getValue();
-        assert watchList != null;
+        ArrayList<Item> watchList = new ArrayList<>(_localWatchlist.getValue());
+
         if (!isInWatchList(item, watchList)){
             // Add to watchlist
             int currentIndex = -1;
@@ -73,6 +74,7 @@ public class HomeViewModel extends ViewModel {
                 watchList.remove(currentIndex);
             }
             watchList.add(0, item);
+            _localWatchlist.setValue(watchList);
 
             // Update status
             HomePageDTO homepageDtoData = _homepageDto.getValue();
@@ -86,7 +88,7 @@ public class HomeViewModel extends ViewModel {
         }
     }
     public void removeItemFromWatchList(Item item){
-        List<Item> watchList = _localWatchlist.getValue();
+        ArrayList<Item> watchList = new ArrayList<>(_localWatchlist.getValue());
         assert watchList != null;
         if (isInWatchList(item, watchList)){
             // Remove from watchlist
@@ -100,6 +102,7 @@ public class HomeViewModel extends ViewModel {
             if (currentIndex >= 0 && currentIndex < watchList.size()){
                 watchList.remove(currentIndex);
             }
+            _localWatchlist.setValue(watchList);
 
             // Update status
             HomePageDTO homepageDtoData = _homepageDto.getValue();
@@ -150,9 +153,9 @@ public class HomeViewModel extends ViewModel {
 
                         if (_localWatchlist==null){
                             _localWatchlist = new MutableLiveData<List<Item>>();
-//                            LocalStorageConnector localStorageConnector = new LocalStorageConnector(application.getApplicationContext());
-//                            List<Item> watchList = localStorageConnector.getWatchList();
-                            setLocalWatchlist(new ArrayList<Item>());
+                            LocalStorageConnector localStorageConnector = new LocalStorageConnector(application.getApplicationContext());
+                            List<Item> watchList = localStorageConnector.getWatchList();
+                            setLocalWatchlist(watchList);
                         }
                     }
                 }, new Response.ErrorListener() {

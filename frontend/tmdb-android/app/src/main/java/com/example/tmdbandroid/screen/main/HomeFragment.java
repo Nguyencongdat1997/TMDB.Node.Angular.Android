@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,8 +77,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-//        LocalStorageConnector localStorageConnector = new LocalStorageConnector(getContext());
-//        localStorageConnector.saveWatchList(viewModel.getLocalWatchlist().getValue());
+        LocalStorageConnector localStorageConnector = new LocalStorageConnector(getContext());
+        List<Item> watchList = viewModel.getLocalWatchlist().getValue();
+        localStorageConnector.saveWatchList(watchList);
         binding = null;
     }
 
