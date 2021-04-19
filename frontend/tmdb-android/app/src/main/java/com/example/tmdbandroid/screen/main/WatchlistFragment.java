@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +25,7 @@ import com.example.tmdbandroid.databinding.FragmentSearchBinding;
 import com.example.tmdbandroid.databinding.FragmentWatchlistBinding;
 import com.example.tmdbandroid.screen.components.searchResultList.SearchResultsAdapter;
 import com.example.tmdbandroid.screen.components.watchlistMovieList.WatchListGridViewAdapter;
+import com.example.tmdbandroid.screen.components.watchlistMovieList.WatchListRecyclerViewAdapter;
 import com.example.tmdbandroid.services.storage.LocalStorageConnector;
 
 import java.util.List;
@@ -34,7 +36,7 @@ public class WatchlistFragment extends Fragment {
     private FragmentWatchlistBinding binding;
     private Context context;
 
-    GridView watchlistGridView;
+    RecyclerView watchlistGridView;
     WatchListGridViewAdapter gridViewAdapter;
 
     public static WatchlistFragment newInstance() {
@@ -76,19 +78,11 @@ public class WatchlistFragment extends Fragment {
     private Observer<List<Item>> watchListUpdateObserver = new Observer<List<Item>>() {
         @Override
         public void onChanged(List<Item> watchList) {
-            watchlistGridView = (GridView) binding.watchlistGridView;
-            gridViewAdapter = new WatchListGridViewAdapter(getContext(), watchList, viewModel);
-            watchlistGridView.setAdapter(gridViewAdapter);
-            // implement setOnItemClickListener event on GridView
-            watchlistGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    // set an Intent to Another Activity
-//                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-//                intent.putExtra("image", logos[position]); // put image data in Intent
-//                startActivity(intent); // start Intent
-                }
-            });
+            watchlistGridView = (RecyclerView) binding.watchlistGridView;
+            WatchListRecyclerViewAdapter adapter = new WatchListRecyclerViewAdapter(getContext(), watchList, viewModel);
+            watchlistGridView.setAdapter(adapter);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),3);
+            watchlistGridView.setLayoutManager(gridLayoutManager);
         }
     };
 
