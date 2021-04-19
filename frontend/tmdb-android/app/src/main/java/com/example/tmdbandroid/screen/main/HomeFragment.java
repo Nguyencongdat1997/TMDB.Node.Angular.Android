@@ -23,6 +23,7 @@ import com.example.tmdbandroid.databinding.FragmentHomeBinding;
 import com.example.tmdbandroid.R;
 import com.example.tmdbandroid.screen.components.homeHorizontalMovieList.HorizontalRecycleViewAdapter;
 import com.example.tmdbandroid.screen.components.homeSlider.SliderAdapter;
+import com.example.tmdbandroid.services.storage.LocalStorageConnector;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.List;
@@ -38,15 +39,19 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        HomeViewModelFactory viewModelFactory = new HomeViewModelFactory(getActivity().getApplication());
+        viewModel = (new ViewModelProvider(this, viewModelFactory)).get(HomeViewModel.class);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         binding.setLifecycleOwner(this);
 
         context = getContext();
-
-        HomeViewModelFactory viewModelFactory = new HomeViewModelFactory(getActivity().getApplication());
-        viewModel = (new ViewModelProvider(this, viewModelFactory)).get(HomeViewModel.class);
         binding.setViewModel(viewModel);
 
         binding.movieTabBtn.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +76,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+//        LocalStorageConnector localStorageConnector = new LocalStorageConnector(getContext());
+//        localStorageConnector.saveWatchList(viewModel.getLocalWatchlist().getValue());
         binding = null;
     }
 
@@ -100,7 +107,7 @@ public class HomeFragment extends Fragment {
         RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(recyclerViewLayoutManager);
 
-        HorizontalRecycleViewAdapter horizontalListApdater = new HorizontalRecycleViewAdapter(context, list);
+        HorizontalRecycleViewAdapter horizontalListApdater = new HorizontalRecycleViewAdapter(context, list, viewModel);
 
         LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(
                 context,

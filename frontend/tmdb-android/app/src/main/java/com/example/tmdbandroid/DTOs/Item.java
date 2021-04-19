@@ -10,11 +10,5 @@ public class Item {
     @SerializedName("backdrop_path")
     public String backdropPath;
     public String category;
-    public Item(String id, String title, String posterPath, String backdropPath, String category) {
-        this.id = id;
-        this.title = title;
-        this.posterPath = posterPath;
-        this.backdropPath = backdropPath;
-        this.category = category;
-    }
+    public boolean isInWatchlist;
 }

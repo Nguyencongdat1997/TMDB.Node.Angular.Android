@@ -19,6 +19,10 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.tmdbandroid.DTOs.Item;
 import com.example.tmdbandroid.R;
+import com.example.tmdbandroid.screen.main.HomeFragment;
+import com.example.tmdbandroid.screen.main.HomeViewModel;
+import com.example.tmdbandroid.screen.main.SearchFragment;
+import com.example.tmdbandroid.screen.main.WatchlistFragment;
 
 import java.util.List;
 
@@ -27,6 +31,7 @@ public class HorizontalRecycleViewAdapter
         extends RecyclerView.Adapter<HorizontalRecycleViewAdapter.MyView> {
     private List<Item> list;
     private Context context;
+    private HomeViewModel viewModel;
 
     public class MyView
             extends RecyclerView.ViewHolder {
@@ -43,10 +48,11 @@ public class HorizontalRecycleViewAdapter
         }
     }
 
-    public HorizontalRecycleViewAdapter(Context context, List<Item> horizontalList)
+    public HorizontalRecycleViewAdapter(Context context, List<Item> horizontalList, HomeViewModel viewModel)
     {
         this.context = context;
         this.list = horizontalList;
+        this.viewModel = viewModel;
     }
 
     @Override
@@ -66,9 +72,9 @@ public class HorizontalRecycleViewAdapter
     public void onBindViewHolder(final MyView viewHolder,
                                  final int position)
     {
-        final Item sliderItem = list.get(position);
+        final Item selectedItem = list.get(position);
         Glide.with(viewHolder.itemView)
-                .load(sliderItem.posterPath)
+                .load(selectedItem.posterPath)
                 .transform(new MultiTransformation<>(
                         new CenterCrop(), new RoundedCorners(20)
                 ))
@@ -80,11 +86,37 @@ public class HorizontalRecycleViewAdapter
                 PopupMenu popupMenu = new PopupMenu(context, viewHolder.moreBtn);
 
                 popupMenu.getMenuInflater().inflate(R.menu.home_movie_item_popup, popupMenu.getMenu());
+                MenuItem addToWatchListMenuItem = popupMenu.getMenu().findItem(R.id.movieItemPopupAddtoWatchListBtn);
+                if (selectedItem.isInWatchlist){
+                    addToWatchListMenuItem.setTitle("Remove from watchlist");
+                }
+                else{
+                    addToWatchListMenuItem.setTitle("Add to watchlist");
+                }
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
-                        // Toast message on menu item clicked
-                        Toast.makeText(context, "You Clicked " + menuItem.getTitle() + " with Id " + menuItem.getItemId(), Toast.LENGTH_SHORT).show();
+                        switch (menuItem.getItemId()) {
+                            case R.id.movieItemPopupTMDBBtn:
+                                Toast.makeText(context, "You Clicked " + menuItem.getTitle() + " with Id " + menuItem.getItemId(), Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.movieItemPopupFbBtn:
+                                Toast.makeText(context, "You Clicked " + menuItem.getTitle() + " with Id " + menuItem.getItemId(), Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.movieItemPopupTwitterBtn:
+                                Toast.makeText(context, "You Clicked " + menuItem.getTitle() + " with Id " + menuItem.getItemId(), Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.movieItemPopupAddtoWatchListBtn:
+                                if (selectedItem.isInWatchlist){
+                                    menuItem.setTitle("Add to watchlist");
+                                    viewModel.removeItemFromWatchList(selectedItem);
+                                }
+                                else{
+                                    menuItem.setTitle("Remove from watchlist");
+                                    viewModel.addItemToWatchList(selectedItem);
+                                }
+                                break;
+                        }
                         return true;
                     }
                 });
