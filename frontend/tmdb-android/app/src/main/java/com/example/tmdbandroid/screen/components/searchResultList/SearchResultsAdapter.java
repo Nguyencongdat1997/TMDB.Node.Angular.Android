@@ -92,7 +92,7 @@ public class SearchResultsAdapter
                 .into(viewHolder.movieItemImageView);
         viewHolder.titleTextView.setText(selectedItem.title);
         viewHolder.rateTextView.setText("10"); // TODO: update this in backend
-        String txtCategory = selectedItem.category == "movie" ? "movie" : "tv shows";
+        String txtCategory = selectedItem.category.equals("movie") ? "movie" : "tv shows";
         String year = "2010"; // TODO: update this in backend
         viewHolder.categoryAndTimeTextView.setText(selectedItem.category + " (" + year + ")");
     }

@@ -79,11 +79,11 @@ public class HomeViewModel extends ViewModel {
             // Update status
             HomePageDTO homepageDtoData = _homepageDto.getValue();
             assert homepageDtoData != null;
-            homepageDtoData.carouselList.forEach(x -> {if (x.id==item.id){x.isInWatchlist=true;} });
-            homepageDtoData.topRatedMovies.forEach(x -> {if (x.id==item.id){x.isInWatchlist=true;} });
-            homepageDtoData.popularMovies.forEach(x -> {if (x.id==item.id){x.isInWatchlist=true;} });
-            homepageDtoData.topRatedTvs.forEach(x -> {if (x.id==item.id){x.isInWatchlist=true;} });
-            homepageDtoData.popularTvs.forEach(x -> {if (x.id==item.id){x.isInWatchlist=true;} });
+            homepageDtoData.carouselList.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=true;} });
+            homepageDtoData.topRatedMovies.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=true;} });
+            homepageDtoData.popularMovies.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=true;} });
+            homepageDtoData.topRatedTvs.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=true;} });
+            homepageDtoData.popularTvs.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=true;} });
             _homepageDto.postValue(homepageDtoData);
         }
     }
@@ -107,11 +107,11 @@ public class HomeViewModel extends ViewModel {
             // Update status
             HomePageDTO homepageDtoData = _homepageDto.getValue();
             assert homepageDtoData != null;
-            homepageDtoData.carouselList.forEach(x -> {if (x.id==item.id){x.isInWatchlist=false;} });
-            homepageDtoData.topRatedMovies.forEach(x -> {if (x.id==item.id){x.isInWatchlist=false;} });
-            homepageDtoData.popularMovies.forEach(x -> {if (x.id==item.id){x.isInWatchlist=false;} });
-            homepageDtoData.topRatedTvs.forEach(x -> {if (x.id==item.id){x.isInWatchlist=false;} });
-            homepageDtoData.popularTvs.forEach(x -> {if (x.id==item.id){x.isInWatchlist=false;} });
+            homepageDtoData.carouselList.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=false;} });
+            homepageDtoData.topRatedMovies.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=false;} });
+            homepageDtoData.popularMovies.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=false;} });
+            homepageDtoData.topRatedTvs.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=false;} });
+            homepageDtoData.popularTvs.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=false;} });
             _homepageDto.postValue(homepageDtoData);
         }
     }

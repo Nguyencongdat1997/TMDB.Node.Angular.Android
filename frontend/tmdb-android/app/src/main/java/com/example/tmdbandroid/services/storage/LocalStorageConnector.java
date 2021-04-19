@@ -33,7 +33,7 @@ public class LocalStorageConnector {
         ArrayList<Item> watchList = new ArrayList<>(getWatchList());
         int currentIndex = -1;
         for (int i =0; i<watchList.size(); i++){
-            if (newItem.id == watchList.get(i).id){
+            if (newItem.id.equals(watchList.get(i).id)){
                 currentIndex = i;
                 break;
             }
@@ -56,7 +56,7 @@ public class LocalStorageConnector {
     public boolean isItemInWatchList(Item newItem) {
         ArrayList<Item> watchList = new ArrayList<>(getWatchList());
         for (int i =0; i<watchList.size(); i++){
-            if (newItem.id == watchList.get(i).id){
+            if (newItem.id.equals(watchList.get(i).id)){
                 return true;
             }
         }

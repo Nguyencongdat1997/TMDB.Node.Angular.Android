@@ -25,6 +25,7 @@ import com.example.tmdbandroid.databinding.FragmentHomeBinding;
 import com.example.tmdbandroid.databinding.FragmentSearchBinding;
 import com.example.tmdbandroid.screen.components.homeHorizontalMovieList.HorizontalRecycleViewAdapter;
 import com.example.tmdbandroid.screen.components.searchResultList.SearchResultsAdapter;
+import com.example.tmdbandroid.services.storage.LocalStorageConnector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +78,12 @@ public class SearchFragment extends Fragment {
 
         View view = binding.getRoot();
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     private Observer<List<Item>> searchResultsUpdateObserver = new Observer<List<Item>>() {
