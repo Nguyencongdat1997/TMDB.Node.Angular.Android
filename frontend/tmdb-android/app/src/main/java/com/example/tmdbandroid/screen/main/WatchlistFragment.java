@@ -77,7 +77,7 @@ public class WatchlistFragment extends Fragment {
         @Override
         public void onChanged(List<Item> watchList) {
             watchlistGridView = (GridView) binding.watchlistGridView;
-            gridViewAdapter = new WatchListGridViewAdapter(getContext(), watchList);
+            gridViewAdapter = new WatchListGridViewAdapter(getContext(), watchList, viewModel);
             watchlistGridView.setAdapter(gridViewAdapter);
             // implement setOnItemClickListener event on GridView
             watchlistGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
