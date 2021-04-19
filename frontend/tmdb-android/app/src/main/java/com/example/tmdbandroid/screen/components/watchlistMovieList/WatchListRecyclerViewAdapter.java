@@ -1,6 +1,7 @@
 package com.example.tmdbandroid.screen.components.watchlistMovieList;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,16 +21,17 @@ import com.example.tmdbandroid.DTOs.Item;
 import com.example.tmdbandroid.R;
 import com.example.tmdbandroid.screen.main.WatchlistViewModel;
 
+import java.util.Collections;
 import java.util.List;
 
-public class WatchListRecyclerViewAdapter extends RecyclerView.Adapter<WatchListRecyclerViewAdapter.MyView> {
+public class WatchListRecyclerViewAdapter extends RecyclerView.Adapter<WatchListRecyclerViewAdapter.MyView>
+        implements ItemMoveCallback.ItemTouchHelperContract{
     private List<Item> list;
     private Context context;
     private WatchlistViewModel viewModel;
 
     public class MyView
             extends RecyclerView.ViewHolder {
-
         ImageView imageBackground;
         TextView txtView;
         ImageButton removeBtn;
@@ -51,8 +53,7 @@ public class WatchListRecyclerViewAdapter extends RecyclerView.Adapter<WatchList
     }
 
     @Override
-    public WatchListRecyclerViewAdapter.MyView onCreateViewHolder(ViewGroup parent,
-                                                                  int viewType)
+    public WatchListRecyclerViewAdapter.MyView onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View itemView
                 = LayoutInflater
@@ -91,5 +92,30 @@ public class WatchListRecyclerViewAdapter extends RecyclerView.Adapter<WatchList
     public int getItemCount()
     {
         return list.size();
+    }
+
+    @Override
+    public void onRowMoved(int fromPosition, int toPosition) {
+        if (fromPosition < toPosition) {
+            for (int i = fromPosition; i < toPosition; i++) {
+                Collections.swap(list, i, i + 1);
+            }
+        } else {
+            for (int i = fromPosition; i > toPosition; i--) {
+                Collections.swap(list, i, i - 1);
+            }
+        }
+        notifyItemMoved(fromPosition, toPosition);
+    }
+
+    @Override
+    public void onRowSelected(MyView myViewHolder) {
+//        myViewHolder.imageBackground.setBackgroundColor(Color.GRAY);
+
+    }
+
+    @Override
+    public void onRowClear(MyView myViewHolder) {
+//        myViewHolder.imageBackground.setBackgroundColor(Color.WHITE);
     }
 }

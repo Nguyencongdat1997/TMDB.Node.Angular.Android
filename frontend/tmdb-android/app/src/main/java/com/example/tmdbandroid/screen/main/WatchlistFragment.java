@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +25,7 @@ import com.example.tmdbandroid.R;
 import com.example.tmdbandroid.databinding.FragmentSearchBinding;
 import com.example.tmdbandroid.databinding.FragmentWatchlistBinding;
 import com.example.tmdbandroid.screen.components.searchResultList.SearchResultsAdapter;
+import com.example.tmdbandroid.screen.components.watchlistMovieList.ItemMoveCallback;
 import com.example.tmdbandroid.screen.components.watchlistMovieList.WatchListGridViewAdapter;
 import com.example.tmdbandroid.screen.components.watchlistMovieList.WatchListRecyclerViewAdapter;
 import com.example.tmdbandroid.services.storage.LocalStorageConnector;
@@ -79,10 +81,17 @@ public class WatchlistFragment extends Fragment {
         @Override
         public void onChanged(List<Item> watchList) {
             watchlistGridView = (RecyclerView) binding.watchlistGridView;
-            WatchListRecyclerViewAdapter adapter = new WatchListRecyclerViewAdapter(getContext(), watchList, viewModel);
-            watchlistGridView.setAdapter(adapter);
+
             GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),3);
             watchlistGridView.setLayoutManager(gridLayoutManager);
+
+            WatchListRecyclerViewAdapter adapter = new WatchListRecyclerViewAdapter(getContext(), watchList, viewModel);
+            watchlistGridView.setAdapter(adapter);
+            ItemTouchHelper.Callback callback = new ItemMoveCallback(adapter);
+            ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+            touchHelper.attachToRecyclerView(watchlistGridView);
+
+
         }
     };
 
