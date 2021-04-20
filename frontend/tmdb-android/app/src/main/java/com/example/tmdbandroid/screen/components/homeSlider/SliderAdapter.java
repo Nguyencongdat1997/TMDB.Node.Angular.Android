@@ -1,6 +1,7 @@
 package com.example.tmdbandroid.screen.components.homeSlider;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.example.tmdbandroid.DTOs.Item;
 import com.example.tmdbandroid.R;
+import com.example.tmdbandroid.screen.detail.DetailActivity;
 import com.example.tmdbandroid.utils.BlurTransformation;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
@@ -59,6 +61,15 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapter
                         new jp.wasabeef.glide.transformations.BlurTransformation(12, 2)
                 ))
                 .into(viewHolder.imageViewContainer);
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, DetailActivity.class);
+                i.putExtra("itemId","" + sliderItem.id);
+                context.startActivity(i);
+            }
+        });
     }
 
     // this method will return

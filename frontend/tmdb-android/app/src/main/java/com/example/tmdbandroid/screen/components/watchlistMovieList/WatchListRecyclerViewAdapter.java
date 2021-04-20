@@ -1,6 +1,7 @@
 package com.example.tmdbandroid.screen.components.watchlistMovieList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.tmdbandroid.DTOs.Item;
 import com.example.tmdbandroid.R;
+import com.example.tmdbandroid.screen.detail.DetailActivity;
 import com.example.tmdbandroid.screen.main.WatchlistViewModel;
 
 import java.util.Collections;
@@ -84,6 +86,15 @@ public class WatchListRecyclerViewAdapter extends RecyclerView.Adapter<WatchList
             public void onClick(View v) {
                 Toast.makeText(context, "\"" + selectedItem.title + "\" was removed from favorites", Toast.LENGTH_SHORT).show();
                 viewModel.removeItemFromWatchList(selectedItem);
+            }
+        });
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, DetailActivity.class);
+                i.putExtra("itemId","" + selectedItem.id);
+                context.startActivity(i);
             }
         });
     }

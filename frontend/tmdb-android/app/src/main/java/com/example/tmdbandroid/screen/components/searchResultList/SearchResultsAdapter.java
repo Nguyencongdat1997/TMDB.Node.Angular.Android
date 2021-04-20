@@ -1,6 +1,7 @@
 package com.example.tmdbandroid.screen.components.searchResultList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -25,6 +26,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.tmdbandroid.DTOs.Item;
 import com.example.tmdbandroid.R;
 import com.example.tmdbandroid.databinding.SearchResultItemLayoutBinding;
+import com.example.tmdbandroid.screen.detail.DetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,6 +97,15 @@ public class SearchResultsAdapter
         String txtCategory = selectedItem.category.equals("movie") ? "movie" : "tv shows";
         String year = "2010"; // TODO: update this in backend
         viewHolder.categoryAndTimeTextView.setText(selectedItem.category + " (" + year + ")");
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, DetailActivity.class);
+                i.putExtra("itemId","" + selectedItem.id);
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override

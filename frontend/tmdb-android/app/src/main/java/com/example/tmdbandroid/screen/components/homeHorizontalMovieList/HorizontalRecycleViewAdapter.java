@@ -1,6 +1,7 @@
 package com.example.tmdbandroid.screen.components.homeHorizontalMovieList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,10 +20,12 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.tmdbandroid.DTOs.Item;
 import com.example.tmdbandroid.R;
+import com.example.tmdbandroid.screen.detail.DetailActivity;
 import com.example.tmdbandroid.screen.main.HomeFragment;
 import com.example.tmdbandroid.screen.main.HomeViewModel;
 import com.example.tmdbandroid.screen.main.SearchFragment;
 import com.example.tmdbandroid.screen.main.WatchlistFragment;
+import com.example.tmdbandroid.screen.review.ReviewActivity;
 
 import java.util.List;
 
@@ -121,6 +124,16 @@ public class HorizontalRecycleViewAdapter
                     }
                 });
                 popupMenu.show();
+            }
+        });
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, DetailActivity.class);
+                i.putExtra("screenName",selectedItem.id);
+                i.putExtra("screenName","" + selectedItem.id);
+                context.startActivity(i);
             }
         });
     }
