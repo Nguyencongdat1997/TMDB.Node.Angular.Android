@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,15 +19,12 @@ import android.view.ViewGroup;
 
 import com.example.tmdbandroid.DTOs.Cast;
 import com.example.tmdbandroid.DTOs.DetailPageDTO;
-import com.example.tmdbandroid.DTOs.Item;
+import com.example.tmdbandroid.DTOs.Review;
 import com.example.tmdbandroid.databinding.DetailFragmentBinding;
 import com.example.tmdbandroid.screen.components.castsList.CastRecyclerViewAdapter;
-import com.example.tmdbandroid.screen.components.homeHorizontalMovieList.HorizontalRecycleViewAdapter;
-import com.example.tmdbandroid.screen.components.watchlistMovieList.ItemMoveCallback;
-import com.example.tmdbandroid.screen.components.watchlistMovieList.WatchListRecyclerViewAdapter;
+import com.example.tmdbandroid.screen.components.reviewsList.ReviewRecyclerViewAdapter;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -102,6 +98,10 @@ public class DetailFragment extends Fragment {
             if (detailPageDTO.casts != null && detailPageDTO.casts.size()>0){
                 setCastRecyclerView(detailPageDTO.casts);
             }
+
+            if (detailPageDTO.reviews != null && detailPageDTO.reviews.size()>0){
+                setReviewListView(detailPageDTO.reviews);
+            }
         }
     };
 
@@ -128,6 +128,18 @@ public class DetailFragment extends Fragment {
 
         CastRecyclerViewAdapter adapter = new CastRecyclerViewAdapter(getContext(), castList);
         castsRecyclerView.setAdapter(adapter);
+    }
+
+    private void setReviewListView(List<Review> list){
+        List<Review> limitedList = list.subList(0, Math.min(3, list.size()));
+        RecyclerView recyclerView = (RecyclerView) binding.reviewsRecylerView;
+        recyclerView.setNestedScrollingEnabled(false);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        ReviewRecyclerViewAdapter adapter = new ReviewRecyclerViewAdapter(getContext(), limitedList);
+        recyclerView.setAdapter(adapter);
     }
 
 
