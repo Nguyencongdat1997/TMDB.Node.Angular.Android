@@ -131,8 +131,8 @@ public class HorizontalRecycleViewAdapter
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, DetailActivity.class);
-                i.putExtra("screenName",selectedItem.id);
-                i.putExtra("screenName","" + selectedItem.id);
+                i.putExtra("itemId","" + selectedItem.id);
+                i.putExtra("itemCategory","" + selectedItem.category);
                 context.startActivity(i);
             }
         });

@@ -8,9 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.example.tmdbandroid.R;
 import com.example.tmdbandroid.screen.main.MainActivity;
+import com.example.tmdbandroid.screen.main.SearchFragment;
 import com.example.tmdbandroid.screen.review.ReviewActivity;
 
 public class DetailActivity extends AppCompatActivity {
@@ -24,21 +26,15 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         Intent passedIntent = getIntent(); // gets the previously created intent
-        String screenName = passedIntent.getStringExtra("screenName");
+        String itemId = passedIntent.getStringExtra("itemId");
+        String itemCategory = passedIntent.getStringExtra("itemCategory");
 
-        mTextView = (TextView) findViewById(R.id.detailText);
-        mTextView.setText(screenName);
-
-        toReivewBtn = findViewById(R.id.toReviewBtn);
-        toReivewBtn.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent(DetailActivity.this, ReviewActivity.class);
-                        i.putExtra("screenName","REVIEW");
-                        startActivity(i);
-                    }
-                }
-        );
+        Fragment selectedFragment = new DetailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("itemId", itemId);
+        bundle.putString("itemCategory", itemCategory);
+        selectedFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.detail_fragment_container,
+                selectedFragment).commit();
     }
 }

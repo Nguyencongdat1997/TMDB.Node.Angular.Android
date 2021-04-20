@@ -67,6 +67,7 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapter
             public void onClick(View v) {
                 Intent i = new Intent(context, DetailActivity.class);
                 i.putExtra("itemId","" + sliderItem.id);
+                i.putExtra("itemCategory","" + sliderItem.category);
                 context.startActivity(i);
             }
         });

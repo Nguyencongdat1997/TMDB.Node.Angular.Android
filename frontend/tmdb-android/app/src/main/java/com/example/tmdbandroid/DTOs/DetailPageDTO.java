@@ -14,4 +14,10 @@ public class DetailPageDTO {
     public List<Item> similarItems;
     @SerializedName("youtube_video")
     public ItemExternalYoutubeVideos chosenYoutubeVideo;
+
+    public static DetailPageDTO getEmptyDetailPageDto(){
+        DetailPageDTO emtpyObject = new DetailPageDTO();
+        emtpyObject.itemDetail = ItemDetail.getEmptyItemDetail();
+        return emtpyObject;
+    }
 }

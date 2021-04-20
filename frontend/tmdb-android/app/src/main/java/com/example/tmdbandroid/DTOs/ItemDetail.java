@@ -45,4 +45,9 @@ public class ItemDetail {
         this.posterPath = posterPath;
         this.backdropPath = backdropPath;
     }
+
+    public static ItemDetail getEmptyItemDetail(){
+        return new ItemDetail("", "","","","","",
+                "","","","","","");
+    }
 }

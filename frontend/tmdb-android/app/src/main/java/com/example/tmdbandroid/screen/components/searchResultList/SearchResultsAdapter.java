@@ -103,6 +103,7 @@ public class SearchResultsAdapter
             public void onClick(View v) {
                 Intent i = new Intent(context, DetailActivity.class);
                 i.putExtra("itemId","" + selectedItem.id);
+                i.putExtra("itemCategory","" + selectedItem.category);
                 context.startActivity(i);
             }
         });
