@@ -10,14 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tmdbandroid.DTOs.DetailPageDTO;
-import com.example.tmdbandroid.DTOs.ItemDetail;
 import com.example.tmdbandroid.databinding.DetailFragmentBinding;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 public class DetailFragment extends Fragment {
 
@@ -46,9 +47,17 @@ public class DetailFragment extends Fragment {
         binding.setViewModel(viewModel);
 
         viewModel.getDetailDto().observe(this, detailPageUpdateObserver);
+        viewModel.getYoutubeKey().observe(this, youtubePlayerUpdateObserver);
 
         View view = binding.getRoot();
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //YouTubePlayerView youTubePlayerView = getView().findViewById(R.id.youtube_player_view);
+        getLifecycle().addObserver(binding.youtubePlayerView);
     }
 
     @Override
@@ -65,9 +74,20 @@ public class DetailFragment extends Fragment {
     private Observer<DetailPageDTO> detailPageUpdateObserver = new Observer<DetailPageDTO>() {
         @Override
         public void onChanged(DetailPageDTO detailPageDTO) {
-            Log.v("Devv", "Status " + viewModel.getStatus().getValue());
-            Log.v("Devv", "Id " + detailPageDTO.itemDetail.id);
             binding.itemIdTxt.setText(detailPageDTO.itemDetail.title);
+        }
+    };
+
+    private Observer<String> youtubePlayerUpdateObserver = new Observer<String>() {
+        @Override
+        public void onChanged(String youtubeKey) {
+            AbstractYouTubePlayerListener listener = new AbstractYouTubePlayerListener() {
+                @Override
+                public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                    youTubePlayer.cueVideo(youtubeKey, 0);
+                }
+            };
+            binding.youtubePlayerView.initialize(listener);
         }
     };
 }
