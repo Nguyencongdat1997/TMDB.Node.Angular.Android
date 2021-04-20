@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <import type="android.view.View"/>
+        <import type="java.util.Date"/>
         <variable
             name="viewModel"
             type="com.example.tmdbandroid.screen.detail.DetailViewModel" />
@@ -14,11 +15,6 @@
         android:layout_height="match_parent"
         tools:context=".screen.detail.DetailFragment"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/itemIdTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello" />
 
         <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
             android:id="@+id/youtube_player_view"
@@ -27,5 +23,72 @@
             app:autoPlay="false"
             app:showFullScreenButton="false"
             app:enableAutomaticInitialization="false"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.detailDto.itemDetail.title}"
+            android:textSize="30dp"
+            android:textColor="@color/white"
+            android:background="@color/blue"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Overview"
+            android:textSize="20dp"
+            android:textColor="@color/blue"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.detailDto.itemDetail.overview}"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Genres"
+            android:textSize="20dp"
+            android:textColor="@color/blue"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.detailDto.itemDetail.genres}"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Year"
+            android:textSize="20dp"
+            android:textColor="@color/blue"/>
+        <TextView
+            android:id="@+id/detailYear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2020"
+            android:textSize="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_add_circle_outline_24"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_facebook_24"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_twitter_logo_dialog"/>
+        </LinearLayout>
+
+
+
+
     </LinearLayout>
 </layout>

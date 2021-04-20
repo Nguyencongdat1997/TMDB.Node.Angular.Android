@@ -47,6 +47,7 @@ public class DetailViewModel extends ViewModel {
 
         _status = new MutableLiveData<String>();
         _detailDto = new MutableLiveData<>();
+        _detailDto.setValue(DetailPageDTO.getEmptyDetailPageDto());
         _youtubeKey = new MutableLiveData<>();
 
         updateData(itemId);

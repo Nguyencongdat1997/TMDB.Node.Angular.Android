@@ -20,6 +20,9 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class DetailFragment extends Fragment {
 
     private String itemId;
@@ -56,8 +59,7 @@ public class DetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //YouTubePlayerView youTubePlayerView = getView().findViewById(R.id.youtube_player_view);
-        getLifecycle().addObserver(binding.youtubePlayerView);
+        getLifecycle().addObserver(binding.youtubePlayerView); // recommended. Can be removed.
     }
 
     @Override
@@ -74,7 +76,17 @@ public class DetailFragment extends Fragment {
     private Observer<DetailPageDTO> detailPageUpdateObserver = new Observer<DetailPageDTO>() {
         @Override
         public void onChanged(DetailPageDTO detailPageDTO) {
-            binding.itemIdTxt.setText(detailPageDTO.itemDetail.title);
+            if (detailPageDTO.itemDetail != null && !detailPageDTO.itemDetail.id.equals("")){
+                String year = "";
+                try {
+                    Date date = (new SimpleDateFormat("yyyy-MM-dd")).parse(detailPageDTO.itemDetail.date);
+                    year = (new SimpleDateFormat("yyyy").format(date));
+                }
+                catch (Exception e){
+                    year = "";
+                }
+                binding.detailYear.setText(year);
+            }
         }
     };
 
