@@ -9,19 +9,30 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.tmdbandroid.DTOs.Cast;
 import com.example.tmdbandroid.DTOs.DetailPageDTO;
+import com.example.tmdbandroid.DTOs.Item;
 import com.example.tmdbandroid.databinding.DetailFragmentBinding;
+import com.example.tmdbandroid.screen.components.castsList.CastRecyclerViewAdapter;
+import com.example.tmdbandroid.screen.components.homeHorizontalMovieList.HorizontalRecycleViewAdapter;
+import com.example.tmdbandroid.screen.components.watchlistMovieList.ItemMoveCallback;
+import com.example.tmdbandroid.screen.components.watchlistMovieList.WatchListRecyclerViewAdapter;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class DetailFragment extends Fragment {
 
@@ -87,6 +98,10 @@ public class DetailFragment extends Fragment {
                 }
                 binding.detailYear.setText(year);
             }
+
+            if (detailPageDTO.casts != null && detailPageDTO.casts.size()>0){
+                setCastRecyclerView(detailPageDTO.casts);
+            }
         }
     };
 
@@ -102,4 +117,32 @@ public class DetailFragment extends Fragment {
             binding.youtubePlayerView.initialize(listener);
         }
     };
+
+    private void setCastRecyclerView(List<Cast> castList){
+        castList = castList.subList(0, Math.min(6, castList.size()));
+        RecyclerView castsRecyclerView = (RecyclerView) binding.castsRecyclerView;
+        castsRecyclerView.setNestedScrollingEnabled(false);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),3);
+        castsRecyclerView.setLayoutManager(gridLayoutManager);
+
+        CastRecyclerViewAdapter adapter = new CastRecyclerViewAdapter(getContext(), castList);
+        castsRecyclerView.setAdapter(adapter);
+    }
+
+
+//    private void setHorizontalRecycleView(RecyclerView recyclerView, List<Item> list){
+//        RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(context);
+//        recyclerView.setLayoutManager(recyclerViewLayoutManager);
+//
+//        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(
+//                context,
+//                LinearLayoutManager.HORIZONTAL,
+//                false);
+//        recyclerView.setLayoutManager(horizontalLayoutManager);
+//
+//        HorizontalRecycleViewAdapter horizontalListApdater = new HorizontalRecycleViewAdapter(context, list, viewModel);
+////        horizontalListApdater.get
+//        recyclerView.setAdapter(horizontalListApdater);
+//    }
 }

@@ -10,97 +10,123 @@
             type="com.example.tmdbandroid.screen.detail.DetailViewModel" />
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screen.detail.DetailFragment"
-        android:orientation="vertical">
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:id="@+id/youtube_player_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:autoPlay="false"
-            app:showFullScreenButton="false"
-            app:enableAutomaticInitialization="false"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.detailDto.itemDetail.title}"
-            android:textSize="30dp"
-            android:textColor="@color/white"
-            android:background="@color/blue"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Overview"
-            android:textSize="20dp"
-            android:textColor="@color/blue"/>
-        <com.borjabravo.readmoretextview.ReadMoreTextView
-            android:id="@+id/text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.detailDto.itemDetail.overview}"
-            app:trimCollapsedText="show more"
-            app:trimExpandedText="show less"
-            app:colorClickableText = "@color/grey"
-            app:trimLength="170"
-            app:trimMode="trimModeLength"
-            app:showTrimExpandedText="true"
-            android:textSize="15dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.detailDto.itemDetail.overview}"
-            android:textSize="15dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Genres"
-            android:textSize="20dp"
-            android:textColor="@color/blue"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.detailDto.itemDetail.genres}"
-            android:textSize="15dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Year"
-            android:textSize="20dp"
-            android:textColor="@color/blue"/>
-        <TextView
-            android:id="@+id/detailYear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="2020"
-            android:textSize="15dp"/>
-
+        tools:context=".screen.detail.DetailFragment">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <ImageButton
-                android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/youtube_player_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_add_circle_outline_24"/>
-            <ImageButton
-                android:layout_width="wrap_content"
+                app:autoPlay="false"
+                app:showFullScreenButton="false"
+                app:enableAutomaticInitialization="false"/>
+
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_facebook_24"/>
-            <ImageButton
-                android:layout_width="wrap_content"
+                android:text="@{viewModel.detailDto.itemDetail.title}"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:background="@color/blue"/>
+
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_twitter_logo_dialog"/>
+                android:text="Overview"
+                android:textSize="20dp"
+                android:textColor="@color/blue"/>
+            <com.borjabravo.readmoretextview.ReadMoreTextView
+                android:id="@+id/text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.detailDto.itemDetail.overview}"
+                app:trimCollapsedText="show more"
+                app:trimExpandedText="show less"
+                app:colorClickableText = "@color/grey"
+                app:trimLength="170"
+                app:trimMode="trimModeLength"
+                app:showTrimExpandedText="true"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Genres"
+                android:textSize="20dp"
+                android:textColor="@color/blue"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.detailDto.itemDetail.genres}"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Year"
+                android:textSize="20dp"
+                android:textColor="@color/blue"/>
+            <TextView
+                android:id="@+id/detailYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2020"
+                android:textSize="15dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_add_circle_outline_24"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_facebook_24"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_twitter_logo_dialog"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cast"
+                android:textSize="20dp"
+                android:textColor="@color/blue"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/castsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reviews"
+                android:textSize="20dp"
+                android:textColor="@color/blue"/>
+            <ListView
+                android:id="@+id/reviewsListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Recommended Picks"
+                android:textSize="20dp"
+                android:textColor="@color/blue"/>
+
         </LinearLayout>
-
-
-
-
-    </LinearLayout>
+    </ScrollView>
 </layout>
