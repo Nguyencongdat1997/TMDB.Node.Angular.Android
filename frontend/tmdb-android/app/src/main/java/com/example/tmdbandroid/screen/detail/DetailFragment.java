@@ -19,9 +19,11 @@ import android.view.ViewGroup;
 
 import com.example.tmdbandroid.DTOs.Cast;
 import com.example.tmdbandroid.DTOs.DetailPageDTO;
+import com.example.tmdbandroid.DTOs.Item;
 import com.example.tmdbandroid.DTOs.Review;
 import com.example.tmdbandroid.databinding.DetailFragmentBinding;
 import com.example.tmdbandroid.screen.components.castsList.CastRecyclerViewAdapter;
+import com.example.tmdbandroid.screen.components.detailItemHorizontalMovieList.HorizontalRecycleViewAdapter;
 import com.example.tmdbandroid.screen.components.reviewsList.ReviewRecyclerViewAdapter;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
@@ -102,6 +104,10 @@ public class DetailFragment extends Fragment {
             if (detailPageDTO.reviews != null && detailPageDTO.reviews.size()>0){
                 setReviewListView(detailPageDTO.reviews);
             }
+
+            if (detailPageDTO.recommendations != null && detailPageDTO.recommendations.size()>0){
+                setHorizontalRecycleView(binding.detailItemRecommendations, detailPageDTO.recommendations.subList(0,Math.min(10, detailPageDTO.recommendations.size())));
+            }
         }
     };
 
@@ -143,18 +149,17 @@ public class DetailFragment extends Fragment {
     }
 
 
-//    private void setHorizontalRecycleView(RecyclerView recyclerView, List<Item> list){
-//        RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(context);
-//        recyclerView.setLayoutManager(recyclerViewLayoutManager);
-//
-//        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(
-//                context,
-//                LinearLayoutManager.HORIZONTAL,
-//                false);
-//        recyclerView.setLayoutManager(horizontalLayoutManager);
-//
-//        HorizontalRecycleViewAdapter horizontalListApdater = new HorizontalRecycleViewAdapter(context, list, viewModel);
-////        horizontalListApdater.get
-//        recyclerView.setAdapter(horizontalListApdater);
-//    }
+    private void setHorizontalRecycleView(RecyclerView recyclerView, List<Item> list){
+        RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(context);
+        recyclerView.setLayoutManager(recyclerViewLayoutManager);
+
+        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(
+                context,
+                LinearLayoutManager.HORIZONTAL,
+                false);
+        recyclerView.setLayoutManager(horizontalLayoutManager);
+
+        HorizontalRecycleViewAdapter horizontalListApdater = new HorizontalRecycleViewAdapter(context, list);
+        recyclerView.setAdapter(horizontalListApdater);
+    }
 }

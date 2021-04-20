@@ -126,6 +126,10 @@
                 android:text="Recommended Picks"
                 android:textSize="20dp"
                 android:textColor="@color/blue"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detailItemRecommendations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
     </ScrollView>

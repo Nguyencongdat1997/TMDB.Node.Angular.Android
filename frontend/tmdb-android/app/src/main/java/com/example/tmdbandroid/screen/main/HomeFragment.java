@@ -92,7 +92,7 @@ public class HomeFragment extends Fragment {
     };
 
     private void updateMovieSlider(HomePageDTO homePageDTO){
-        SliderAdapter homeSliderApdater = new SliderAdapter(context, homePageDTO.carouselList.subList(0,6));
+        SliderAdapter homeSliderApdater = new SliderAdapter(context, homePageDTO.carouselList.subList(0,Math.min(6, homePageDTO.carouselList.size())));
         binding.homeSlider.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
         binding.homeSlider.setSliderAdapter(homeSliderApdater);
         binding.homeSlider.setScrollTimeInSec(3);
@@ -101,8 +101,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void updatePopularMovieList(HomePageDTO homePageDTO){
-        setHorizontalRecycleView(binding.homePopularMovieList, homePageDTO.popularMovies.subList(0,10));
-        setHorizontalRecycleView(binding.homeTopRatedMovieList, homePageDTO.topRatedMovies.subList(0,10));
+        setHorizontalRecycleView(binding.homePopularMovieList, homePageDTO.popularMovies.subList(0,Math.min(10, homePageDTO.popularMovies.size())));
+        setHorizontalRecycleView(binding.homeTopRatedMovieList, homePageDTO.topRatedMovies.subList(0,Math.min(10, homePageDTO.topRatedMovies.size())));
     }
 
     private void setHorizontalRecycleView(RecyclerView recyclerView, List<Item> list){
