@@ -38,6 +38,18 @@
             android:text="Overview"
             android:textSize="20dp"
             android:textColor="@color/blue"/>
+        <com.borjabravo.readmoretextview.ReadMoreTextView
+            android:id="@+id/text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.detailDto.itemDetail.overview}"
+            app:trimCollapsedText="show more"
+            app:trimExpandedText="show less"
+            app:colorClickableText = "@color/grey"
+            app:trimLength="170"
+            app:trimMode="trimModeLength"
+            app:showTrimExpandedText="true"
+            android:textSize="15dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
