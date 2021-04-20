@@ -1,6 +1,7 @@
 package com.example.tmdbandroid.screen.components.reviewsList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ import com.example.tmdbandroid.DTOs.Cast;
 import com.example.tmdbandroid.DTOs.Review;
 import com.example.tmdbandroid.R;
 import com.example.tmdbandroid.screen.components.castsList.CastRecyclerViewAdapter;
+import com.example.tmdbandroid.screen.detail.DetailActivity;
+import com.example.tmdbandroid.screen.review.ReviewActivity;
 
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
@@ -81,13 +84,24 @@ public class ReviewRecyclerViewAdapter extends RecyclerView.Adapter<ReviewRecycl
         catch (Exception e){
             dateTxt = "";
         }
-        String title = "by " + selectedItem.author + dateTxt;
-        viewHolder.titleText.setText(title);
+        String titleTxt = "by " + selectedItem.author + dateTxt;
+        viewHolder.titleText.setText(titleTxt);
 
         String rateTxt = "" + (int)(Double.parseDouble(selectedItem.rating)/2) + "/5";
         viewHolder.rateText.setText(rateTxt);
 
         viewHolder.contentText.setText(selectedItem.content);
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, ReviewActivity.class);
+                i.putExtra("reviewTitle", titleTxt);
+                i.putExtra("reviewRate", rateTxt);
+                i.putExtra("reviewContent", selectedItem.content);
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override
