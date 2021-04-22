@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.tmdbandroid.DTOs.Item;
 import com.example.tmdbandroid.R;
@@ -87,9 +88,9 @@ public class SearchResultsAdapter
         }
         Glide.with(viewHolder.itemView)
                 .load(selectedItem.backdropPath)
-                .error(R.drawable.movie_placeholder)
+                .placeholder(R.drawable.movie_placeholder)
                 .transform(new MultiTransformation<>(
-                        new CenterCrop(), new RoundedCorners(20)
+                        new FitCenter(), new RoundedCorners((int) context.getResources().getDimension(R.dimen.card_radius))
                 ))
                 .into(viewHolder.movieItemImageView);
         viewHolder.titleTextView.setText(selectedItem.title);
