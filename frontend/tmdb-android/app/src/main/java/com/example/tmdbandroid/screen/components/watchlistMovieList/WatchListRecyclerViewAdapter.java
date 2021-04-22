@@ -74,7 +74,7 @@ public class WatchListRecyclerViewAdapter extends RecyclerView.Adapter<WatchList
         Glide.with(viewHolder.itemView)
                 .load(selectedItem.posterPath)
                 .transform(new MultiTransformation<>(
-                        new CenterCrop(), new RoundedCorners(20)
+                        new CenterCrop(), new RoundedCorners((int) context.getResources().getDimension(R.dimen.card_radius))
                 ))
                 .into(viewHolder.imageBackground);
 
