@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,9 +14,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
 
 import com.example.tmdbandroid.DTOs.HomePageDTO;
@@ -60,10 +63,14 @@ public class SearchFragment extends Fragment {
 
         searchBar = binding.searchBar;
         searchBar.setActivated(true);
-        searchBar.setQueryHint("Type your keyword here");
+        searchBar.setQueryHint("Search movie and TV");
         searchBar.onActionViewExpanded();
+        AutoCompleteTextView search_text = searchBar.findViewById(R.id.search_src_text);
+        // search_text.setTextColor(Color.WHITE); // This has been implemented in @style/AppTheme.androidx.appcompat.widget.SearchView. And this will NOT set the text-color of hint
+        search_text.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.text_small));
+        // search_text.setPadding(getResources().getDimensionPixelSize(R.dimen.text_margin), 0, 0, 0);
         searchBar.setIconified(false);
-        searchBar.clearFocus();
+        // searchBar.clearFocus();
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
