@@ -9,11 +9,13 @@
         <item name="colorSecondary">@color/blue</item>
         <item name="colorSecondaryVariant">@color/blue</item>
         <item name="colorOnSecondary">@color/blue</item>
+    </style>
+
+    <style name="Theme.TMDBAndroid.Common" parent="Theme.TMDBAndroid">
         <!-- Others -->
         <item name="android:textColor">@color/white</item>
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:background">@color/backgroundPrimary</item>
     </style>
 
     <style name="AppTheme.androidx.appcompat.widget.SearchView" parent="Theme.TMDBAndroid">

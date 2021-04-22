@@ -68,7 +68,6 @@ public class DetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getLifecycle().addObserver(binding.youtubePlayerView); // recommended. Can be removed.
     }
 
     @Override

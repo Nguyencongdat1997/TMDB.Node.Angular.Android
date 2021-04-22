@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screen.main.MainActivity">
+    tools:context=".screen.main.MainActivity"
+    android:background="@color/backgroundPrimary">
 
     <FrameLayout
         android:id="@+id/main_fragment_container"
@@ -20,7 +21,8 @@
         android:layout_alignParentBottom="true"
         app:menu="@menu/main_bottom_navigation"
         app:itemIconTint="@drawable/checked_color_selector"
-        app:itemTextColor="@drawable/checked_color_selector"/>
+        app:itemTextColor="@drawable/checked_color_selector"
+        android:background="@color/backgroundPrimary"/>
 <!--    app:itemTextAppearanceActive="@color/blue"-->
 <!--    app:itemTextAppearanceInactive="@color/black"-->
 
