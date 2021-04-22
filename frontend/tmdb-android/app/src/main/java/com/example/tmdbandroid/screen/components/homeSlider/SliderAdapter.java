@@ -55,7 +55,7 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapter
                 .into(viewHolder.imageViewInsider);
         Glide.with(viewHolder.itemView)
                 .load(sliderItem.posterPath)
-                .override(400, 450)
+                .override(400, 400)
                 .transform( new MultiTransformation<>(
                         new CenterCrop(),
                         new jp.wasabeef.glide.transformations.BlurTransformation(12, 2)

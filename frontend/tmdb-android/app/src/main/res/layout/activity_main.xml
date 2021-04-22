@@ -18,7 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/main_bottom_navigation"/>
+        app:menu="@menu/main_bottom_navigation"
+        app:itemIconTint="@drawable/checked_color_selector"
+        app:itemTextColor="@drawable/checked_color_selector"/>
 <!--    app:itemTextAppearanceActive="@color/blue"-->
 <!--    app:itemTextAppearanceInactive="@color/black"-->
 

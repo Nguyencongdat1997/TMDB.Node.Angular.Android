@@ -18,7 +18,8 @@
             android:id="@+id/searchBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true" />
+            android:clickable="true"
+            android:theme="@style/AppTheme.androidx.appcompat.widget.SearchView"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchResults"
