@@ -25,7 +25,7 @@
 
     <style name="popupMenuStyle" parent="Theme.AppCompat">
         <item name="android:background">@android:color/white</item>
-        <item name="android:textAppearance">@android:color/black</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
 <!--    <style name="Theme.TMDBAndroid.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />-->

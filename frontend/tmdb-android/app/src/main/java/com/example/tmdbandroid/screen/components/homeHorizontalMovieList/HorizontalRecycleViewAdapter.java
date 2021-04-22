@@ -2,6 +2,8 @@ package com.example.tmdbandroid.screen.components.homeHorizontalMovieList;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -101,24 +103,44 @@ public class HorizontalRecycleViewAdapter
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
+                        String tmdpUrl = "https://www.themoviedb.org/" + selectedItem.category + "/" + selectedItem.id;
                         switch (menuItem.getItemId()) {
                             case R.id.movieItemPopupTMDBBtn:
-                                Toast.makeText(context, "You Clicked " + menuItem.getTitle() + " with Id " + menuItem.getItemId(), Toast.LENGTH_SHORT).show();
+                                Intent openTMDBPage = new Intent(Intent.ACTION_VIEW, Uri.parse(tmdpUrl));
+                                context.startActivity(openTMDBPage);
                                 break;
                             case R.id.movieItemPopupFbBtn:
-                                Toast.makeText(context, "You Clicked " + menuItem.getTitle() + " with Id " + menuItem.getItemId(), Toast.LENGTH_SHORT).show();
+                                String fbUrl = "https://www.facebook.com/sharer/sharer.php?u=" + tmdpUrl;
+                                Intent openFBPage = new Intent(Intent.ACTION_VIEW, Uri.parse(fbUrl));
+                                context.startActivity(openFBPage);
                                 break;
                             case R.id.movieItemPopupTwitterBtn:
-                                Toast.makeText(context, "You Clicked " + menuItem.getTitle() + " with Id " + menuItem.getItemId(), Toast.LENGTH_SHORT).show();
+                                String twUrl = "https://twitter.com/intent/tweet?text=" + tmdpUrl;
+                                Intent openTwitterPage = new Intent(Intent.ACTION_VIEW, Uri.parse(twUrl));
+                                context.startActivity(openTwitterPage);
                                 break;
                             case R.id.movieItemPopupAddtoWatchListBtn:
                                 if (selectedItem.isInWatchlist){
                                     menuItem.setTitle("Add to watchlist");
                                     viewModel.removeItemFromWatchList(selectedItem);
+                                    Toast toast = Toast.makeText(context, "\"" + selectedItem.title + "\" was removed from Watchlist", Toast.LENGTH_SHORT);
+                                    View view =toast.getView();
+                                    view.setBackgroundColor(Color.TRANSPARENT);
+                                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                                    toastMessage.setTextColor(Color.BLACK);
+                                    toastMessage.setBackground(context.getDrawable(R.drawable.custom_toast));
+                                    toast.show();
                                 }
                                 else{
                                     menuItem.setTitle("Remove from watchlist");
                                     viewModel.addItemToWatchList(selectedItem);
+                                    Toast toast = Toast.makeText(context, "\"" + selectedItem.title + "\" was added to Watchlist", Toast.LENGTH_SHORT);
+                                    View view =toast.getView();
+                                    view.setBackgroundColor(Color.TRANSPARENT);
+                                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                                    toastMessage.setTextColor(Color.BLACK);
+                                    toastMessage.setBackground(context.getDrawable(R.drawable.custom_toast));
+                                    toast.show();
                                 }
                                 break;
                         }
