@@ -4,6 +4,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -68,10 +71,18 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        binding.footerTMDB.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Intent openTMDBPage = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.themoviedb.org/"));
+                startActivity(openTMDBPage);
+                return true;
+            }
+        });
+
         viewModel.getHomepageDto().observe(this, homePageUpdateObserver);
 
-        View view = binding.getRoot();
-        return view;
+        return binding.getRoot();
     }
 
     @Override
@@ -83,7 +94,7 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 
-    private Observer<HomePageDTO> homePageUpdateObserver = new Observer<HomePageDTO>() {
+    private final Observer<HomePageDTO> homePageUpdateObserver = new Observer<HomePageDTO>() {
         @Override
         public void onChanged(HomePageDTO homePageDTO) {
             updateMovieSlider(homePageDTO);

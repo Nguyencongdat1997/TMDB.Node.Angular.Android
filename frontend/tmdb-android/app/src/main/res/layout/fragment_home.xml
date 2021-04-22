@@ -135,6 +135,22 @@
                     android:text="Tv Popular"
                     android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
                     android:textSize="30dp"/>
+
+                <TextView
+                    android:id="@+id/footerTMDB"
+                    android:text="Powered by TMDB"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:textAlignment="center"
+                    android:textColor="@color/blue"/>
+
+                <TextView
+                    android:id="@+id/footerStudent"
+                    android:text="Developed by Nguyen Cong Dat"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:textAlignment="center"
+                    android:textColor="@color/blue"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
