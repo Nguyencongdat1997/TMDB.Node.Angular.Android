@@ -23,6 +23,11 @@
         <item name="android:textColorSecondary">@color/white</item>
     </style>
 
-    <style name="Theme.TMDBAndroid.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="Theme.TMDBAndroid.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="popupMenuStyle" parent="Theme.AppCompat">
+        <item name="android:background">@android:color/white</item>
+        <item name="android:textAppearance">@android:color/black</item>
+    </style>
+
+<!--    <style name="Theme.TMDBAndroid.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />-->
+<!--    <style name="Theme.TMDBAndroid.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />-->
 </resources>

@@ -17,6 +17,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginRight="10dp"
             android:src="@drawable/ic_baseline_more_vert_24"
+            android:background="@android:color/transparent"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>

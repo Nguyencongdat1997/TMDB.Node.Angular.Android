@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -86,7 +87,8 @@ public class HorizontalRecycleViewAdapter
         viewHolder.moreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu popupMenu = new PopupMenu(context, viewHolder.moreBtn);
+                Context wrapper = new ContextThemeWrapper(context, R.style.popupMenuStyle);
+                PopupMenu popupMenu = new PopupMenu(wrapper, viewHolder.moreBtn);
 
                 popupMenu.getMenuInflater().inflate(R.menu.home_movie_item_popup, popupMenu.getMenu());
                 MenuItem addToWatchListMenuItem = popupMenu.getMenu().findItem(R.id.movieItemPopupAddtoWatchListBtn);
