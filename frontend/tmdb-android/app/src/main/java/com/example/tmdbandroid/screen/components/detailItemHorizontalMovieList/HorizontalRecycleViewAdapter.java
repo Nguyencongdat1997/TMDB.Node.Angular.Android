@@ -66,6 +66,7 @@ public class HorizontalRecycleViewAdapter extends RecyclerView.Adapter<com.examp
         final Item selectedItem = list.get(position);
         Glide.with(viewHolder.itemView)
                 .load(selectedItem.posterPath)
+                .placeholder(R.drawable.movie_placeholder)
                 .transform(new MultiTransformation<>(
                         new CenterCrop(), new RoundedCorners(20)
                 ))
