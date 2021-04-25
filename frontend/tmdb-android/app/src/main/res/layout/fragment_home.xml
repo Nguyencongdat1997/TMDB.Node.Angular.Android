@@ -98,7 +98,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Movie Top-Rated"
+                    android:text="Top-Rated"
                     android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}"
                     android:textSize="30dp"/>
                 <androidx.recyclerview.widget.RecyclerView
@@ -109,7 +109,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Movie Popular"
+                    android:text="Popular"
                     android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}"
                     android:textSize="30dp"/>
                 <androidx.recyclerview.widget.RecyclerView
@@ -120,19 +120,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tv Carousel"
+                    android:text="Carousel"
                     android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
                     android:textSize="30dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tv Top-Rated"
+                    android:text="Top-Rated"
                     android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
                     android:textSize="30dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tv Popular"
+                    android:text="Popular"
                     android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
                     android:textSize="30dp"/>
 
