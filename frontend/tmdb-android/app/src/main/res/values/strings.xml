@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TMDB.Android</string>
+    <string name="app_name">USC Films</string>
     <string name="title_activity_detail">DetailActivity</string>
     <!--
     This string is used for square devices and overridden by hello_world in
