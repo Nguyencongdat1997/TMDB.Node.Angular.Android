@@ -73,6 +73,7 @@ public class MyView
         final Cast selectedItem = list.get(position);
         Glide.with(viewHolder.itemView)
                 .load(selectedItem.profilePath)
+                .placeholder(R.drawable.person_placeholder)
                 .transform(new MultiTransformation<>(
                         new CenterCrop(), new CircleCrop()
                 ))

@@ -159,6 +159,10 @@ public class DetailFragment extends Fragment {
 
             if (detailPageDTO.reviews != null && detailPageDTO.reviews.size()>0){
                 setReviewListView(detailPageDTO.reviews);
+                binding.reviewsSectionTitle.setVisibility(View.VISIBLE);
+            }
+            else{
+                binding.reviewsSectionTitle.setVisibility(View.GONE);
             }
 
             if (detailPageDTO.recommendations != null && detailPageDTO.recommendations.size()>0){

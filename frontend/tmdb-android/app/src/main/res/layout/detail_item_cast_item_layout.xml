@@ -6,6 +6,7 @@
     android:orientation="vertical">
     <ImageView
         android:id="@+id/castAvatar"
+        android:scaleType="fitXY"
         android:layout_width="115dp"
         android:layout_height="115dp"/>
     <TextView
