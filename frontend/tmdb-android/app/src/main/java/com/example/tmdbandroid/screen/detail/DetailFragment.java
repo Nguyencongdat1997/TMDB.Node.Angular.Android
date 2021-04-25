@@ -4,6 +4,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -60,6 +62,24 @@ public class DetailFragment extends Fragment {
 
         viewModel.getDetailDto().observe(this, detailPageUpdateObserver);
         viewModel.getYoutubeKey().observe(this, youtubePlayerUpdateObserver);
+
+        String tmdpUrl = "https://www.themoviedb.org/" + itemCategory + "/" + itemId;
+        binding.detailItemFbBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String fbUrl = "https://www.facebook.com/sharer/sharer.php?u=" + tmdpUrl;
+                Intent openFBPage = new Intent(Intent.ACTION_VIEW, Uri.parse(fbUrl));
+                context.startActivity(openFBPage);
+            }
+        });
+        binding.detailItemTwitterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String twUrl = "https://twitter.com/intent/tweet?text=" + tmdpUrl;
+                Intent openTwitterPage = new Intent(Intent.ACTION_VIEW, Uri.parse(twUrl));
+                context.startActivity(openTwitterPage);
+            }
+        });
 
         View view = binding.getRoot();
         return view;
