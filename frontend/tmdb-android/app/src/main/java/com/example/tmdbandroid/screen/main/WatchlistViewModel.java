@@ -29,6 +29,10 @@ public class WatchlistViewModel extends ViewModel {
         gson = new Gson();
 
         _watchList = new MutableLiveData<List<Item>>();
+        updateData();
+    }
+
+    public void updateData(){
         LocalStorageConnector localStorageConnector = new LocalStorageConnector(application.getApplicationContext());
         List<Item> watchList = localStorageConnector.getWatchList();
         _watchList.setValue(watchList);

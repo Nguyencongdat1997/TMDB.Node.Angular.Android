@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="com.example.tmdbandroid.screen.detail.DetailViewModel" />
@@ -90,6 +91,16 @@
                     android:scaleType="fitXY"
                     android:layout_marginRight="5dp"
                     android:src="@drawable/ic_baseline_add_circle_outline_24"
+                    android:visibility="@{viewModel.idItemStored ? View.GONE : View.VISIBLE}"
+                    android:background="@android:color/transparent"/>
+                <ImageButton
+                    android:id="@+id/detailItemRemoveBtn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleType="fitXY"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/ic_baseline_remove_circle_outline_24"
+                    android:visibility="@{viewModel.idItemStored ? View.VISIBLE : View.GONE}"
                     android:background="@android:color/transparent"/>
                 <ImageButton
                     android:id="@+id/detailItemFbBtn"

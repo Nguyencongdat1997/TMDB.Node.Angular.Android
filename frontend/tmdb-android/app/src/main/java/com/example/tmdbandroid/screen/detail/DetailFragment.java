@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -15,14 +16,18 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tmdbandroid.DTOs.Cast;
 import com.example.tmdbandroid.DTOs.DetailPageDTO;
 import com.example.tmdbandroid.DTOs.Item;
 import com.example.tmdbandroid.DTOs.Review;
+import com.example.tmdbandroid.R;
 import com.example.tmdbandroid.databinding.DetailFragmentBinding;
 import com.example.tmdbandroid.screen.components.castsList.CastRecyclerViewAdapter;
 import com.example.tmdbandroid.screen.components.detailItemHorizontalMovieList.HorizontalRecycleViewAdapter;
@@ -78,6 +83,38 @@ public class DetailFragment extends Fragment {
                 String twUrl = "https://twitter.com/intent/tweet?text=" + tmdpUrl;
                 Intent openTwitterPage = new Intent(Intent.ACTION_VIEW, Uri.parse(twUrl));
                 context.startActivity(openTwitterPage);
+            }
+        });
+        binding.detailItemAddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.addItemToLocalWatchList();
+                Toast toast = Toast.makeText(context, "\""
+                        + viewModel.getDetailDto().getValue().itemDetail.title
+                        + "\" was added to Watchlist", Toast.LENGTH_SHORT);
+                View view =toast.getView();
+                view.setBackgroundColor(Color.TRANSPARENT);
+                TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                toastMessage.setTextColor(Color.BLACK);
+                toastMessage.setBackground(context.getDrawable(R.drawable.custom_toast));
+                toast.setGravity(Gravity.BOTTOM,0,10);
+                toast.show();
+            }
+        });
+        binding.detailItemRemoveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.removeItemFromLocalWatchList();
+                Toast toast = Toast.makeText(context, "\""
+                        + viewModel.getDetailDto().getValue().itemDetail.title
+                        + "\" was removed from Watchlist", Toast.LENGTH_SHORT);
+                View view =toast.getView();
+                view.setBackgroundColor(Color.TRANSPARENT);
+                TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                toastMessage.setTextColor(Color.BLACK);
+                toastMessage.setBackground(context.getDrawable(R.drawable.custom_toast));
+                toast.setGravity(Gravity.BOTTOM,0,10);
+                toast.show();
             }
         });
 

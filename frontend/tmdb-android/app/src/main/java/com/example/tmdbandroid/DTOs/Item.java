@@ -11,4 +11,13 @@ public class Item {
     public String backdropPath;
     public String category;
     public boolean isInWatchlist;
+
+    public Item(String id, String title, String posterPath, String backdropPath, String category, boolean isInWatchlist) {
+        this.id = id;
+        this.title = title;
+        this.posterPath = posterPath;
+        this.backdropPath = backdropPath;
+        this.category = category;
+        this.isInWatchlist = isInWatchlist;
+    }
 }

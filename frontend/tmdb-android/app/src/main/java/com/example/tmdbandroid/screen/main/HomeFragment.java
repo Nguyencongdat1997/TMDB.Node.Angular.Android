@@ -86,11 +86,22 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    public void onResume() {
+        super.onResume();
+        viewModel.updateData();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
         LocalStorageConnector localStorageConnector = new LocalStorageConnector(getContext());
         List<Item> watchList = viewModel.getLocalWatchlist().getValue();
         localStorageConnector.saveWatchList(watchList);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
         binding = null;
     }
 

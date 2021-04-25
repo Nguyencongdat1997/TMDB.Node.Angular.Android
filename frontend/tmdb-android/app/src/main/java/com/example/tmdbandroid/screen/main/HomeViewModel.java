@@ -153,10 +153,10 @@ public class HomeViewModel extends ViewModel {
 
                         if (_localWatchlist==null){
                             _localWatchlist = new MutableLiveData<List<Item>>();
-                            LocalStorageConnector localStorageConnector = new LocalStorageConnector(application.getApplicationContext());
-                            List<Item> watchList = localStorageConnector.getWatchList();
-                            setLocalWatchlist(watchList);
                         }
+                        LocalStorageConnector localStorageConnector = new LocalStorageConnector(application.getApplicationContext());
+                        List<Item> watchList = localStorageConnector.getWatchList();
+                        setLocalWatchlist(watchList);
                     }
                 }, new Response.ErrorListener() {
                     @Override
