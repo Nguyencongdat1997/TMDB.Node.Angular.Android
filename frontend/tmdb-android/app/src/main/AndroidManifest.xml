@@ -15,42 +15,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TMDBAndroid.Common">
 
-<!--        <uses-library-->
-<!--            android:name="com.google.android.wearable"-->
-<!--            android:required="true" />-->
-<!--        &lt;!&ndash;-->
-<!--               Set to true if your app is Standalone, that is, it does not require the handheld-->
-<!--               app to run.-->
-<!--        &ndash;&gt;-->
-<!--        <meta-data-->
-<!--            android:name="com.google.android.wearable.standalone"-->
-<!--            android:value="true" />-->
-
         <activity
             android:name=".screen.review.ReviewActivity"
             android:label="@string/title_activity_review">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--            </intent-filter>-->
         </activity>
+
         <activity
             android:name=".screen.detail.DetailActivity"
             android:label="@string/title_activity_detail">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--            </intent-filter>-->
         </activity>
-        <activity android:name=".screen.main.MainActivity">
+
+        <activity
+            android:name=".screen.main.MainActivity"
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".screen.splash.SplashScreenActivity"
+            android:theme="@style/SplashScreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>.50:
     </application>
 
 </manifest>
