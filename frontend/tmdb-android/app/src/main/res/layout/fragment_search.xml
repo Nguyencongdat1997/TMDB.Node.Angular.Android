@@ -27,6 +27,15 @@
             android:layout_height="match_parent"
             android:layout_below="@id/searchBar"/>
 
+        <TextView
+            android:id="@+id/searchNoResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No result found."
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"/>
+
 <!--        <ListView-->
 <!--            android:id="@+id/searchResults"-->
 <!--            android:layout_width="fill_parent"-->

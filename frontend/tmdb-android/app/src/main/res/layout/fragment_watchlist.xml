@@ -12,13 +12,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screen.main.WatchlistFragment">
+        tools:context=".screen.main.WatchlistFragment"
+        android:orientation="vertical">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/watchlistGridView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:horizontalSpacing="2dp"
             android:verticalSpacing="2dp"/>
-
+        <TextView
+            android:id="@+id/watchListNoData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Nothing saved to Watchlist"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/app_bar_height"
+            android:visibility="gone"
+            />
     </LinearLayout>
 </layout>

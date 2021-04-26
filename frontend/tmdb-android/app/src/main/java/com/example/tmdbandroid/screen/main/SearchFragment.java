@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.tmdbandroid.DTOs.HomePageDTO;
 import com.example.tmdbandroid.DTOs.Item;
@@ -97,20 +98,34 @@ public class SearchFragment extends Fragment {
     private Observer<List<Item>> searchResultsUpdateObserver = new Observer<List<Item>>() {
         @Override
         public void onChanged(List<Item> searchResults) {
-            RecyclerView recyclerView = binding.searchResults;
+            if (searchResults.size() > 0) {
+                TextView noTextView = binding.searchNoResults;
+                noTextView.setVisibility(View.GONE);
+                RecyclerView recyclerView = binding.searchResults;
+                recyclerView.setVisibility(View.VISIBLE);
 
-            RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(context);
-            recyclerView.setLayoutManager(recyclerViewLayoutManager);
+                RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(context);
+                recyclerView.setLayoutManager(recyclerViewLayoutManager);
 
-            adapter = new SearchResultsAdapter(context, searchResults.subList(0,Math.min(20, searchResults.size())));
+                adapter = new SearchResultsAdapter(context, searchResults.subList(0, Math.min(20, searchResults.size())));
 
-            LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(
-                    context,
-                    LinearLayoutManager.VERTICAL,
-                    false);
-            recyclerView.setLayoutManager(horizontalLayoutManager);
+                LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(
+                        context,
+                        LinearLayoutManager.VERTICAL,
+                        false);
+                recyclerView.setLayoutManager(horizontalLayoutManager);
 
-            recyclerView.setAdapter(adapter);
+                recyclerView.setAdapter(adapter);
+            }
+            else{
+                if (binding.searchBar.getQuery().length()>0){
+                    TextView noTextView = binding.searchNoResults;
+                    noTextView.setVisibility(View.VISIBLE);
+
+                    RecyclerView recyclerView = binding.searchResults;
+                    recyclerView.setVisibility(View.GONE);
+                }
+            }
         }
     };
 

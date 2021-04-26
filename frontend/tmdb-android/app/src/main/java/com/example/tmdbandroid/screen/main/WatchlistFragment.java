@@ -91,17 +91,25 @@ public class WatchlistFragment extends Fragment {
     private Observer<List<Item>> watchListUpdateObserver = new Observer<List<Item>>() {
         @Override
         public void onChanged(List<Item> watchList) {
-            watchlistGridView = (RecyclerView) binding.watchlistGridView;
+            if (watchList.size() > 0) {
+                binding.watchListNoData.setVisibility(View.GONE);
+                watchlistGridView = (RecyclerView) binding.watchlistGridView;
+                watchlistGridView.setVisibility(View.VISIBLE);
 
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),3);
-            watchlistGridView.setLayoutManager(gridLayoutManager);
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
+                watchlistGridView.setLayoutManager(gridLayoutManager);
 
-            WatchListRecyclerViewAdapter adapter = new WatchListRecyclerViewAdapter(getContext(), watchList, viewModel);
-            watchlistGridView.setAdapter(adapter);
-            ItemTouchHelper.Callback callback = new ItemMoveCallback(adapter);
-            ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
-            touchHelper.attachToRecyclerView(watchlistGridView);
-
+                WatchListRecyclerViewAdapter adapter = new WatchListRecyclerViewAdapter(getContext(), watchList, viewModel);
+                watchlistGridView.setAdapter(adapter);
+                ItemTouchHelper.Callback callback = new ItemMoveCallback(adapter);
+                ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+                touchHelper.attachToRecyclerView(watchlistGridView);
+            }
+            else{
+                binding.watchListNoData.setVisibility(View.VISIBLE);
+                watchlistGridView = (RecyclerView) binding.watchlistGridView;
+                watchlistGridView.setVisibility(View.GONE);
+            }
 
         }
     };
