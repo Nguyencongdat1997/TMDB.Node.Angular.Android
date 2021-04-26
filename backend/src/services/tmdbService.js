@@ -144,7 +144,7 @@ async function getHomeDataFunc(){
 
 async function getSearchResultsFunc(keyword){
     var queryUrl =  tmdpUrl + '/search/multi?api_key=' + tmdpKey + '&language=en-US&query=' + keyword;
-    
+    console.log('Url, ' + queryUrl);
     var rawData = {};    
     await axios.get(queryUrl)
     .then(response => {     
