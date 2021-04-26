@@ -75,7 +75,7 @@ public class SearchFragment extends Fragment {
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                // viewModel.updateData(query);
+                 viewModel.updateData(query);
                 return false;
             }
             @Override

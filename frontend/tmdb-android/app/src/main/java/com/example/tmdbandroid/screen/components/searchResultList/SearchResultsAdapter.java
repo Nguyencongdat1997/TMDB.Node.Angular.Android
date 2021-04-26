@@ -29,7 +29,10 @@ import com.example.tmdbandroid.R;
 import com.example.tmdbandroid.databinding.SearchResultItemLayoutBinding;
 import com.example.tmdbandroid.screen.detail.DetailActivity;
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SearchResultsAdapter
@@ -94,9 +97,18 @@ public class SearchResultsAdapter
                 ))
                 .into(viewHolder.movieItemImageView);
         viewHolder.titleTextView.setText(selectedItem.title);
-        viewHolder.rateTextView.setText("10"); // TODO: update this in backend
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        String txtVoteAverage = "" + decimalFormat.format(Double.parseDouble(selectedItem.voteAverage)/2) ;
+        viewHolder.rateTextView.setText(txtVoteAverage);
         String txtCategory = selectedItem.category.equals("movie") ? "movie" : "tv shows";
-        String year = "2010"; // TODO: update this in backend
+        String year = "";
+        try {
+            Date date = (new SimpleDateFormat("yyyy-MM-dd")).parse(selectedItem.date);
+            year = (new SimpleDateFormat("yyyy").format(date));
+        }
+        catch (Exception e){
+            year = "";
+        }
         viewHolder.categoryAndTimeTextView.setText(selectedItem.category + " (" + year + ")");
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {

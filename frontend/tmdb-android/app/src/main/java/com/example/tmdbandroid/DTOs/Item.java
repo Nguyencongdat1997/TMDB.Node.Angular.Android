@@ -12,6 +12,11 @@ public class Item {
     public String category;
     public boolean isInWatchlist;
 
+    // Search result addtional fields
+    public String date;
+    @SerializedName("vote_average")
+    public String voteAverage;
+
     public Item(String id, String title, String posterPath, String backdropPath, String category, boolean isInWatchlist) {
         this.id = id;
         this.title = title;
