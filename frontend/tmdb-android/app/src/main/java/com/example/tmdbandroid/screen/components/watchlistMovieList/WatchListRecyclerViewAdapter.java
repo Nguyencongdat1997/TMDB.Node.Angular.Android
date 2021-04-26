@@ -79,6 +79,7 @@ public class WatchListRecyclerViewAdapter extends RecyclerView.Adapter<WatchList
         final Item selectedItem = list.get(position);
         Glide.with(viewHolder.itemView)
                 .load(selectedItem.posterPath)
+                .placeholder(R.drawable.movie_placeholder)
                 .transform(new MultiTransformation<>(
                         new CenterCrop(), new RoundedCorners((int) context.getResources().getDimension(R.dimen.card_radius))
                 ))

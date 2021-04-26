@@ -82,6 +82,7 @@
                 android:paddingHorizontal="5dp"/>
 
             <TextView
+                android:id="@+id/detailYearTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Year"
@@ -140,6 +141,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/detailCastSectionTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Cast"
@@ -168,6 +170,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/detailRecommendationSectionTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Recommended Picks"

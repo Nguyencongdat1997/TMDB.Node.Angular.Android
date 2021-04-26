@@ -105,11 +105,12 @@ public class SearchResultsAdapter
         try {
             Date date = (new SimpleDateFormat("yyyy-MM-dd")).parse(selectedItem.date);
             year = (new SimpleDateFormat("yyyy").format(date));
+            year = " (" + year + ")";
         }
         catch (Exception e){
             year = "";
         }
-        viewHolder.categoryAndTimeTextView.setText(selectedItem.category + " (" + year + ")");
+        viewHolder.categoryAndTimeTextView.setText(selectedItem.category + year);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

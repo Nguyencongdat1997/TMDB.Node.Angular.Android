@@ -52,6 +52,7 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapter
         // from url in your imageview.
         Glide.with(viewHolder.itemView)
                 .load(sliderItem.posterPath)
+                .placeholder(R.drawable.movie_placeholder)
                 .into(viewHolder.imageViewInsider);
         Glide.with(viewHolder.itemView)
                 .load(sliderItem.posterPath)

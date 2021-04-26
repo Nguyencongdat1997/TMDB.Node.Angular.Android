@@ -150,15 +150,23 @@ public class DetailFragment extends Fragment {
                 try {
                     Date date = (new SimpleDateFormat("yyyy-MM-dd")).parse(detailPageDTO.itemDetail.date);
                     year = (new SimpleDateFormat("yyyy").format(date));
+                    binding.detailYearTitle.setVisibility(View.VISIBLE);
+                    binding.detailYear.setVisibility(View.VISIBLE);
+                    binding.detailYear.setText(year);
                 }
                 catch (Exception e){
                     year = "";
+                    binding.detailYearTitle.setVisibility(View.GONE);
+                    binding.detailYear.setVisibility(View.GONE);
                 }
-                binding.detailYear.setText(year);
             }
 
             if (detailPageDTO.casts != null && detailPageDTO.casts.size()>0){
                 setCastRecyclerView(detailPageDTO.casts);
+                binding.detailCastSectionTitle.setVisibility(View.VISIBLE);
+            }
+            else{
+                binding.detailCastSectionTitle.setVisibility(View.GONE);
             }
 
             if (detailPageDTO.reviews != null && detailPageDTO.reviews.size()>0){
@@ -171,6 +179,10 @@ public class DetailFragment extends Fragment {
 
             if (detailPageDTO.recommendations != null && detailPageDTO.recommendations.size()>0){
                 setHorizontalRecycleView(binding.detailItemRecommendations, detailPageDTO.recommendations.subList(0,Math.min(10, detailPageDTO.recommendations.size())));
+                binding.detailRecommendationSectionTitle.setVisibility(View.VISIBLE);
+            }
+            else{
+                binding.detailRecommendationSectionTitle.setVisibility(View.GONE);
             }
         }
     };
