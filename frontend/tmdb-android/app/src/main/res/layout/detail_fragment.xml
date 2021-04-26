@@ -25,7 +25,15 @@
                 android:layout_height="wrap_content"
                 app:autoPlay="false"
                 app:showFullScreenButton="false"
-                app:enableAutomaticInitialization="false" />
+                app:enableAutomaticInitialization="false"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/itemDetailBackdrop"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                />
 
             <TextView
                 android:layout_width="match_parent"

@@ -23,6 +23,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.MultiTransformation;
+import com.bumptech.glide.load.resource.bitmap.FitCenter;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.tmdbandroid.DTOs.Cast;
 import com.example.tmdbandroid.DTOs.DetailPageDTO;
 import com.example.tmdbandroid.DTOs.Item;
@@ -174,13 +178,31 @@ public class DetailFragment extends Fragment {
     private Observer<String> youtubePlayerUpdateObserver = new Observer<String>() {
         @Override
         public void onChanged(String youtubeKey) {
-            AbstractYouTubePlayerListener listener = new AbstractYouTubePlayerListener() {
-                @Override
-                public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                    youTubePlayer.cueVideo(youtubeKey, 0);
-                }
-            };
-            binding.youtubePlayerView.initialize(listener);
+            if (youtubeKey!= null && !youtubeKey.equals("")){
+                binding.youtubePlayerView.setVisibility(View.VISIBLE);
+                binding.itemDetailBackdrop.setVisibility(View.GONE);
+
+                AbstractYouTubePlayerListener listener = new AbstractYouTubePlayerListener() {
+                    @Override
+                    public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                        youTubePlayer.cueVideo(youtubeKey, 0);
+                    }
+                };
+                binding.youtubePlayerView.initialize(listener);
+            }
+            else{
+                binding.youtubePlayerView.setVisibility(View.GONE);
+                binding.itemDetailBackdrop.setVisibility(View.VISIBLE);
+
+                Glide.with(binding.getRoot())
+                        .load(viewModel.getDetailDto().getValue().itemDetail.backdropPath)
+                        .placeholder(R.drawable.movie_placeholder)
+                        .transform(new MultiTransformation<>(
+                                new FitCenter(), new RoundedCorners(1)
+                        ))
+                        .into(binding.itemDetailBackdrop);
+            }
+
         }
     };
 

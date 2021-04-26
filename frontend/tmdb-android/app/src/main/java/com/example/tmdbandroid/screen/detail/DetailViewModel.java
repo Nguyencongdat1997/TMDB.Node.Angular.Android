@@ -76,8 +76,12 @@ public class DetailViewModel extends ViewModel {
                         _status.postValue("Successful");
                         DetailPageDTO object = (gson.fromJson(response.toString(), DetailPageDTO.class));
                         _detailDto.setValue(object);
-                        _youtubeKey.setValue(object.chosenYoutubeVideo.key);
-
+                        if (object.chosenYoutubeVideo.name != null && object.chosenYoutubeVideo.type!=null){
+                            _youtubeKey.setValue(object.chosenYoutubeVideo.key);
+                        }
+                        else{
+                            _youtubeKey.setValue("");
+                        }
 
                         List<Item> watchList = localStorageConnector.getWatchList();
                         _isItemStored.setValue(false);
