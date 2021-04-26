@@ -41,14 +41,17 @@
                 android:text="@{viewModel.detailDto.itemDetail.title}"
                 android:textSize="30dp"
                 android:textColor="@color/white"
-                android:background="@color/blue"/>
+                android:background="@color/blue"
+                android:paddingHorizontal="5dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Overview"
                 android:textSize="20dp"
-                android:textColor="@color/blue"/>
+                android:textColor="@color/blue"
+                android:paddingHorizontal="5dp"
+                android:layout_marginTop="5dp"/>
             <com.borjabravo.readmoretextview.ReadMoreTextView
                 android:id="@+id/text_view"
                 android:layout_width="match_parent"
@@ -60,37 +63,44 @@
                 app:trimLength="170"
                 app:trimMode="trimModeLength"
                 app:showTrimExpandedText="true"
-                android:textSize="15dp"/>
+                android:textSize="15dp"
+                android:paddingHorizontal="5dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Genres"
                 android:textSize="20dp"
-                android:textColor="@color/blue"/>
+                android:textColor="@color/blue"
+                android:paddingHorizontal="5dp"
+                android:layout_marginTop="5dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.detailDto.itemDetail.genres}"
-                android:textSize="15dp"/>
+                android:textSize="15dp"
+                android:paddingHorizontal="5dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Year"
                 android:textSize="20dp"
-                android:textColor="@color/blue"/>
+                android:textColor="@color/blue"
+                android:paddingHorizontal="5dp"
+                android:layout_marginTop="5dp"/>
             <TextView
                 android:id="@+id/detailYear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="2020"
-                android:textSize="15dp"/>
+                android:textSize="15dp"
+                android:paddingHorizontal="5dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
                 <ImageButton
                     android:id="@+id/detailItemAddBtn"
@@ -134,7 +144,9 @@
                 android:layout_height="wrap_content"
                 android:text="Cast"
                 android:textSize="20dp"
-                android:textColor="@color/blue"/>
+                android:textColor="@color/blue"
+                android:paddingHorizontal="5dp"
+                android:layout_marginTop="5dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/castsRecyclerView"
@@ -147,7 +159,9 @@
                 android:layout_height="wrap_content"
                 android:text="Reviews"
                 android:textSize="20dp"
-                android:textColor="@color/blue"/>
+                android:textColor="@color/blue"
+                android:paddingHorizontal="5dp"
+                android:layout_marginTop="5dp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/reviewsRecylerView"
                 android:layout_width="match_parent"
@@ -158,11 +172,15 @@
                 android:layout_height="wrap_content"
                 android:text="Recommended Picks"
                 android:textSize="20dp"
-                android:textColor="@color/blue"/>
+                android:textColor="@color/blue"
+                android:paddingHorizontal="5dp"
+                android:layout_marginTop="5dp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/detailItemRecommendations"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="20dp"/>
 
         </LinearLayout>
     </ScrollView>

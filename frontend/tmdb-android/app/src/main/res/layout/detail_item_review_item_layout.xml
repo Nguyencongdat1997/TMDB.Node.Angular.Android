@@ -14,7 +14,9 @@
         android:orientation="vertical"
         android:background="@color/backgroundPrimary"
         android:layout_marginBottom="5dp"
-        android:layout_marginHorizontal="2dp">
+        android:layout_marginHorizontal="2dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="5dp">
         <TextView
             android:id="@+id/itemDetailReviewTitle"
             android:layout_width="match_parent"
