@@ -3,6 +3,7 @@ package com.example.tmdbandroid.screen.components.watchlistMovieList;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.example.tmdbandroid.R;
 import com.example.tmdbandroid.screen.detail.DetailActivity;
 import com.example.tmdbandroid.screen.main.WatchlistViewModel;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -47,11 +49,15 @@ public class WatchListRecyclerViewAdapter extends RecyclerView.Adapter<WatchList
         }
     }
 
-    public WatchListRecyclerViewAdapter(Context context, List<Item> horizontalList, WatchlistViewModel viewModel)
+    public WatchListRecyclerViewAdapter(Context context, List<Item> watchList, WatchlistViewModel viewModel)
     {
         this.context = context;
-        this.list = horizontalList;
+        this.list = watchList;
         this.viewModel = viewModel;
+    }
+
+    public void setWatchList(List<Item> watchList){
+        this.list = watchList;
     }
 
     @Override
@@ -113,7 +119,9 @@ public class WatchListRecyclerViewAdapter extends RecyclerView.Adapter<WatchList
     }
 
     @Override
-    public void onRowMoved(int fromPosition, int toPosition) {
+    public boolean onItemMoved(int fromPosition, int toPosition) {
+        Log.v("DEVV", "From" + fromPosition+ ":" + toPosition);
+//        Collections.swap(list, fromPosition, toPosition);
         if (fromPosition < toPosition) {
             for (int i = fromPosition; i < toPosition; i++) {
                 Collections.swap(list, i, i + 1);
@@ -124,16 +132,6 @@ public class WatchListRecyclerViewAdapter extends RecyclerView.Adapter<WatchList
             }
         }
         notifyItemMoved(fromPosition, toPosition);
-    }
-
-    @Override
-    public void onRowSelected(MyView myViewHolder) {
-//        myViewHolder.imageBackground.setBackgroundColor(Color.GRAY);
-
-    }
-
-    @Override
-    public void onRowClear(MyView myViewHolder) {
-//        myViewHolder.imageBackground.setBackgroundColor(Color.WHITE);
+        return true;
     }
 }

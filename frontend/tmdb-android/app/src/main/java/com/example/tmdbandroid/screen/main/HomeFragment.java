@@ -138,7 +138,6 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(horizontalLayoutManager);
 
         HorizontalRecycleViewAdapter horizontalListApdater = new HorizontalRecycleViewAdapter(context, list, viewModel);
-//        horizontalListApdater.get
         recyclerView.setAdapter(horizontalListApdater);
     }
 

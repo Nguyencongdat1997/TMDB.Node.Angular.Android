@@ -21,7 +21,7 @@ public class ItemMoveCallback extends ItemTouchHelper.Callback {
 
     @Override
     public boolean isItemViewSwipeEnabled() {
-        return false;
+        return true;
     }
 
     @Override
@@ -30,27 +30,23 @@ public class ItemMoveCallback extends ItemTouchHelper.Callback {
 
     @Override
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-        int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
-        return makeMovementFlags(dragFlags, 0);
+        int dragFlags = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.UP | ItemTouchHelper.DOWN ;
+        int swipeFlags = 0;
+        return makeMovementFlags(dragFlags, swipeFlags);
     }
 
     @Override
-    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder,
+    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder source,
                           RecyclerView.ViewHolder target) {
-        mAdapter.onRowMoved(viewHolder.getAdapterPosition(), target.getAdapterPosition());
-        return true;
+        if (source.getItemViewType() != target.getItemViewType()) {
+            return false;
+        }
+        return mAdapter.onItemMoved(source.getAdapterPosition(), target.getAdapterPosition());
     }
 
     @Override
     public void onSelectedChanged(RecyclerView.ViewHolder viewHolder,
                                   int actionState) {
-        if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
-            if (viewHolder instanceof WatchListRecyclerViewAdapter.MyView) {
-                WatchListRecyclerViewAdapter.MyView myViewHolder=
-                        (WatchListRecyclerViewAdapter.MyView) viewHolder;
-                mAdapter.onRowSelected(myViewHolder);
-            }
-        }
         super.onSelectedChanged(viewHolder, actionState);
     }
 
@@ -58,16 +54,9 @@ public class ItemMoveCallback extends ItemTouchHelper.Callback {
     public void clearView(RecyclerView recyclerView,
                           RecyclerView.ViewHolder viewHolder) {
         super.clearView(recyclerView, viewHolder);
-        if (viewHolder instanceof WatchListRecyclerViewAdapter.MyView) {
-            WatchListRecyclerViewAdapter.MyView myViewHolder=
-                    (WatchListRecyclerViewAdapter.MyView) viewHolder;
-            mAdapter.onRowClear(myViewHolder);
-        }
     }
 
     public interface ItemTouchHelperContract {
-        void onRowMoved(int fromPosition, int toPosition);
-        void onRowSelected(WatchListRecyclerViewAdapter.MyView myViewHolder);
-        void onRowClear(WatchListRecyclerViewAdapter.MyView myViewHolder);
+        boolean onItemMoved(int fromPosition, int toPosition);
     }
 }

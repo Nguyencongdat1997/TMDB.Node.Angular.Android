@@ -30,6 +30,7 @@ import com.example.tmdbandroid.screen.components.watchlistMovieList.WatchListGri
 import com.example.tmdbandroid.screen.components.watchlistMovieList.WatchListRecyclerViewAdapter;
 import com.example.tmdbandroid.services.storage.LocalStorageConnector;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WatchlistFragment extends Fragment {
@@ -39,7 +40,7 @@ public class WatchlistFragment extends Fragment {
     private Context context;
 
     RecyclerView watchlistGridView;
-    WatchListGridViewAdapter gridViewAdapter;
+    WatchListRecyclerViewAdapter adapter;
 
     public static WatchlistFragment newInstance() {
         return new WatchlistFragment();
@@ -54,6 +55,15 @@ public class WatchlistFragment extends Fragment {
         WatchlistViewModelFactory viewModelFactory = new WatchlistViewModelFactory(getActivity().getApplication());
         viewModel = (new ViewModelProvider(this, viewModelFactory)).get(WatchlistViewModel.class);
         binding.setViewModel(viewModel);
+
+        watchlistGridView = (RecyclerView) binding.watchlistGridView;
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
+        watchlistGridView.setLayoutManager(gridLayoutManager);
+        adapter = new WatchListRecyclerViewAdapter(getContext(), viewModel.getWatchList().getValue(), viewModel);
+        watchlistGridView.setAdapter(adapter);
+        ItemTouchHelper.Callback callback = new ItemMoveCallback(adapter);
+        ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+        touchHelper.attachToRecyclerView(watchlistGridView);
 
         context = getContext();
 
@@ -93,21 +103,13 @@ public class WatchlistFragment extends Fragment {
         public void onChanged(List<Item> watchList) {
             if (watchList.size() > 0) {
                 binding.watchListNoData.setVisibility(View.GONE);
-                watchlistGridView = (RecyclerView) binding.watchlistGridView;
                 watchlistGridView.setVisibility(View.VISIBLE);
 
-                GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
-                watchlistGridView.setLayoutManager(gridLayoutManager);
-
-                WatchListRecyclerViewAdapter adapter = new WatchListRecyclerViewAdapter(getContext(), watchList, viewModel);
+                adapter.setWatchList(watchList);
                 watchlistGridView.setAdapter(adapter);
-                ItemTouchHelper.Callback callback = new ItemMoveCallback(adapter);
-                ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
-                touchHelper.attachToRecyclerView(watchlistGridView);
             }
             else{
                 binding.watchListNoData.setVisibility(View.VISIBLE);
-                watchlistGridView = (RecyclerView) binding.watchlistGridView;
                 watchlistGridView.setVisibility(View.GONE);
             }
 
