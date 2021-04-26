@@ -2,7 +2,6 @@ package com.example.tmdbandroid.screen.main;
 
 import android.app.Application;
 import android.content.Context;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -49,7 +48,7 @@ public class HomeViewModel extends ViewModel {
     }
     public void setLocalWatchlist(List<Item> watchlist){
         HomePageDTO homepageDtoData = _homepageDto.getValue();
-        homepageDtoData.carouselList.forEach(x -> {x.isInWatchlist=isInWatchList(x, watchlist);});
+        homepageDtoData.movieCarouselList.forEach(x -> {x.isInWatchlist=isInWatchList(x, watchlist);});
         homepageDtoData.topRatedMovies.forEach(x -> {x.isInWatchlist=isInWatchList(x, watchlist);});
         homepageDtoData.popularMovies.forEach(x -> {x.isInWatchlist=isInWatchList(x, watchlist);});
         homepageDtoData.topRatedTvs.forEach(x -> {x.isInWatchlist=isInWatchList(x, watchlist);});
@@ -79,7 +78,7 @@ public class HomeViewModel extends ViewModel {
             // Update status
             HomePageDTO homepageDtoData = _homepageDto.getValue();
             assert homepageDtoData != null;
-            homepageDtoData.carouselList.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=true;} });
+            homepageDtoData.movieCarouselList.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=true;} });
             homepageDtoData.topRatedMovies.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=true;} });
             homepageDtoData.popularMovies.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=true;} });
             homepageDtoData.topRatedTvs.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=true;} });
@@ -107,7 +106,7 @@ public class HomeViewModel extends ViewModel {
             // Update status
             HomePageDTO homepageDtoData = _homepageDto.getValue();
             assert homepageDtoData != null;
-            homepageDtoData.carouselList.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=false;} });
+            homepageDtoData.movieCarouselList.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=false;} });
             homepageDtoData.topRatedMovies.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=false;} });
             homepageDtoData.popularMovies.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=false;} });
             homepageDtoData.topRatedTvs.forEach(x -> {if (x.id.equals(item.id)){x.isInWatchlist=false;} });

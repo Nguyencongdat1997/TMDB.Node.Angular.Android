@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}">
                     <com.smarteist.autoimageslider.SliderView
-                        android:id="@+id/homeSlider"
+                        android:id="@+id/homeMovieSlider"
                         android:layout_width="match_parent"
                         android:layout_height="430dp"
                         android:layout_centerInParent="true"
@@ -117,24 +117,51 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}"/>
-                <TextView
-                    android:layout_width="wrap_content"
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Carousel"
-                    android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
-                    android:textSize="30dp"/>
+                    android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}">
+                    <com.smarteist.autoimageslider.SliderView
+                        android:id="@+id/homeTvSlider"
+                        android:layout_width="match_parent"
+                        android:layout_height="430dp"
+                        android:layout_centerInParent="true"
+                        app:sliderAnimationDuration="600"
+                        app:sliderAutoCycleDirection="back_and_forth"
+                        app:sliderIndicatorAnimationDuration="600"
+                        app:sliderIndicatorEnabled="true"
+                        app:sliderIndicatorGravity="center_horizontal|bottom"
+                        app:sliderIndicatorMargin="15dp"
+                        app:sliderIndicatorOrientation="horizontal"
+                        app:sliderIndicatorPadding="3dp"
+                        app:sliderIndicatorRadius="1.5dp"
+                        app:sliderIndicatorSelectedColor="@color/blue"
+                        app:sliderIndicatorUnselectedColor="@color/white"
+                        app:sliderScrollTimeInSec="1" />
+                </RelativeLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Top-Rated"
                     android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
                     android:textSize="30dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/homeTopRatedTvList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Popular"
                     android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
                     android:textSize="30dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/homePopularTvList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"/>
 
                 <TextView
                     android:id="@+id/footerTMDB"

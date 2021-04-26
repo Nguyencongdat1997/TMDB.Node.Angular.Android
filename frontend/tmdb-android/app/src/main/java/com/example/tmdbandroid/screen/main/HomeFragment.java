@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,7 +23,6 @@ import com.example.tmdbandroid.DTOs.HomePageDTO;
 import com.example.tmdbandroid.DTOs.Item;
 import com.example.tmdbandroid.databinding.FragmentHomeBinding;
 
-import com.example.tmdbandroid.R;
 import com.example.tmdbandroid.screen.components.homeHorizontalMovieList.HorizontalRecycleViewAdapter;
 import com.example.tmdbandroid.screen.components.homeSlider.SliderAdapter;
 import com.example.tmdbandroid.services.storage.LocalStorageConnector;
@@ -109,22 +107,34 @@ public class HomeFragment extends Fragment {
         @Override
         public void onChanged(HomePageDTO homePageDTO) {
             updateMovieSlider(homePageDTO);
-            updatePopularMovieList(homePageDTO);
+            updateTvSlider(homePageDTO);
+            updateItemLists(homePageDTO);
         }
     };
 
     private void updateMovieSlider(HomePageDTO homePageDTO){
-        SliderAdapter homeSliderApdater = new SliderAdapter(context, homePageDTO.carouselList.subList(0,Math.min(6, homePageDTO.carouselList.size())));
-        binding.homeSlider.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
-        binding.homeSlider.setSliderAdapter(homeSliderApdater);
-        binding.homeSlider.setScrollTimeInSec(3);
-        binding.homeSlider.setAutoCycle(true);
-        binding.homeSlider.startAutoCycle();
+        SliderAdapter homeSliderApdater = new SliderAdapter(context, homePageDTO.movieCarouselList.subList(0,Math.min(6, homePageDTO.movieCarouselList.size())));
+        binding.homeMovieSlider.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
+        binding.homeMovieSlider.setSliderAdapter(homeSliderApdater);
+        binding.homeMovieSlider.setScrollTimeInSec(3);
+        binding.homeMovieSlider.setAutoCycle(true);
+        binding.homeMovieSlider.startAutoCycle();
     }
 
-    private void updatePopularMovieList(HomePageDTO homePageDTO){
+    private void updateTvSlider(HomePageDTO homePageDTO){
+        SliderAdapter homeSliderApdater = new SliderAdapter(context, homePageDTO.tvCarouselList.subList(0,Math.min(6, homePageDTO.tvCarouselList.size())));
+        binding.homeTvSlider.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
+        binding.homeTvSlider.setSliderAdapter(homeSliderApdater);
+        binding.homeTvSlider.setScrollTimeInSec(3);
+        binding.homeTvSlider.setAutoCycle(true);
+        binding.homeTvSlider.startAutoCycle();
+    }
+
+    private void updateItemLists(HomePageDTO homePageDTO){
         setHorizontalRecycleView(binding.homePopularMovieList, homePageDTO.popularMovies.subList(0,Math.min(10, homePageDTO.popularMovies.size())));
         setHorizontalRecycleView(binding.homeTopRatedMovieList, homePageDTO.topRatedMovies.subList(0,Math.min(10, homePageDTO.topRatedMovies.size())));
+        setHorizontalRecycleView(binding.homePopularTvList, homePageDTO.popularTvs.subList(0,Math.min(10, homePageDTO.popularTvs.size())));
+        setHorizontalRecycleView(binding.homeTopRatedTvList, homePageDTO.topRatedTvs.subList(0,Math.min(10, homePageDTO.topRatedTvs.size())));
     }
 
     private void setHorizontalRecycleView(RecyclerView recyclerView, List<Item> list){
