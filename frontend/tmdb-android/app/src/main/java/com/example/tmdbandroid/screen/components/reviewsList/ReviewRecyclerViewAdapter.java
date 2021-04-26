@@ -87,7 +87,7 @@ public class ReviewRecyclerViewAdapter extends RecyclerView.Adapter<ReviewRecycl
         String titleTxt = "by " + selectedItem.author + dateTxt;
         viewHolder.titleText.setText(titleTxt);
 
-        String rateTxt = "" + (int)(Double.parseDouble(selectedItem.rating)/2) + "/5";
+        String rateTxt = "" + Math.round(Double.parseDouble(selectedItem.rating)/2) + "/5";
         viewHolder.rateText.setText(rateTxt);
 
         viewHolder.contentText.setText(selectedItem.content);
