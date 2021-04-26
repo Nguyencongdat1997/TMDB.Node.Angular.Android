@@ -73,7 +73,7 @@ public class DetailViewModel extends ViewModel {
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        _status.postValue("Successful");
+                        _status.setValue("Successful");
                         DetailPageDTO object = (gson.fromJson(response.toString(), DetailPageDTO.class));
                         _detailDto.setValue(object);
                         if (object.chosenYoutubeVideo.name != null && object.chosenYoutubeVideo.type!=null){
@@ -95,7 +95,7 @@ public class DetailViewModel extends ViewModel {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        _status.postValue("Failed");
+                        _status.setValue("Failed");
                         _detailDto.setValue(DetailPageDTO.getEmptyDetailPageDto());
                     }
                 });

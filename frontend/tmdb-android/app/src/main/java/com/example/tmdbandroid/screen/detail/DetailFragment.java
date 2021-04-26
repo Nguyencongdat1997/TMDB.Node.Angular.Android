@@ -69,6 +69,7 @@ public class DetailFragment extends Fragment {
         viewModel = (new ViewModelProvider(this, viewModelFactory)).get(DetailViewModel.class);
         binding.setViewModel(viewModel);
 
+        viewModel.getStatus().observe(this, detailGettingStatusUpdateObserver);
         viewModel.getDetailDto().observe(this, detailPageUpdateObserver);
         viewModel.getYoutubeKey().observe(this, youtubePlayerUpdateObserver);
 
@@ -141,6 +142,20 @@ public class DetailFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    private final Observer<String> detailGettingStatusUpdateObserver = new Observer<String>() {
+        @Override
+        public void onChanged(String status) {
+            if (status.equals("Successful")){
+                binding.detailLoadingScreen.setVisibility(View.GONE);
+                binding.detailLayout.setVisibility(View.VISIBLE);
+            }
+            else {
+                binding.detailLoadingScreen.setVisibility(View.VISIBLE);
+                binding.detailLayout.setVisibility(View.GONE);
+            }
+        }
+    };
 
     private Observer<DetailPageDTO> detailPageUpdateObserver = new Observer<DetailPageDTO>() {
         @Override

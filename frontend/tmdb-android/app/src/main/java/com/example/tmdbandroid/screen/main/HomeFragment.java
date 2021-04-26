@@ -78,6 +78,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        viewModel.getStatus().observe(this, homeGettingStatusUpdateObserver);
         viewModel.getHomepageDto().observe(this, homePageUpdateObserver);
 
         return binding.getRoot();
@@ -102,6 +103,21 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
+    private final Observer<String> homeGettingStatusUpdateObserver = new Observer<String>() {
+        @Override
+        public void onChanged(String status) {
+            if (status.equals("Successful")){
+                binding.homeLoadingScreen.setVisibility(View.GONE);
+                binding.homeLayout.setVisibility(View.VISIBLE);
+            }
+            else {
+                binding.homeLoadingScreen.setVisibility(View.VISIBLE);
+                binding.homeLayout.setVisibility(View.GONE);
+            }
+        }
+    };
 
     private final Observer<HomePageDTO> homePageUpdateObserver = new Observer<HomePageDTO>() {
         @Override
