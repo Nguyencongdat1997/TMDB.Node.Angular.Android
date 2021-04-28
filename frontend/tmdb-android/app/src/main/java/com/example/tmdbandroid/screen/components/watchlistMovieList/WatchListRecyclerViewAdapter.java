@@ -91,7 +91,7 @@ public class WatchListRecyclerViewAdapter extends RecyclerView.Adapter<WatchList
         viewHolder.removeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(context, "\"" + selectedItem.title + "\" was removed from favorites", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(context, "" + selectedItem.title + " was removed from favorites", Toast.LENGTH_SHORT);
                 View view =toast.getView();
                 view.setBackgroundColor(Color.TRANSPARENT);
                 TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);

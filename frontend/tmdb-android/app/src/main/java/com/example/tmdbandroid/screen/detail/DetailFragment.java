@@ -85,7 +85,7 @@ public class DetailFragment extends Fragment {
         binding.detailItemTwitterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String twUrl = "https://twitter.com/intent/tweet?text=" + tmdpUrl;
+                String twUrl = "https://twitter.com/intent/tweet?text=" + "Check this out! %0D%0A" + tmdpUrl;
                 Intent openTwitterPage = new Intent(Intent.ACTION_VIEW, Uri.parse(twUrl));
                 context.startActivity(openTwitterPage);
             }
@@ -94,9 +94,9 @@ public class DetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 viewModel.addItemToLocalWatchList();
-                Toast toast = Toast.makeText(context, "\""
+                Toast toast = Toast.makeText(context, ""
                         + viewModel.getDetailDto().getValue().itemDetail.title
-                        + "\" was added to Watchlist", Toast.LENGTH_SHORT);
+                        + " was added to Watchlist", Toast.LENGTH_SHORT);
                 View view =toast.getView();
                 view.setBackgroundColor(Color.TRANSPARENT);
                 TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
@@ -110,9 +110,9 @@ public class DetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 viewModel.removeItemFromLocalWatchList();
-                Toast toast = Toast.makeText(context, "\""
+                Toast toast = Toast.makeText(context, ""
                         + viewModel.getDetailDto().getValue().itemDetail.title
-                        + "\" was removed from Watchlist", Toast.LENGTH_SHORT);
+                        + " was removed from Watchlist", Toast.LENGTH_SHORT);
                 View view =toast.getView();
                 view.setBackgroundColor(Color.TRANSPARENT);
                 TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);

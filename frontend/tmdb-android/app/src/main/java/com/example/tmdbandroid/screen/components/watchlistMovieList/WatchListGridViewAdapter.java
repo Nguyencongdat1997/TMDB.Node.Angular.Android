@@ -65,7 +65,7 @@ public class WatchListGridViewAdapter extends BaseAdapter {
         removeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "\"" + selectedItem.title + "\" was removed from favorites", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "" + selectedItem.title + " was removed from favorites", Toast.LENGTH_SHORT).show();
                 viewModel.removeItemFromWatchList(selectedItem);
             }
         });

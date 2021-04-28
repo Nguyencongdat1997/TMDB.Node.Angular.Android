@@ -116,7 +116,7 @@ public class HorizontalRecycleViewAdapter
                                 context.startActivity(openFBPage);
                                 break;
                             case R.id.movieItemPopupTwitterBtn:
-                                String twUrl = "https://twitter.com/intent/tweet?text=" + tmdpUrl;
+                                String twUrl = "https://twitter.com/intent/tweet?text=" + "Check this out! %0D%0A" +  tmdpUrl;
                                 Intent openTwitterPage = new Intent(Intent.ACTION_VIEW, Uri.parse(twUrl));
                                 context.startActivity(openTwitterPage);
                                 break;
@@ -124,7 +124,7 @@ public class HorizontalRecycleViewAdapter
                                 if (selectedItem.isInWatchlist){
                                     menuItem.setTitle("Add to watchlist");
                                     viewModel.removeItemFromWatchList(selectedItem);
-                                    Toast toast = Toast.makeText(context, "\"" + selectedItem.title + "\" was removed from Watchlist", Toast.LENGTH_SHORT);
+                                    Toast toast = Toast.makeText(context, "" + selectedItem.title + " was removed from Watchlist", Toast.LENGTH_SHORT);
                                     View view =toast.getView();
                                     view.setBackgroundColor(Color.TRANSPARENT);
                                     TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
@@ -135,7 +135,7 @@ public class HorizontalRecycleViewAdapter
                                 else{
                                     menuItem.setTitle("Remove from watchlist");
                                     viewModel.addItemToWatchList(selectedItem);
-                                    Toast toast = Toast.makeText(context, "\"" + selectedItem.title + "\" was added to Watchlist", Toast.LENGTH_SHORT);
+                                    Toast toast = Toast.makeText(context, "" + selectedItem.title + " was added to Watchlist", Toast.LENGTH_SHORT);
                                     View view =toast.getView();
                                     view.setBackgroundColor(Color.TRANSPARENT);
                                     TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);

@@ -83,7 +83,7 @@
                     app:trimCollapsedText="show more"
                     app:trimExpandedText="show less"
                     app:colorClickableText = "@color/grey"
-                    app:trimLength="170"
+                    app:trimLength="215"
                     app:trimMode="trimModeLength"
                     app:showTrimExpandedText="true"
                     android:textSize="15dp"
@@ -172,11 +172,11 @@
                     android:textColor="@color/blue"
                     android:paddingHorizontal="5dp"
                     android:layout_marginTop="5dp"/>
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/castsRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"/>
 
                 <TextView
                     android:id="@+id/reviewsSectionTitle"
@@ -190,7 +190,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/reviewsRecylerView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"/>
 
                 <TextView
                     android:id="@+id/detailRecommendationSectionTitle"
@@ -206,7 +207,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginBottom="20dp"/>
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="5dp"/>
 
             </LinearLayout>
         </ScrollView>
