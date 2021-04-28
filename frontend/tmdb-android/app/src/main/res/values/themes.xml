@@ -1,0 +1,38 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.TMDBAndroid" parent="Theme.AppCompat">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorSecondaryVariant">@color/blue</item>
+        <item name="colorOnSecondary">@color/blue</item>
+    </style>
+
+    <style name="Theme.TMDBAndroid.Common" parent="Theme.TMDBAndroid">
+        <!-- Others -->
+        <item name="android:textColor">@color/white</item>
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.androidx.appcompat.widget.SearchView" parent="Theme.TMDBAndroid">
+        <item name="android:editTextColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
+    <style name="popupMenuStyle" parent="Theme.AppCompat">
+        <item name="android:background">@android:color/white</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="SplashScreenTheme" parent = "Theme.TMDBAndroid.Common">
+        <item name="android:windowBackground">@drawable/splash_screen_background</item>
+    </style>
+<!--    <style name="Theme.TMDBAndroid.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />-->
+<!--    <style name="Theme.TMDBAndroid.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />-->
+</resources>

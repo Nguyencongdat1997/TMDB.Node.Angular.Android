@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.example.tmdbandroid.screen.detail.DetailViewModel" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screen.detail.DetailFragment"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/detailLoadingScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundPrimary">
+            <ProgressBar
+                android:id="@+id/detailLoadingIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/blue"
+                android:layout_centerInParent="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Loading..."
+                android:layout_below="@+id/detailLoadingIndicator"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+
+        <ScrollView
+            android:id="@+id/detailLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundPrimary">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:id="@+id/youtube_player_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:autoPlay="false"
+                    app:showFullScreenButton="false"
+                    app:enableAutomaticInitialization="false"
+                    android:visibility="gone"/>
+
+                <ImageView
+                    android:id="@+id/itemDetailBackdrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="fitXY"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.detailDto.itemDetail.title}"
+                    android:textSize="30dp"
+                    android:textColor="@color/white"
+                    android:background="@color/blue"
+                    android:paddingHorizontal="5dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Overview"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue"
+                    android:paddingHorizontal="5dp"
+                    android:layout_marginTop="5dp"/>
+                <com.borjabravo.readmoretextview.ReadMoreTextView
+                    android:id="@+id/text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.detailDto.itemDetail.overview}"
+                    app:trimCollapsedText="show more"
+                    app:trimExpandedText="show less"
+                    app:colorClickableText = "@color/grey"
+                    app:trimLength="215"
+                    app:trimMode="trimModeLength"
+                    app:showTrimExpandedText="true"
+                    android:textSize="15dp"
+                    android:paddingHorizontal="5dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Genres"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue"
+                    android:paddingHorizontal="5dp"
+                    android:layout_marginTop="5dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.detailDto.itemDetail.genres}"
+                    android:textSize="15dp"
+                    android:paddingHorizontal="5dp"/>
+
+                <TextView
+                    android:id="@+id/detailYearTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Year"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue"
+                    android:paddingHorizontal="5dp"
+                    android:layout_marginTop="5dp"/>
+                <TextView
+                    android:id="@+id/detailYear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2020"
+                    android:textSize="15dp"
+                    android:paddingHorizontal="5dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    <ImageButton
+                        android:id="@+id/detailItemAddBtn"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitXY"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_baseline_add_circle_outline_24"
+                        android:visibility="@{viewModel.idItemStored ? View.GONE : View.VISIBLE}"
+                        android:background="@android:color/transparent"/>
+                    <ImageButton
+                        android:id="@+id/detailItemRemoveBtn"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitXY"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_baseline_remove_circle_outline_24"
+                        android:visibility="@{viewModel.idItemStored ? View.VISIBLE : View.GONE}"
+                        android:background="@android:color/transparent"/>
+                    <ImageButton
+                        android:id="@+id/detailItemFbBtn"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitXY"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_baseline_facebook_24"
+                        android:background="@android:color/transparent"/>
+                    <ImageButton
+                        android:id="@+id/detailItemTwitterBtn"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:scaleType="fitXY"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_twitter_logo_dialog"
+                        android:background="@android:color/transparent"
+                        android:layout_marginVertical="5dp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/detailCastSectionTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cast"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue"
+                    android:paddingHorizontal="5dp"
+                    android:layout_marginTop="5dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/castsRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:id="@+id/reviewsSectionTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Reviews"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue"
+                    android:paddingHorizontal="5dp"
+                    android:layout_marginTop="5dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/reviewsRecylerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:id="@+id/detailRecommendationSectionTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Recommended Picks"
+                    android:textSize="20dp"
+                    android:textColor="@color/blue"
+                    android:paddingHorizontal="5dp"
+                    android:layout_marginTop="5dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/detailItemRecommendations"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

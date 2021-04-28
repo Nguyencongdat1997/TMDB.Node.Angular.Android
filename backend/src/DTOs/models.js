@@ -10,6 +10,8 @@ class Item {
         this.poster_path = posterPath;
         this.backdrop_path = backdropPath;
         this.category = category;
+        this.date = null;
+        this.vote_average = null;
     }
 
     static fromItem(rawItemData, category) {
@@ -44,7 +46,19 @@ class Item {
         if (category == 'tv') {
             title = rawItemData["name"];
         }
-        return new Item(id, title, posterPath, backdropPath, category);
+
+        var date = null;
+        if (category == 'movie') {
+            date = rawItemData['release_date'];
+        }
+        if (category == 'tv') {
+            date = rawItemData['first_air_date'];
+        }
+        
+        var item = new Item(id, title, posterPath, backdropPath, category);
+        item.date = date;
+        item.vote_average = rawItemData['vote_average'];
+        return item;
     }
 }
 

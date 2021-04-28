@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.example.tmdbandroid.R" />
+        <variable
+            name="viewModel"
+            type="com.example.tmdbandroid.screen.main.HomeViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screen.main.HomeFragment"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/homeLoadingScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundPrimary">
+            <ProgressBar
+                android:id="@+id/homeLoadingIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/blue"
+                android:layout_centerInParent="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Loading..."
+                android:layout_below="@+id/homeLoadingIndicator"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/homeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/homeHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+
+                <ImageButton
+                    android:id="@+id/theaterIconBtn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@color/backgroundPrimary"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_theaters_white_18dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginLeft="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="USC Films"
+                    android:textSize="30dp"
+                    app:layout_constraintLeft_toRightOf="@id/theaterIconBtn"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textStyle="bold"/>
+                <Button
+                    android:id="@+id/movieTabBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Movie"
+                    android:textSize="15dp"
+                    android:insetLeft="0dp"
+                    android:insetRight="0dp"
+                    android:minWidth="0dp"
+                    android:background="@color/backgroundPrimary"
+                    android:textColor="@{viewModel.movieTabOpened ? @color/white : @color/blue}"
+                    app:layout_constraintRight_toLeftOf="@id/tvTabBtn"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textAllCaps="false"
+                    android:paddingTop="10dp"/>
+                <Button
+                    android:id="@+id/tvTabBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TV Shows"
+                    android:textSize="15dp"
+                    android:background="@color/backgroundPrimary"
+                    android:textColor="@{viewModel.movieTabOpened ?  @color/blue : @color/white}"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textAllCaps="false"
+                    android:layout_marginRight="10dp"
+                    android:paddingTop="10dp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true">
+                <LinearLayout
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginHorizontal="10dp">
+
+                        <com.smarteist.autoimageslider.SliderView
+                            android:id="@+id/homeMovieSlider"
+                            android:layout_width="match_parent"
+                            android:layout_height="430dp"
+                            app:sliderAnimationDuration="600"
+                            app:sliderAutoCycleDirection="back_and_forth"
+                            app:sliderIndicatorAnimationDuration="600"
+                            app:sliderIndicatorEnabled="true"
+                            app:sliderIndicatorGravity="center_horizontal|bottom"
+                            app:sliderIndicatorMargin="15dp"
+                            app:sliderIndicatorOrientation="horizontal"
+                            app:sliderIndicatorPadding="3dp"
+                            app:sliderIndicatorRadius="1dp"
+                            app:sliderIndicatorSelectedColor="@color/blue"
+                            app:sliderIndicatorUnselectedColor="@color/white"
+                            app:sliderScrollTimeInSec="1" />
+                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Top-Rated"
+                        android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}"
+                        android:textSize="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/homeTopRatedMovieList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Popular"
+                        android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}"
+                        android:textSize="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/homePopularMovieList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{viewModel.movieTabOpened ? View.VISIBLE : View.GONE}"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="10dp">
+                        <com.smarteist.autoimageslider.SliderView
+                            android:id="@+id/homeTvSlider"
+                            android:layout_width="match_parent"
+                            android:layout_height="430dp"
+                            android:layout_centerInParent="true"
+                            app:sliderAnimationDuration="600"
+                            app:sliderAutoCycleDirection="back_and_forth"
+                            app:sliderIndicatorAnimationDuration="600"
+                            app:sliderIndicatorEnabled="true"
+                            app:sliderIndicatorGravity="center_horizontal|bottom"
+                            app:sliderIndicatorMargin="15dp"
+                            app:sliderIndicatorOrientation="horizontal"
+                            app:sliderIndicatorPadding="3dp"
+                            app:sliderIndicatorRadius="1dp"
+                            app:sliderIndicatorSelectedColor="@color/blue"
+                            app:sliderIndicatorUnselectedColor="@color/white"
+                            app:sliderScrollTimeInSec="1" />
+                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Top-Rated"
+                        android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
+                        android:textSize="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/homeTopRatedTvList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Popular"
+                        android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
+                        android:textSize="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/homePopularTvList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{viewModel.movieTabOpened ? View.GONE : View.VISIBLE}"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:id="@+id/footerTMDB"
+                        android:text="Powered by TMDB"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
+                        android:textColor="@color/blue"
+                        android:layout_marginTop="15dp"/>
+
+                    <TextView
+                        android:id="@+id/footerStudent"
+                        android:text="Developed by Nguyen Cong Dat"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
+                        android:textColor="@color/blue"/>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

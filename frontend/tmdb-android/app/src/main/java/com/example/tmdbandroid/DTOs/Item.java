@@ -1,0 +1,28 @@
+package com.example.tmdbandroid.DTOs;
+
+import com.google.gson.annotations.SerializedName;
+
+public class Item {
+    public String id;
+    public String title;
+    @SerializedName("poster_path")
+    public String posterPath;
+    @SerializedName("backdrop_path")
+    public String backdropPath;
+    public String category;
+    public boolean isInWatchlist;
+
+    // Search result addtional fields
+    public String date;
+    @SerializedName("vote_average")
+    public String voteAverage;
+
+    public Item(String id, String title, String posterPath, String backdropPath, String category, boolean isInWatchlist) {
+        this.id = id;
+        this.title = title;
+        this.posterPath = posterPath;
+        this.backdropPath = backdropPath;
+        this.category = category;
+        this.isInWatchlist = isInWatchlist;
+    }
+}
