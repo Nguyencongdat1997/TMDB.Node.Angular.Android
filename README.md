@@ -17,7 +17,7 @@ This repository was made for studying and practising purpose. It implements seve
   <img src="./demo/screenshots/web/homepage_overview.jpg"/>
   <br>
   <br>
-  <div align='center'><b>Figure 1.1.2</b>: Homepage sections. (<i>Top Left</i>) Continue watching items. (<i>Top Right</i>) Popular movies. (<i>Bottom Left</i>) Top-rated movies. (<i>Bottom Right</i>) Trending movies.</div>  
+  <div align='center'><b>Figure 1.1.2</b>: Homepage sections. (<i>Top Left</i>)Continue watching items. (<i>Top Right</i>)Popular movies. (<i>Bottom Left</i>)Top-rated movies. (<i>Bottom Right</i>)Trending movies.</div>  
   <table>
     <tr align="center">
       <td><img src="./demo/screenshots/web/homepage_continue_watching.jpg"/></td>
@@ -33,14 +33,14 @@ This repository was made for studying and practising purpose. It implements seve
  ### 1.2. Detail page screen
   <div align='center'><b>Figure 1.2.1</b>: Detail page</div>
   <img src="./demo/screenshots/web/detail_oveview.jpg"/>
-  <div align='center'><b>Figure 1.2.2</b>: Detail page, Add to watchlist and Remove from watchlist</div>
+  <div align='center'><b>Figure 1.2.2</b>: Detail page - Add to watchlist & Remove from watchlist buttons</div>
   <table>
     <tr align="center">
       <td><img src="./demo/screenshots/web/detail_add_to_watchilist.jpg"/></td>
       <td><img src="./demo/screenshots/web/detail_remove_from_watchlist.jpg"/></td>
     </tr>
   </table>
-  <div align='center'><b>Figure 1.2.3</b>: Detail page sections. (<i>Top Left</i>) Share buttons and Casts section. (<i>Top Right</i>) Cast detail popup. (<i>Bottom Left</i>)Reviews section. (<i>Bottom Right</i>) Recommended movies and Similar movies sections</div>
+  <div align='center'><b>Figure 1.2.3</b>: Detail page - sections. (<i>Top Left</i>)Share buttons and Casts section. (<i>Top Right</i>)Cast detail popup. (<i>Bottom Left</i>)Reviews section. (<i>Bottom Right</i>)Recommended movies and Similar movies sections</div>
   <table>
     <tr align="center">
       <td><img src="./demo/screenshots/web/detail_share_and_castList.jpg"/></td>
@@ -79,7 +79,7 @@ This repository was made for studying and practising purpose. It implements seve
   
 ## 2. Mobile  frontend
 ### 2.1. App icon, splash screen and loading screen.
-  <div align='center'><b>Figure 2.1</b>: (<i>Left</i>) App icon. (<i>Center</i>) Splash screen. (<i>Right</i>) Loading screen.</div>  
+  <div align='center'><b>Figure 2.1</b>: (<i>Left</i>)App icon. (<i>Center</i>)Splash screen. (<i>Right</i>)Loading screen.</div>  
   <table>
     <tr align="center">
       <td><img src="./demo/screenshots/mobile/1-app-icon.jpg"/></td>
@@ -91,7 +91,7 @@ This repository was made for studying and practising purpose. It implements seve
   
   
 ### 2.2. Home screen
-  <div align='center'><b>Figure 2.2</b>: Home screen. (<i>Left</i>) Movies tab . (<i>Center</i>) TV Shows tab. (<i>Right</i>) Movie-item Popup.</div>  
+  <div align='center'><b>Figure 2.2</b>: Home screen. (<i>Left</i>)Movies tab . (<i>Center</i>)TV Shows tab. (<i>Right</i>)Movie-item Popup.</div>  
   <table>
     <tr align="center">
       <td><img src="./demo/screenshots/mobile/4_home_movie.jpg"/></td>
@@ -103,7 +103,7 @@ This repository was made for studying and practising purpose. It implements seve
   
   
 ### 2.3. Search screen
-  <div align='center'><b>Figure 2.3</b>: Search screen. (<i>Left</i>) Empty search. (<i>Center</i>) Search results. (<i>Right</i>) No result found.</div>  
+  <div align='center'><b>Figure 2.3</b>: Search screen. (<i>Left</i>)Empty search. (<i>Center</i>)Search results. (<i>Right</i>)No result found.</div>  
   <table>
     <tr align="center">
       <td><img src="./demo/screenshots/mobile/7_search_01.jpg"/></td>
@@ -115,7 +115,7 @@ This repository was made for studying and practising purpose. It implements seve
   
   
 ### 2.4. Watchlist screen
-  <div align='center'><b>Figure 2.4</b>: Watchlist screen. (<i>Left</i>) Empty watchlist. (<i>Center</i>) Watchlist with items. (<i>Right</i>) Drag & Drop items.</div>  
+  <div align='center'><b>Figure 2.4</b>: Watchlist screen. (<i>Left</i>)Empty watchlist. (<i>Center</i>)Watchlist with items. (<i>Right</i>)Drag & Drop items.</div>  
   <table>
     <tr align="center">
       <td><img src="./demo/screenshots/mobile/10_watchlist_empty.jpg"/></td>
