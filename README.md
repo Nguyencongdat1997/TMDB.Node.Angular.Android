@@ -79,7 +79,7 @@ This repository was made for studying and practising purpose. It implements seve
   
 ## 2. Mobile  frontend
 ### 2.1. App icon, splash screen and loading screen.
-  <div align='center'><b>Figure 2.1</b>: (<i>Left</i>) App icon. (<i>Center</i>) Splash screen. (<i>Rihgt</i>) Loading screen.</div>  
+  <div align='center'><b>Figure 2.1</b>: (<i>Left</i>) App icon. (<i>Center</i>) Splash screen. (<i>Right</i>) Loading screen.</div>  
   <table>
     <tr align="center">
       <td><img src="./demo/screenshots/mobile/1-app-icon.jpg"/></td>
@@ -91,7 +91,7 @@ This repository was made for studying and practising purpose. It implements seve
   
   
 ### 2.2. Home screen
-  <div align='center'><b>Figure 2.2</b>: Home screen. (<i>Left</i>) Movies tab . (<i>Center</i>) TV Shows tab. (<i>Rihgt</i>) Movie-item Popup.</div>  
+  <div align='center'><b>Figure 2.2</b>: Home screen. (<i>Left</i>) Movies tab . (<i>Center</i>) TV Shows tab. (<i>Right</i>) Movie-item Popup.</div>  
   <table>
     <tr align="center">
       <td><img src="./demo/screenshots/mobile/4_home_movie.jpg"/></td>
@@ -103,7 +103,7 @@ This repository was made for studying and practising purpose. It implements seve
   
   
 ### 2.3. Search screen
-  <div align='center'><b>Figure 2.3</b>: Search screen. (<i>Left</i>) Empty search. (<i>Center</i>) Search results. (<i>Rihgt</i>) No result found.</div>  
+  <div align='center'><b>Figure 2.3</b>: Search screen. (<i>Left</i>) Empty search. (<i>Center</i>) Search results. (<i>Right</i>) No result found.</div>  
   <table>
     <tr align="center">
       <td><img src="./demo/screenshots/mobile/7_search_01.jpg"/></td>
@@ -115,7 +115,7 @@ This repository was made for studying and practising purpose. It implements seve
   
   
 ### 2.4. Watchlist screen
-  <div align='center'><b>Figure 2.4</b>: Watchlist screen. (<i>Left</i>) Empty watchlist. (<i>Center</i>) Watchlist with items. (<i>Rihgt</i>) Drag & Drop items.</div>  
+  <div align='center'><b>Figure 2.4</b>: Watchlist screen. (<i>Left</i>) Empty watchlist. (<i>Center</i>) Watchlist with items. (<i>Right</i>) Drag & Drop items.</div>  
   <table>
     <tr align="center">
       <td><img src="./demo/screenshots/mobile/10_watchlist_empty.jpg"/></td>
